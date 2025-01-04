@@ -131,4 +131,10 @@ public class FuelStationService implements FuelStationServiceRepository{
     public ResponseEntity<?> deleteFuelStation(UUID fuelStationId) {
         return new ResponseEntity<>("not implemented",HttpStatus.NOT_IMPLEMENTED);
     }
+    public FuelStation registerFuelStation(FuelStation fuelStation) {
+
+        String registrationId = UUID.randomUUID().toString();
+        fuelStation.setFuelStationRegisterId(registrationId);
+        return fuelStationRepository.save(fuelStation);
+    }
 }
