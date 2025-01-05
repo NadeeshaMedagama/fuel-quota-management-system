@@ -48,10 +48,5 @@ public class FuelStationController {
     public ResponseEntity<?> deleteFuelStation(@PathVariable UUID fuelStationId){
         return fuelStationServiceRepository.deleteFuelStation(fuelStationId);
     }
-    @PostMapping("/register")
-    public ResponseEntity<String> registerStation(@RequestBody FuelStation fuelStation) {
 
-        FuelStation registeredStation= fuelStationService.registerFuelStation(fuelStation);
-        return ResponseEntity.ok("Fuel station registered successfully");
-    }
 }
