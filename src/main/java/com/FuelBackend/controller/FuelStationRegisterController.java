@@ -21,6 +21,7 @@ private final FuelStationRegisterService fuelStationRegisterService;
     }
 @Autowired
     FuelStationRegisterRepository fuelStationRegisterRepository;
+    @CrossOrigin(origins = "http://localhost:5174")
     @PostMapping("/register")
     public ResponseEntity<FuelStationRegister> registerStation(@RequestBody FuelStationRegister fuelStationRegister) {
 
