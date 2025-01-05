@@ -20,6 +20,9 @@ public class FuelStationRegister {
     @Size(min = 3, max = 50, message = "Station name must be between 3 and 50 characters")
     private String stationName;
 
+    @NotNull(message = "license number is required")
+    private String lisenceNumber;
+
     @NotNull(message = "Email is required")
     @Email(message = "Invalid email format")
     private String email;
@@ -33,6 +36,7 @@ public class FuelStationRegister {
     public Long getId() {
         return id;
     }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -74,6 +78,14 @@ public class FuelStationRegister {
         this.contactNumber = contactNumber;
     }
 
+    public String getLisenceNumber() {
+        return lisenceNumber;
+    }
+
+    public void setLisenceNumber(String lisenceNumber) {
+        this.lisenceNumber = lisenceNumber;
+    }
+
     @Override
     public String toString() {
         return "FuelStationRegister{" +
@@ -82,6 +94,7 @@ public class FuelStationRegister {
                 ", stationName='" + stationName + '\'' +
                 ", email='" + email + '\'' +
                 ", contactNumber='" + contactNumber + '\'' +
+                ", lisenceNumber='" + lisenceNumber + '\'' +
                 '}';
     }
 }
