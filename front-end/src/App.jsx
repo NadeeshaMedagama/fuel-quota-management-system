@@ -5,6 +5,7 @@ function App() {
   return (
     <>
       <FuelRegistration></FuelRegistration>
+      <AdminDashboard/>
     </>
   );
 }
