@@ -14,4 +14,8 @@ public interface EmployeeServiceRepository {
     public ResponseEntity<?> updateFuelPerVehicle(UUID employeeId,UUID vehicleId,Double fuelCapacity);
 
     public ResponseEntity<?> changeEmployeeStatus(UUID employeeId);
+
+    ResponseEntity<?> employeeFindById(UUID employeeId);
+    ResponseEntity<?> getAllEmployee();
+
 }
