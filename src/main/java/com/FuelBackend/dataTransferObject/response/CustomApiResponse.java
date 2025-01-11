@@ -1,6 +1,12 @@
 package com.FuelBackend.dataTransferObject.response;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class CustomApiResponse {
+    // Getters and setters
     private int statusCode;
     private String message;
     private Object data;
@@ -11,28 +17,4 @@ public class CustomApiResponse {
         this.data = data;
     }
 
-    // Getters and setters
-    public int getStatusCode() {
-        return statusCode;
-    }
-
-    public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
 }
