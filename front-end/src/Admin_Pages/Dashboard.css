@@ -1,0 +1,51 @@
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    
+  }
+  
+  .dashboard-content {
+    flex: 1;
+    padding: 20px;
+    
+  }
+  
+  .dashboard-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 10px;
+    color: #0a0231;
+    font-weight: bold;
+  }
+  .info-cards-container{
+   
+    
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 15px; /* Space between cards on small screens */
+    margin-top: 20px;
+    background-color: #0a0231;
+   
+  } 
+  
+  
+  .mobile {
+    flex-direction: column;
+  }
+  
+  .web {
+    flex-direction: row;
+  }
+  .mobile .info-cards-container {
+    flex-direction: column;
+  }
+  
+  .web .info-cards-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
