@@ -1,8 +1,7 @@
 package com.FuelBackend.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,32 +38,31 @@ public class User {
 
     // add verify the mobile number
     @Column(columnDefinition = "boolean DEFAULT false")
-    private Boolean verifyMobile;
+    private Boolean verifyMobile = false;
 
-    @OneToMany(mappedBy = "user", orphanRemoval = false, cascade = CascadeType.PERSIST)
-    private List<Vehicle> vehicle = new ArrayList<>();
 
 
     public User(){
 
     }
 
-    public User(String f_name, String l_name, String email, String password, String mobile) {
+    public User(String f_name, String l_name, String email, String password, String mobile, Boolean verifyMobile) {
         this.f_name = f_name;
         this.l_name = l_name;
         this.email = email;
         this.password = password;
         this.mobile = mobile;
+        this.verifyMobile = verifyMobile;
     }
 
-    public User(Integer userId, String f_name, String l_name, String email, String password, String mobile, List<Vehicle> vehicle) {
+    public User(Integer userId, String f_name, String l_name, String email, String password, String mobile,Boolean verifyMobile) {
         this.userId = userId;
         this.f_name = f_name;
         this.l_name = l_name;
         this.email = email;
         this.password = password;
         this.mobile = mobile;
-        this.vehicle = vehicle;
+        this.verifyMobile = verifyMobile;
     }
 
     public Integer getUserId() {
@@ -122,4 +120,6 @@ public class User {
     public void setVerifyMobile(Boolean verifyMobile) {
         this.verifyMobile = verifyMobile;
     }
+
+
 }
