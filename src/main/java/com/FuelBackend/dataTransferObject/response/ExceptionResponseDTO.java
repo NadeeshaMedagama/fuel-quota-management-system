@@ -1,10 +1,14 @@
 package com.FuelBackend.dataTransferObject.response;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 
+@Setter
+@Getter
 public class ExceptionResponseDTO {
     private boolean status;
 
@@ -18,27 +22,4 @@ public class ExceptionResponseDTO {
         this.date = LocalDateTime.now();
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }
