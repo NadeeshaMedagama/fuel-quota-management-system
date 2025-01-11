@@ -7,15 +7,17 @@ import java.util.UUID;
 
 public interface VehicleServiceRepository {
 
-    public ResponseEntity<?> createVehicle(VehicleRequestDTO vehicleRequestDTO);
+    ResponseEntity<?> createVehicle(VehicleRequestDTO vehicleRequestDTO);
 
-    public ResponseEntity<?> findVehicleById(UUID vehicleId);
+    ResponseEntity<?> createBusinessGovVehicle(VehicleRequestDTO vehicleRequestDTO);
 
-    public ResponseEntity<?> updateVehicleCurrentFuelCapacity(UUID vehicleId, Double fuelCapacity);
+    ResponseEntity<?> findVehicleById(UUID vehicleId);
 
-    public ResponseEntity<?> updateVehicle(VehicleRequestDTO vehicleRequestDTO);
+    ResponseEntity<?> updateVehicleCurrentFuelCapacity(UUID vehicleId, Double fuelCapacity);
 
-    public ResponseEntity<?> deleteVehicle(UUID vehicleId);
+    ResponseEntity<?> updateVehicle(VehicleRequestDTO vehicleRequestDTO);
 
-    public ResponseEntity<?> getAllVehicle();
+    ResponseEntity<?> deleteVehicle(UUID vehicleId);
+
+    ResponseEntity<?> getAllVehicle();
 }
