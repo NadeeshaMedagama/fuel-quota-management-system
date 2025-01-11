@@ -1,5 +1,6 @@
 package com.FuelBackend.utility;
 
+import com.FuelBackend.exception.ForbiddenException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.FuelBackend.dataTransferObject.response.ExceptionResponseDTO;
 import com.FuelBackend.exception.UnauthorizedAccessException;
