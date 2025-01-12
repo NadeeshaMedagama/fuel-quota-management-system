@@ -18,9 +18,11 @@ const Sider = () => {
         <Nav className="flex-column sider-menu">
           <Nav.Link href="#">Manage Vehicles</Nav.Link>
           <Nav.Link href="#">Manage Fuel Station</Nav.Link>
-          <Nav.Link href="#">Manage Employees</Nav.Link>
+          <Nav.Link href="#">Manage Distributors</Nav.Link>
           <Nav.Link href="#">Manage Users</Nav.Link>
-          <Nav.Link href="#">Settings</Nav.Link>
+          <Nav.Link href="#">Distribution</Nav.Link>
+          <Nav.Link href="#">Quota Management</Nav.Link>
+          <Nav.Link href="#">Notification</Nav.Link>
         </Nav>
         </div>
       </Navbar.Collapse>

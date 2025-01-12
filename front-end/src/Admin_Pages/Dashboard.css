@@ -16,7 +16,7 @@
     margin-bottom: 30px;
     text-align: center;
     margin-top: 10px;
-    color: #0a0231;
+    color: #090130;
     font-weight: bold;
   }
   .info-cards-container{
@@ -29,10 +29,25 @@
     min-width: 200px;
     margin-bottom: 15px; /* Space between cards on small screens */
     margin-top: 20px;
-    background-color: #0a0231;
+    background-color: #020636;
    
   } 
   
+  .fuel-consumption-chart-container {
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chart-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #090130;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
   
   .mobile {
     flex-direction: column;
