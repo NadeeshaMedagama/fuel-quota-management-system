@@ -26,6 +26,8 @@ public class FuelService implements FuelServiceRepository{
         this.fuelRepository = fuelRepository;
     }
 
+
+
     @Override
     public ResponseEntity<?> createFuel(FuelRequestDTO fuelRequestDTO) {
         Fuel fuel = new Fuel(fuelRequestDTO.getFuelName(),fuelRequestDTO.getPrice());
@@ -40,9 +42,9 @@ public class FuelService implements FuelServiceRepository{
 
         return new ResponseEntity<>(
                 new CustomApiResponse(
-                    HttpStatus.OK.value(),
-                    "fuel created successfully",
-                    responseDTO
+                        HttpStatus.OK.value(),
+                        "fuel created successfully",
+                        responseDTO
                 ),
                 HttpStatus.CREATED
         );
