@@ -1,0 +1,20 @@
+.header {
+    text-align: center;
+    margin: 20px 0;
+    background-color: #0a022c;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .header h1 {
+    font-size: 40px;
+    margin: 0;
+    color: white;
+  }
+  
+  .header h2 {
+    font-size: 32px;
+    margin: 0;
+    color: white;
+  }
+  
