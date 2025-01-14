@@ -1,0 +1,28 @@
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  form label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  button {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
