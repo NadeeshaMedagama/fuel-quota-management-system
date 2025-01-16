@@ -1,11 +1,12 @@
 package com.FuelBackend.dataTransferObject.response.vehicleClassesResponseDTO;
 
+import com.FuelBackend.entity.VehicleClasses;
 import com.FuelBackend.enums.VehicleClassName;
 
 public class VehicleClassesResponseDTO {
 
     private Integer vehicleClassId;
-    private VehicleClassName vehicleClassName;
+    private VehicleClasses.VehicleClassName vehicleClassName;
 
     private Double maxFuelCapacityPerWeek;
 
@@ -14,8 +15,7 @@ public class VehicleClassesResponseDTO {
 //    private Integer fuelId;
 
 
-    public VehicleClassesResponseDTO() {
-    }
+   
 
     public VehicleClassesResponseDTO(
             Integer vehicleClassId,
@@ -23,11 +23,15 @@ public class VehicleClassesResponseDTO {
             Double maxFuelCapacityPerWeek,
             Double maxFuelCapacityPerWeekForBusinessGov
     ) {
+
+//        this.fuelId = fuelId;
+    }
+
+    public VehicleClassesResponseDTO(Integer vehicleClassId, VehicleClasses.VehicleClassName vehicleClassName, Double maxFuelCapacityPerWeek, Double maxFuelCapacityPerWeekForBusinessGov) {
         this.vehicleClassId = vehicleClassId;
         this.vehicleClassName = vehicleClassName;
         this.maxFuelCapacityPerWeek = maxFuelCapacityPerWeek;
         this.maxFuelCapacityPerWeekForBusinessGov = maxFuelCapacityPerWeekForBusinessGov;
-//        this.fuelId = fuelId;
     }
 
     public Integer getVehicleClassId() {
@@ -38,11 +42,11 @@ public class VehicleClassesResponseDTO {
         this.vehicleClassId = vehicleClassId;
     }
 
-    public VehicleClassName getVehicleClassName() {
+    public VehicleClasses.VehicleClassName getVehicleClassName() {
         return vehicleClassName;
     }
 
-    public void setVehicleClassName(VehicleClassName vehicleClassName) {
+    public void setVehicleClassName(VehicleClasses.VehicleClassName vehicleClassName) {
         this.vehicleClassName = vehicleClassName;
     }
 

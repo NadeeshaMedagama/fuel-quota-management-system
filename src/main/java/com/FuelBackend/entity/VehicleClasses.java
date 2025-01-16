@@ -1,9 +1,14 @@
 package com.FuelBackend.entity;
 
-import com.FuelBackend.enums.VehicleClassName;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
 @Entity
 @Table(
         name = "vehicle_classes"
@@ -16,25 +21,31 @@ public class VehicleClasses {
     private Integer vehicleClassId;
 
     @Enumerated(EnumType.STRING)
-    @Column(unique = true,nullable = false)
+    @Column(unique = true)
+    @NotNull
     private VehicleClassName vehicleClassName;
 
+    public VehicleClasses() {
+    }
+
+    public enum VehicleClassName {
+        CAR,
+        TRUCK,
+        MOTORCYCLE,
+        VAN
+    }
+
     @Column
+    @NotNull
     @Min(0)
     private Double maxFuelCapacityPerWeek;
 
     @Column
+    @NotNull
     @Min(0)
     private Double maxFuelCapacityPerWeekForBusinessGov;
 
-
-
-//    @ManyToOne
-//    @JoinColumn(name = "fuel_id", referencedColumnName = "fuelId")
-//    private Fuel fuel;
-
-    public VehicleClasses() {}
-
+    // Custom constructor without Lombok for specific use cases
     public VehicleClasses(
             VehicleClassName vehicleClassName,
             Double maxFuelCapacityPerWeek,
@@ -43,20 +54,6 @@ public class VehicleClasses {
         this.vehicleClassName = vehicleClassName;
         this.maxFuelCapacityPerWeek = maxFuelCapacityPerWeek;
         this.maxFuelCapacityPerWeekForBusinessGov = maxFuelCapacityPerWeekForBusinessGov;
-//        this.fuel = fuel;
-    }
-
-    public VehicleClasses(
-            Integer vehicleClassId,
-            VehicleClassName vehicleClassName,
-            Double maxFuelCapacityPerWeek,
-            Double maxFuelCapacityPerWeekForBusinessGov
-    ) {
-        this.vehicleClassId = vehicleClassId;
-        this.vehicleClassName = vehicleClassName;
-        this.maxFuelCapacityPerWeek = maxFuelCapacityPerWeek;
-        this.maxFuelCapacityPerWeekForBusinessGov = maxFuelCapacityPerWeekForBusinessGov;
-//        this.fuel = fuel;
     }
 
     public Integer getVehicleClassId() {
@@ -75,7 +72,6 @@ public class VehicleClasses {
         this.vehicleClassName = vehicleClassName;
     }
 
-
     public Double getMaxFuelCapacityPerWeek() {
         return maxFuelCapacityPerWeek;
     }
@@ -91,12 +87,4 @@ public class VehicleClasses {
     public void setMaxFuelCapacityPerWeekForBusinessGov(Double maxFuelCapacityPerWeekForBusinessGov) {
         this.maxFuelCapacityPerWeekForBusinessGov = maxFuelCapacityPerWeekForBusinessGov;
     }
-
-    //    public Fuel getFuel() {
-//        return fuel;
-//    }
-//
-//    public void setFuel(Fuel fuel) {
-//        this.fuel = fuel;
-//    }
 }

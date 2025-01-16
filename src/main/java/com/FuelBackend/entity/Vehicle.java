@@ -18,8 +18,8 @@ import java.util.UUID;
 public class Vehicle {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID vehicleId;
+    @GeneratedValue
+    private int vehicleId;
 
     @Column(updatable = false,unique = true,nullable = false)
     private String vehicleRegisterId;
@@ -77,7 +77,7 @@ public class Vehicle {
     }
 
     public Vehicle(
-            UUID vehicleId,
+            int vehicleId,
             String vehicleRegisterId,
             String vehicleEngineNo,
             String model,
@@ -100,11 +100,11 @@ public class Vehicle {
         this.fuel = fuel;
     }
 
-    public UUID getVehicleId() {
+    public int getVehicleId() {
         return vehicleId;
     }
 
-    public void setVehicleId(UUID vehicleId) {
+    public void setVehicleId(int vehicleId) {
         this.vehicleId = vehicleId;
     }
 
