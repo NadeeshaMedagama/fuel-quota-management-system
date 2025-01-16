@@ -1,0 +1,32 @@
+/* Header styles */
+.header {
+    display: flex;
+    align-items: center; /* Align vertically */
+    justify-content: center; /* Center the title */
+    position: relative; /* Enable absolute positioning for children */
+    padding: 10px 20px;
+    background-color: #020444; /* Dark blue background */
+    color: #fff; /* White title text */
+  }
+  
+  /* Ensure BackIcon is in the left corner */
+  .header .back-icon {
+    position: absolute; /* Position relative to the header */
+    top: 50%; /* Center vertically */
+    left: 10px; /* Add spacing from the left edge */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+  }
+  
+  /* Optional hover effects for the icon */
+  .back-icon:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .back-icon:focus {
+    outline: none;
+  }
+  
+  .back-icon:active {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  

@@ -3,7 +3,7 @@ import "./Button.css";
 
 const AddButton = ({ onClick }) => {
   return (
-    <button className="btn btn-success" onClick={onClick}>
+    <button className="add" onClick={onClick}>
       Add
     </button>
   );
