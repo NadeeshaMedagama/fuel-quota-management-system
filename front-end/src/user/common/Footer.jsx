@@ -3,36 +3,27 @@
 import React from "react";
 import "./Footer.css"; // Link to the CSS file
 
-
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-left">
-        <img src="/logo.png" alt="FuelPulse Logo" className="footer-logo" />
-         
+          <img src="/logo.png" alt="FuelPulse Logo" className="footer-logo" />
           <p className="footer-description">
             FuelPulse is an innovative platform designed to manage fuel
             distribution efficiently, ensuring fair allocation during fuel
             crises. Simplify your fuel management today!
           </p>
         </div>
-        <div className="footer-center">
-          <img
-            src="/qr-pic.jpg"
-            alt="QR Code"
-            className="footer-qr-code"
-          />
-        </div>
+     
         <div className="footer-right">
-          <h3 className="quick-links-title">Quick Links</h3>
-          <ul className="quick-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#vehicle">Vehicle</a></li>
-            <li><a href="#fuel-station">Fuel Station</a></li>
-            <li><a href="#distributor">Distributor</a></li>
-           
-          </ul>
+          <h3 className="contact-title">Contact Us</h3>
+          <p className="contact-details">
+            <strong>FuelPulse Headquarters</strong><br />
+            123 Main Street, Colombo, Sri Lanka<br />
+            Phone: +94 112 345 678<br />
+            Email: support@fuelpulse.com
+          </p>
         </div>
       </div>
       <div className="footer-bottom">
@@ -46,6 +37,5 @@ const Footer = () => {
   );
 };
 
-
-
 export default Footer;
+
