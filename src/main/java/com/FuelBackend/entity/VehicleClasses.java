@@ -1,6 +1,5 @@
 package com.FuelBackend.entity;
 
-import com.FuelBackend.enums.VehicleClassName;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 
@@ -18,6 +17,11 @@ public class VehicleClasses {
     @Enumerated(EnumType.STRING)
     @Column(unique = true,nullable = false)
     private VehicleClassName vehicleClassName;
+    public enum VehicleClassName {
+        CAR,
+        BIKE,
+        TRUCK // Ensure this is defined
+    }
 
     @Column
     @Min(0)
@@ -33,18 +37,18 @@ public class VehicleClasses {
 //    @JoinColumn(name = "fuel_id", referencedColumnName = "fuelId")
 //    private Fuel fuel;
 
-    public VehicleClasses() {}
-
-    public VehicleClasses(
-            VehicleClassName vehicleClassName,
-            Double maxFuelCapacityPerWeek,
-            Double maxFuelCapacityPerWeekForBusinessGov
-    ) {
-        this.vehicleClassName = vehicleClassName;
-        this.maxFuelCapacityPerWeek = maxFuelCapacityPerWeek;
-        this.maxFuelCapacityPerWeekForBusinessGov = maxFuelCapacityPerWeekForBusinessGov;
-//        this.fuel = fuel;
-    }
+    public VehicleClasses(com.FuelBackend.enums.VehicleClassName vehicleClassName, Double maxFuelCapacityPerWeek, Double maxFuelCapacityPerWeekForBusinessGov) {}
+public VehicleClasses(){}
+//    public VehicleClasses(
+//            VehicleClassName vehicleClassName,
+//            Double maxFuelCapacityPerWeek,
+//            Double maxFuelCapacityPerWeekForBusinessGov
+//    ) {
+//        this.vehicleClassName = vehicleClassName;
+//        this.maxFuelCapacityPerWeek = maxFuelCapacityPerWeek;
+//        this.maxFuelCapacityPerWeekForBusinessGov = maxFuelCapacityPerWeekForBusinessGov;
+////        this.fuel = fuel;
+//    }
 
     public VehicleClasses(
             Integer vehicleClassId,

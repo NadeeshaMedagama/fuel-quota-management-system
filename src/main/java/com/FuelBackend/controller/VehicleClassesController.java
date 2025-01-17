@@ -57,4 +57,5 @@ public class VehicleClassesController {
     public ResponseEntity<?> vehicleClassFindById(@PathVariable Integer vehicleClassId){
         return vehicleClassesServiceRepository.vehicleClassFindById(vehicleClassId);
     }
+
 }

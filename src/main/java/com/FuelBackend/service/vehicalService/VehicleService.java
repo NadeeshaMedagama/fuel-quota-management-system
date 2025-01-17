@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -91,7 +92,7 @@ public class VehicleService implements VehicleServiceRepository{
     }
 
     @Override
-    public ResponseEntity<?> findVehicleById(UUID vehicleId) {
+    public ResponseEntity<?> findVehicleById(int vehicleId) {
         Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow(
                 () -> new NotFoundException("vehicle not found")
         );
@@ -117,9 +118,33 @@ public class VehicleService implements VehicleServiceRepository{
     }
 
     @Override
-    public ResponseEntity<?> updateVehicleCurrentFuelCapacity(UUID vehicleId, Double fuelCapacity) {
-        return new ResponseEntity<>("not implemented", HttpStatus.NOT_IMPLEMENTED);
+    public ResponseEntity<?> updateVehicleCurrentFuelCapacity(int vehicleId, Double fuelCapacity) {
+        try {
+            // Validate fuel capacity
+            if (fuelCapacity == null || fuelCapacity <= 0) {
+                return new ResponseEntity<>("Fuel capacity must be greater than zero.", HttpStatus.BAD_REQUEST);
+            }
+
+            // Find the vehicle by ID
+            Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleId);
+            if (optionalVehicle.isEmpty()) {
+                return new ResponseEntity<>("Vehicle not found with ID: " + vehicleId, HttpStatus.NOT_FOUND);
+            }
+
+            // Update fuel capacity
+            Vehicle vehicle = optionalVehicle.get();
+            vehicle.setCurrentFuelCapacity(fuelCapacity);
+            vehicleRepository.save(vehicle);
+
+            return new ResponseEntity<>("Fuel capacity updated successfully for vehicle ID: " + vehicleId, HttpStatus.OK);
+        } catch (Exception e) {
+            // Handle unexpected errors
+            return new ResponseEntity<>("An error occurred while updating fuel capacity: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
+
 
     @Override
     public ResponseEntity<?> getAllVehicle() {
@@ -155,11 +180,26 @@ public class VehicleService implements VehicleServiceRepository{
 
     @Override
     public ResponseEntity<?> updateVehicle(VehicleRequestDTO vehicleRequestDTO) {
+
         return new ResponseEntity<>("not implemented", HttpStatus.NOT_IMPLEMENTED);
     }
 
     @Override
-    public ResponseEntity<?> deleteVehicle(UUID vehicleId) {
-        return new ResponseEntity<>("not implemented", HttpStatus.NOT_IMPLEMENTED);
+    public ResponseEntity<?> deleteVehicle(int vehicleId) {
+        try {
+            // Check if the vehicle exists
+            Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleId);
+            if (optionalVehicle.isEmpty()) {
+                return new ResponseEntity<>("Vehicle not found with ID: " + vehicleId, HttpStatus.NOT_FOUND);
+            }
+
+            // Delete the vehicle
+            vehicleRepository.deleteById(vehicleId);
+            return new ResponseEntity<>("Vehicle deleted successfully with ID: " + vehicleId, HttpStatus.OK);
+        } catch (Exception e) {
+            // Handle unexpected errors
+            return new ResponseEntity<>("An error occurred while deleting the vehicle: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
