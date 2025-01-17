@@ -10,8 +10,7 @@ const Footer = () => {
         <div className="footer-left">
           <img src="/logo.png" alt="FuelPulse Logo" className="footer-logo" />
           <p className="footer-description">
-            FuelPulse is an innovative platform designed to manage fuel
-            distribution efficiently, ensuring fair allocation during fuel
+            FuelPulse is an innovative platform designed to manage fueldistribution efficiently, ensuring fair allocation during fuel
             crises. Simplify your fuel management today!
           </p>
         </div>
@@ -29,7 +28,8 @@ const Footer = () => {
       <div className="footer-bottom">
         <p>
           © 2024 FuelPulse. All rights reserved. 
-          <a href="#privacy-policy"> Privacy Policy </a> | 
+          <Link to="/privacy.jsx">Privacy Policy</Link>
+          | 
           <a href="#terms-conditions"> Terms & Conditions </a>
         </p>
       </div>
