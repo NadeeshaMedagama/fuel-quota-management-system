@@ -1,32 +1,44 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Footer from "./user/common/Footer"; // No need to specify the file extension for JSX files
-import Home from "./pages/Home"; // No need to specify the file extension
+import Footer from "./user/common/Footer";
+import Home from "./pages/Home.jsx";
+import PrivacyPolicy from "./pages/Privacy.jsx";
+import Terms from "./pages/Terms";
+import Register from "./pages/SignUpForm";
+import UserDashboard from "./pages/Userdashboard"; // Corrected capitalization
+import VehicleRegistrationForm from "./pages/VehicleRegistrationForm"; // Import the VehicleRegistrationForm component
+import LoginForm from "./pages/Login";
 import "./App.css";
-import Header from "./user/common/Header"; // No need to specify the file extension
-import PrivacyPolicy from "./pages/Privacy"; // Adjust the path based on where the file is located
-import Terms from "./pages/Terms"; // Adjust the path based on where the file is located
 
 function App() {
-    return (
-        <Router>
-            <div className="App">
-            
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          {/* Define routes for different components */}
+          <Route path="/" element={<Home />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/Userdashboard" element={<UserDashboard />} />
+          <Route path="/vehicleregistration" element={<VehicleRegistrationForm />} />
+          <Route path="/Login" element={<LoginForm />} />
+        </Routes>
 
-                <Routes>
-                    {/* Define your routes here */}
-                    <Route path="/" element={<Home />} /> {/* Home should be mapped to "/" */}
-                    <Route path="/privacy-policy" element={<PrivacyPolicy />} /> {/* Add route for Privacy Policy */}
-                    <Route path="/terms" element={<Terms />} /> {/* Add route for Terms */}
-                    {/* Add more routes as needed */}
-                </Routes>
-                
-                <Footer /> {/* Footer component */}
-            </div>
-        </Router>
-    );
+        {/* Footer */}
+        <Footer />
+      </div>
+    </Router>
+  );
 }
 
 export default App;
+
+
+
+
+
+
+
 
 
 
