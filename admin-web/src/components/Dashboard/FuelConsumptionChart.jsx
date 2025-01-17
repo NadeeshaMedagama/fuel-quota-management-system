@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js";
 import { ArcElement, Tooltip, Legend } from "chart.js";
+import "./FuelConsumptionChart.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
