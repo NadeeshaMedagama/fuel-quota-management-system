@@ -149,3 +149,26 @@ html, body {
     padding: 15px;
   }
 }
+/* Logo in the top-left corner */
+.top-left {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.logo {
+  max-width: 100px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
+  -moz-transition: transform 0.3s ease;
+  -ms-transition: transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  max-height: 50px;
+}
+
+
+.logo:hover {
+  transform: scale(1.1); /* Add hover effect */
+}
+
