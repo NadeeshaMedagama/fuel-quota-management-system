@@ -1,38 +1,33 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./Login.css";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
 
   async function login(event) {
     event.preventDefault();
     try {
-      await axios
-        .post("http://localhost:8080/api/v1/VehicleOwner/login", {
-          email: email,
-          password: password,
-        })
-        .then(
-          (res) => {
-            console.log(res.data);
+      const res = await axios.post("http://localhost:8080/api/v1/VehicleOwner/login", {
+        email: email,
+        password: password,
+      });
+      console.log(res.data);
 
-            if (res.data.message === "Email not exists") {
-              alert("Email not exists");
-            } else if (res.data.message === "Login Success") {
-              navigate("/home");
-            } else {
-              alert("Incorrect Email and Password do not match");
-            }
-          },
-          (fail) => {
-            console.error(fail); // Error!
-          }
-        );
+      if (res.data.message === "Email not exists") {
+        alert("Email not exists");
+      } else if (res.data.message === "Login Success") {
+        navigate("/home");
+      } else {
+        alert("Incorrect Email and Password do not match");
+      }
     } catch (err) {
-      alert(err);
+      console.error(err);
+      alert("An error occurred. Please try again.");
     }
   }
 
@@ -40,9 +35,7 @@ const LoginForm = () => {
     <div className="login-container">
       <div className="form-container">
         {/* Title */}
-        <h2 className="form-title">
-          Welcome Back
-        </h2>
+        <h2 className="form-title">Welcome Back</h2>
 
         <form onSubmit={login} className="login-form">
           {/* Email Input */}
@@ -81,8 +74,6 @@ const LoginForm = () => {
             />
           </div>
 
-        
-
           {/* Login Button */}
           <button type="submit" className="submit-button">
             Login
@@ -102,4 +93,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
