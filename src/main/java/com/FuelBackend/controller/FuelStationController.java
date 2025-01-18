@@ -30,12 +30,12 @@ public class FuelStationController {
     }
 
     @GetMapping("/{fuelStationId}")
-    public ResponseEntity<?> getFuelStationById(@PathVariable UUID fuelStationId){
+    public ResponseEntity<?> getFuelStationById(@PathVariable int fuelStationId){
         return fuelStationServiceRepository.getFuelStationById(fuelStationId);
     }
 
     @PutMapping("/{fuelStationId}")
-    public ResponseEntity<?> updateFuelStation(@PathVariable UUID fuelStationId,@RequestBody FuelStationRequestDTO fuelStationRequestDTO){
+    public ResponseEntity<?> updateFuelStation(@PathVariable int fuelStationId,@RequestBody FuelStationRequestDTO fuelStationRequestDTO){
         return fuelStationServiceRepository.updateFuelStation(fuelStationId,fuelStationRequestDTO);
     }
 
@@ -45,7 +45,7 @@ public class FuelStationController {
     }
 
     @DeleteMapping("/{fuelStationId}")
-    public ResponseEntity<?> deleteFuelStation(@PathVariable UUID fuelStationId){
+    public ResponseEntity<?> deleteFuelStation(@PathVariable int fuelStationId){
         return fuelStationServiceRepository.deleteFuelStation(fuelStationId);
     }
 

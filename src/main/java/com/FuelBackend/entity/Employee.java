@@ -13,7 +13,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID employeeId;
+    private int employeeId;
 
     @Column(nullable = false,unique = true)
     private String employeeUsername;
@@ -59,7 +59,7 @@ public class Employee {
     }
 
     public Employee(
-            UUID employeeId,
+           int employeeId,
             String employeeUsername,
             String password,
             String employeeEmail,
@@ -72,11 +72,11 @@ public class Employee {
         this.fuelStation = fuelStation;
     }
 
-    public UUID getEmployeeId() {
+    public int getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(UUID employeeId) {
+    public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
     }
 

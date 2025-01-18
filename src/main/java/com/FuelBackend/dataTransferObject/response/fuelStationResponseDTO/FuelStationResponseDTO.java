@@ -1,11 +1,9 @@
 package com.FuelBackend.dataTransferObject.response.fuelStationResponseDTO;
 
 
-import java.util.UUID;
-
 public class FuelStationResponseDTO {
 
-    private UUID fuelStationId;
+    private int fuelStationId;
 
     private String fuelStationRegisterId;
 
@@ -13,18 +11,18 @@ public class FuelStationResponseDTO {
 
     private String fuelStationEmail;
 
-    public FuelStationResponseDTO(UUID fuelStationId, String fuelStationRegisterId, String fuelStationOwnerName, String fuelStationEmail) {
+    public FuelStationResponseDTO(int fuelStationId, String fuelStationRegisterId, String fuelStationOwnerName, String fuelStationEmail) {
         this.fuelStationId = fuelStationId;
         this.fuelStationRegisterId = fuelStationRegisterId;
         this.fuelStationOwnerName = fuelStationOwnerName;
         this.fuelStationEmail = fuelStationEmail;
     }
 
-    public UUID getFuelStationId() {
+    public int getFuelStationId() {
         return fuelStationId;
     }
 
-    public void setFuelStationId(UUID fuelStationId) {
+    public void setFuelStationId(int fuelStationId) {
         this.fuelStationId = fuelStationId;
     }
 

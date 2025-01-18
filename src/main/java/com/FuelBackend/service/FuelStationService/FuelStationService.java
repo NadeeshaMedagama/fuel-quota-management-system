@@ -53,7 +53,7 @@ public class FuelStationService implements FuelStationServiceRepository{
 
     @Override
     @Transactional
-    public ResponseEntity<?> updateFuelStation(UUID fuelStationId,FuelStationRequestDTO fuelStationRequestDTO) {
+    public ResponseEntity<?> updateFuelStation(int fuelStationId,FuelStationRequestDTO fuelStationRequestDTO) {
         FuelStation fuelStation = fuelStationRepository.findById(fuelStationId).orElseThrow(
                 () -> new NotFoundException("fuel station not found")
         );
@@ -79,7 +79,7 @@ public class FuelStationService implements FuelStationServiceRepository{
     }
 
     @Override
-    public ResponseEntity<?> getFuelStationById(UUID fuelStationId) {
+    public ResponseEntity<?> getFuelStationById(int fuelStationId) {
         FuelStation fuelStation = fuelStationRepository.findById(fuelStationId).orElseThrow(
                 () -> new NotFoundException("fuel station not found")
         );
@@ -128,7 +128,7 @@ public class FuelStationService implements FuelStationServiceRepository{
     }
 
     @Override
-    public ResponseEntity<?> deleteFuelStation(UUID fuelStationId) {
+    public ResponseEntity<?> deleteFuelStation(int fuelStationId) {
         return new ResponseEntity<>("not implemented",HttpStatus.NOT_IMPLEMENTED);
     }
 

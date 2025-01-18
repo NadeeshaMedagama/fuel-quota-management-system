@@ -15,9 +15,9 @@ import java.util.UUID;
 public class FuelStation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue
     @Column(updatable = false,nullable = false)
-    private UUID fuelStationId;
+    private int fuelStationId;
 
     @Column(nullable = false,unique = true,updatable = false)
     private String fuelStationRegisterId;
@@ -49,7 +49,7 @@ public class FuelStation {
     }
 
     public FuelStation(
-            UUID fuelStationId,
+        int fuelStationId,
             String fuelStationRegisterId,
             String fuelStationOwnerName,
             String fuelStationEmail,
@@ -62,11 +62,11 @@ public class FuelStation {
         this.password = password;
     }
 
-    public UUID getFuelStationId() {
+    public int getFuelStationId() {
         return fuelStationId;
     }
 
-    public void setFuelStationId(UUID fuelStationId) {
+    public void setFuelStationId(int fuelStationId) {
         this.fuelStationId = fuelStationId;
     }
 

@@ -9,9 +9,9 @@ public interface EmployeeServiceRepository {
 
     public ResponseEntity<?> createEmployee(EmployeeRequestDTO employeeRequestDTO);
 
-    public ResponseEntity<?> updateEmployee(UUID employeeId, EmployeeRequestDTO employeeRequestDTO);
+    public ResponseEntity<?> updateEmployee(int employeeId, EmployeeRequestDTO employeeRequestDTO);
 
-    public ResponseEntity<?> updateFuelPerVehicle(UUID employeeId,UUID vehicleId,Double fuelCapacity);
+    public ResponseEntity<?> updateFuelPerVehicle(int employeeId,int vehicleId,Double fuelCapacity);
 
-    public ResponseEntity<?> changeEmployeeStatus(UUID employeeId);
+    public ResponseEntity<?> changeEmployeeStatus(int employeeId);
 }

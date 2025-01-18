@@ -65,7 +65,7 @@ public class EmployeeService implements EmployeeServiceRepository{
 
     @Override
     @Transactional
-    public ResponseEntity<?> updateEmployee(UUID employeeId, EmployeeRequestDTO employeeRequestDTO) {
+    public ResponseEntity<?> updateEmployee(int employeeId, EmployeeRequestDTO employeeRequestDTO) {
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(
                 () -> new NotFoundException("employee not found")
         );
@@ -93,7 +93,7 @@ public class EmployeeService implements EmployeeServiceRepository{
 
     @Override
     @Transactional
-    public ResponseEntity<?> changeEmployeeStatus(UUID employeeId) {
+    public ResponseEntity<?> changeEmployeeStatus(int employeeId) {
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(
                 () -> new NotFoundException("employee not found")
         );
@@ -117,7 +117,7 @@ public class EmployeeService implements EmployeeServiceRepository{
     }
 
     @Override
-    public ResponseEntity<?> updateFuelPerVehicle(UUID employeeId, UUID vehicleId, Double fuelCapacity) {
+    public ResponseEntity<?> updateFuelPerVehicle(int employeeId,int vehicleId, Double fuelCapacity) {
         return null;
     }
 }

@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface FuelStationRepository extends JpaRepository<FuelStation, UUID> {
+public interface FuelStationRepository extends JpaRepository<FuelStation, Integer> {
 }
