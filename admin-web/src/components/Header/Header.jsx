@@ -1,12 +1,14 @@
 import React from "react";
 import "./Header.css";
+import BackIcon from "../Button/BackIcon"; // Import the BackIcon component
 
-const Header = ({ title, subtitle, children }) => {
+const Header = ({ title }) => {
   return (
     <div className="header">
-      <h1>{title}</h1>
-      {subtitle && <h2>{subtitle}</h2>}
-      {children && <div className="header-children">{children}</div>}
+      <div className="header-left">
+        <BackIcon />
+      </div>
+      <h1 className="header-title">{title}</h1>
     </div>
   );
 };
