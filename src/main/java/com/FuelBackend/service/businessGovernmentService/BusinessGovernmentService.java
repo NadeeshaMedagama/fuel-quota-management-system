@@ -48,8 +48,7 @@ public class BusinessGovernmentService implements BusinessGovernmentServiceRepos
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.CREATED.value(),
-                        "businessGov object created successfully",
-                        responseDTO
+                        "businessGov object created successfully"
                 ),
                 HttpStatus.CREATED
         );
@@ -76,8 +75,7 @@ public class BusinessGovernmentService implements BusinessGovernmentServiceRepos
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        "account is verified",
-                        responseDTO
+                        "account is verified"
                 ),
                 HttpStatus.OK
         );
@@ -99,8 +97,7 @@ public class BusinessGovernmentService implements BusinessGovernmentServiceRepos
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        "account is verified",
-                        responseDTO
+                        "account is verified"
                 ),
                 HttpStatus.OK
         );
@@ -127,8 +124,7 @@ public class BusinessGovernmentService implements BusinessGovernmentServiceRepos
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        "account is verified",
-                        responseDTOList
+                        "account is verified"
                 ),
                 HttpStatus.OK
         );
