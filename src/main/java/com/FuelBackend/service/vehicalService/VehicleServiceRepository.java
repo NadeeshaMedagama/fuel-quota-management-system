@@ -17,5 +17,9 @@ public interface VehicleServiceRepository {
 
     public ResponseEntity<?> deleteVehicle(int vehicleId);
 
+    public boolean validateVehicleDetails(VehicleRequestDTO vehicleRequestDTO);
+
+    public String generateAndSaveQRCode(VehicleRequestDTO vehicleRequestDTO);
+
     public ResponseEntity<?> getAllVehicle();
 }

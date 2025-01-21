@@ -12,10 +12,13 @@ import com.FuelBackend.repositoryDAO.FuelRepository;
 import com.FuelBackend.repositoryDAO.UserRepository;
 import com.FuelBackend.repositoryDAO.VehicleClassesRepository;
 import com.FuelBackend.repositoryDAO.VehicleRepository;
+import com.FuelBackend.utility.QRCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -198,4 +201,29 @@ public class VehicleService implements VehicleServiceRepository{
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    public  boolean validateVehicleDetails(VehicleRequestDTO vehicleRequestDTO){
+        return "123ABC".equals(vehicleRequestDTO.getVehicleRegisterId());
+
+    }
+@Override
+    public String generateAndSaveQRCode(VehicleRequestDTO vehicleRequestDTO){
+        try {
+            String data = "Vehicle: " + vehicleRequestDTO.getVehicleRegisterId();
+            byte[] qrCode = QRCodeGenerator.generateQRCode(data, 200, 200);
+
+            // Save vehicle and QR to DB
+            Vehicle vehicle = new Vehicle();
+        vehicle.setVehicleRegisterId(vehicleRequestDTO.getVehicleRegisterId());
+            vehicle.setQrCode(qrCode);
+            vehicleRepository.save(vehicle);
+
+            // Generate a temporary URL for download
+            return "/api/vehicle/qr/" + vehicle.getVehicleId();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to generate QR Code.", e);
+        }
+    }
+
+
+
 }

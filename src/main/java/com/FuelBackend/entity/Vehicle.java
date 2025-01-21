@@ -54,6 +54,16 @@ public class Vehicle {
     @ManyToOne
     @JoinColumn(name = "fuel_id", referencedColumnName = "fuelId", nullable = false)
     private Fuel fuel;
+    @Lob
+    private byte[] qrCode;
+
+    public byte[] getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(byte[] qrCode) {
+        this.qrCode = qrCode;
+    }
 
     public Vehicle(){}
 
