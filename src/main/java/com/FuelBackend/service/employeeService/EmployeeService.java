@@ -54,11 +54,9 @@ public class EmployeeService implements EmployeeServiceRepository{
                 savedEmployee.getEmployeeStatus()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.CREATED.value(),
-                        "employee created successfully",
-                        responseDTO
-                ),
+
+                        responseDTO,
+
                 HttpStatus.CREATED
         );
     }
@@ -82,11 +80,9 @@ public class EmployeeService implements EmployeeServiceRepository{
                 employee.getEmployeeStatus()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "employee updated successfully",
-                        responseDTO
-                ),
+
+                        responseDTO,
+
                 HttpStatus.OK
         );
     }
@@ -107,11 +103,9 @@ public class EmployeeService implements EmployeeServiceRepository{
                 employee.getEmployeeStatus()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "change employee status successfully",
-                        responseDTO
-                ),
+
+                        responseDTO,
+
                 HttpStatus.OK
         );
     }

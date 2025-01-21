@@ -84,8 +84,8 @@ public class VehicleService implements VehicleServiceRepository{
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.CREATED.value(),
-                        "vehicle created successfully",
-                        responseDTO
+                        "vehicle created successfully"
+
                 ),
                 HttpStatus.CREATED
         );
@@ -108,11 +108,9 @@ public class VehicleService implements VehicleServiceRepository{
                 vehicle.getFuel().getFuelId()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        null,
+
                         responseDTO
-                ),
+                ,
                 HttpStatus.OK
         );
     }
@@ -169,11 +167,9 @@ public class VehicleService implements VehicleServiceRepository{
                 }
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        null,
-                        responseList
-                ),
+
+                        responseList,
+
                 HttpStatus.OK
         );
     }

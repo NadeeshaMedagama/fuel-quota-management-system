@@ -42,11 +42,9 @@ public class FuelStationService implements FuelStationServiceRepository{
                 savedFuelStation.getFuelStationEmail()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.CREATED.value(),
-                        "fuel station created successfully",
+
                         responseDTO
-                ),
+                ,
                 HttpStatus.CREATED
         );
     }
@@ -69,11 +67,9 @@ public class FuelStationService implements FuelStationServiceRepository{
                 fuelStation.getFuelStationEmail()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "fuel station updated successfully",
+
                         responseDTO
-                ),
+                ,
                 HttpStatus.OK
         );
     }
@@ -91,11 +87,9 @@ public class FuelStationService implements FuelStationServiceRepository{
                 fuelStation.getFuelStationEmail()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "fuel station updated successfully",
+
                         responseDTO
-                ),
+                ,
                 HttpStatus.OK
         );
     }
@@ -118,11 +112,9 @@ public class FuelStationService implements FuelStationServiceRepository{
                 }
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        null,
+
                         responseDTOList
-                ),
+                ,
                 HttpStatus.OK
         );
     }
