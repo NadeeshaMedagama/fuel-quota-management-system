@@ -1,0 +1,9 @@
+/* Custom background color for the button */
+.custom-button {
+    background-color: #ccc; /* Change to any color you prefer */
+    color: black;
+    border: none;
+    font-weight: bold;
+  }
+  
+  
