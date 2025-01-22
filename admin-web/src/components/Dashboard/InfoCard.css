@@ -1,0 +1,72 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Info cards container */
+.info-cards-container {
+  display: flex; /* Align cards horizontally */
+  justify-content: space-around; /* Distribute cards evenly */
+  align-items: center; /* Vertically align content */
+  padding: 20px;
+  background-color:#020444;
+  border-radius: 8px;
+  margin-top: 20px;
+  gap: 20px; /* Add spacing between cards */
+}
+
+/* Individual info card */
+.info-card {
+  flex: 1; /* Ensure all cards are the same size */
+  max-width: 250px; /* Set a maximum width for cards */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for cards */
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Card title */
+.info-title {
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: #020636;
+ font-weight: bold;
+}
+
+/* Card count */
+.info-count {
+  font-size: 35px;
+  font-weight: bold;
+  color: #010422;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .info-cards-container {
+    flex-direction: column; /* Stack cards vertically on smaller screens */
+    padding: 10px;
+  }
+
+  .info-card {
+    max-width: 100%; /* Cards take full width on smaller screens */
+  }
+
+  .info-title {
+    font-size: 20px;
+  }
+
+  .info-count {
+    font-size: 28px;
+  }
+}
