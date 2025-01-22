@@ -1,33 +1,32 @@
+// FuelConsumptionChart.jsx
 import React, { useEffect, useState } from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js";
 import { ArcElement, Tooltip, Legend } from "chart.js";
-import "./FuelConsumptionChart.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const MyPieChart = () => {
+const FuelConsumptionChart = () => {
   const [data, setData] = useState(null); // State for chart data
   const [loading, setLoading] = useState(true); // State for loading
   const [error, setError] = useState(null); // State for errors
 
   useEffect(() => {
-    // Fetch data from backend
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/chart-data"); // Replace with your backend API URL
+        const response = await fetch("http://localhost:8080/api/chart-data");
         if (!response.ok) {
           throw new Error("Failed to fetch chart data");
         }
-        const result = await response.json();
+        const result = await response.json(); // Parse JSON response
 
-        // Transform the API response to match Chart.js format
         setData({
-          labels: result.labels, // Assumes API provides "labels" array
+          labels: result.labels, // Assumes API returns { labels: [], data: [] }
           datasets: [
             {
-              data: result.data, // Assumes API provides "data" array
-              backgroundColor: ["#040480", "#2d65ff", "#51b9ff"], // Colors
+              data: result.data,
+              backgroundColor: ["#040480", "#2d65ff", "#51b9ff"],
               hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
             },
           ],
@@ -52,36 +51,32 @@ const MyPieChart = () => {
       legend: {
         position: "top",
         labels: {
-          font: {
-            size: 10,
-          },
+          font: { size: 10 },
         },
       },
       tooltip: {
-        bodyFont: {
-          size: 10,
-        },
+        bodyFont: { size: 10 },
       },
     },
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <div className="text-center">Loading...</div>;
+  if (error) return <div className="text-center text-danger">Error: {error}</div>;
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
-      <div style={{ width: "300px", height: "300px" }}>
-        <Pie data={data} options={options} />
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+        <div className="card shadow-sm">
+          <div className="card-body">
+            
+            <div className="chart-container" style={{ position: "relative", height: "300px" }}>
+              <Pie data={data} options={options} />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default MyPieChart;
+export default FuelConsumptionChart;
