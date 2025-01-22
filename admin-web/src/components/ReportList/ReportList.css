@@ -1,27 +1,26 @@
 .report-list {
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
-  
-  .report-item {
-    border-bottom: 1px solid #eaeaea;
-    padding: 10px 0;
-  }
-  
-  .report-item:last-child {
-    border-bottom: none;
-  }
-  
-  .report-item p {
-    margin: 0;
-    font-size: 14px;
-  }
-  
-  .report-item button {
-    margin-right: 10px;
-  }
-  
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.report-item {
+  border-bottom: 1px solid #eaeaea;
+  padding: 10px 0;
+}
+
+.report-item:last-child {
+  border-bottom: none;
+}
+
+.report-item p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.report-item button {
+  margin-right: 10px;
+}
