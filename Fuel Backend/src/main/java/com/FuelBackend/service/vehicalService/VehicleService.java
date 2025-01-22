@@ -6,14 +6,22 @@ import com.FuelBackend.dataTransferObject.response.vehicleResponseDTO.VehicleRes
 import com.FuelBackend.entity.*;
 import com.FuelBackend.enums.OwnerType;
 import com.FuelBackend.exception.NotFoundException;
+import com.FuelBackend.repositoryDAO.FuelRepository;
+import com.FuelBackend.repositoryDAO.UserRepository;
+import com.FuelBackend.repositoryDAO.VehicleClassesRepository;
+import com.FuelBackend.repositoryDAO.VehicleRepository;
+import com.FuelBackend.utility.QRCodeGenerator;
 import com.FuelBackend.repositoryDAO.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -81,8 +89,8 @@ public class VehicleService implements VehicleServiceRepository{
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.CREATED.value(),
-                        "vehicle created successfully",
-                        responseDTO
+                        "vehicle created successfully"
+
                 ),
                 HttpStatus.CREATED
         );
@@ -153,19 +161,41 @@ public class VehicleService implements VehicleServiceRepository{
                 vehicle.getFuel().getFuelId()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        null,
+
                         responseDTO
-                ),
+                ,
                 HttpStatus.OK
         );
     }
 
     @Override
-    public ResponseEntity<?> updateVehicleCurrentFuelCapacity(UUID vehicleId, Double fuelCapacity) {
-        return new ResponseEntity<>("not implemented", HttpStatus.NOT_IMPLEMENTED);
+    public ResponseEntity<?> updateVehicleCurrentFuelCapacity(int vehicleId, Double fuelCapacity) {
+        try {
+            // Validate fuel capacity
+            if (fuelCapacity == null || fuelCapacity <= 0) {
+                return new ResponseEntity<>("Fuel capacity must be greater than zero.", HttpStatus.BAD_REQUEST);
+            }
+
+            // Find the vehicle by ID
+            Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleId);
+            if (optionalVehicle.isEmpty()) {
+                return new ResponseEntity<>("Vehicle not found with ID: " + vehicleId, HttpStatus.NOT_FOUND);
+            }
+
+            // Update fuel capacity
+            Vehicle vehicle = optionalVehicle.get();
+            vehicle.setCurrentFuelCapacity(fuelCapacity);
+            vehicleRepository.save(vehicle);
+
+            return new ResponseEntity<>("Fuel capacity updated successfully for vehicle ID: " + vehicleId, HttpStatus.OK);
+        } catch (Exception e) {
+            // Handle unexpected errors
+            return new ResponseEntity<>("An error occurred while updating fuel capacity: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
+
 
     @Override
     public ResponseEntity<?> getAllVehicle() {
@@ -190,22 +220,66 @@ public class VehicleService implements VehicleServiceRepository{
                 }
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        null,
-                        responseList
-                ),
+
+                        responseList,
+
                 HttpStatus.OK
         );
     }
 
     @Override
     public ResponseEntity<?> updateVehicle(VehicleRequestDTO vehicleRequestDTO) {
+
         return new ResponseEntity<>("not implemented", HttpStatus.NOT_IMPLEMENTED);
     }
 
     @Override
-    public ResponseEntity<?> deleteVehicle(UUID vehicleId) {
-        return new ResponseEntity<>("not implemented", HttpStatus.NOT_IMPLEMENTED);
+    public ResponseEntity<?> deleteVehicle(int vehicleId) {
+        try {
+
+            Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleId);
+            if (optionalVehicle.isEmpty()) {
+                return new ResponseEntity<>("Vehicle not found with ID: " + vehicleId, HttpStatus.NOT_FOUND);
+            }
+
+         
+            vehicleRepository.deleteById(vehicleId);
+            return new ResponseEntity<>("Vehicle deleted successfully with ID: " + vehicleId, HttpStatus.OK);
+        } catch (Exception e) {
+
+            return new ResponseEntity<>("An error occurred while deleting the vehicle: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+    public  boolean validateVehicleDetails(VehicleRequestDTO vehicleRequestDTO){
+        List<String> allRegisterIds=vehicleRepository.findAllVehicleRegisterIds();
+
+        return allRegisterIds.contains(vehicleRequestDTO.getVehicleRegisterId());
+
+    }
+@Override
+    public String generateAndSaveQRCode(VehicleRequestDTO vehicleRequestDTO){
+        try {
+            if (vehicleRequestDTO.getVehicleRegisterId() == null || vehicleRequestDTO.getVehicleRegisterId().isEmpty()) {
+                throw new IllegalArgumentException("Vehicle Register ID cannot be null or empty.");}
+            String data = "Vehicle:ABC123456 " ;
+
+            byte[] qrCode = QRCodeGenerator.generateQRCode(data, 200, 200);
+
+
+            Vehicle vehicle = new Vehicle();
+        vehicle.setVehicleRegisterId(vehicleRequestDTO.getVehicleRegisterId());
+            vehicle.setQrCode(qrCode);
+            vehicleRepository.save(vehicle);
+
+
+            return "/api/vehicle/qr/" + vehicle.getVehicleId();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to generate QR Code.", e);
+        }
+    }
+
+
+
 }

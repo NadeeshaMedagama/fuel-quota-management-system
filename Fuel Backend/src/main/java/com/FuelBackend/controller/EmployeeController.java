@@ -26,12 +26,12 @@ public class EmployeeController {
     }
 
     @PutMapping("/{employeeId}")
-    public ResponseEntity<?> updateEmployee(@PathVariable UUID employeeId,@RequestBody EmployeeRequestDTO employeeRequestDTO){
+    public ResponseEntity<?> updateEmployee(@PathVariable int employeeId,@RequestBody EmployeeRequestDTO employeeRequestDTO){
         return employeeServiceRepository.updateEmployee(employeeId,employeeRequestDTO);
     }
 
     @PatchMapping("/{employeeId}")
-    public ResponseEntity<?> changeEmployeeStatus(@PathVariable UUID employeeId){
+    public ResponseEntity<?> changeEmployeeStatus(@PathVariable int employeeId){
         return employeeServiceRepository.changeEmployeeStatus(employeeId);
     }
 

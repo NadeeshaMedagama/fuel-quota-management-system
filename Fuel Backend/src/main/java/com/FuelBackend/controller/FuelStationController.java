@@ -1,6 +1,8 @@
 package com.FuelBackend.controller;
 
 import com.FuelBackend.dataTransferObject.request.fuelStationRequestDTO.FuelStationRequestDTO;
+import com.FuelBackend.entity.FuelStation;
+import com.FuelBackend.service.FuelStationService.FuelStationService;
 import com.FuelBackend.service.FuelStationService.FuelStationServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,14 +11,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/fuelStation")
+@RequestMapping("/api/fuelStation")
 public class FuelStationController {
 
     private final FuelStationServiceRepository fuelStationServiceRepository;
+    @Autowired
+    private final FuelStationService fuelStationService;
 
     @Autowired
-    public FuelStationController(FuelStationServiceRepository fuelStationServiceRepository) {
+    public FuelStationController(FuelStationServiceRepository fuelStationServiceRepository, FuelStationService fuelStationService) {
         this.fuelStationServiceRepository = fuelStationServiceRepository;
+        this.fuelStationService = fuelStationService;
     }
 
     @PostMapping
@@ -25,12 +30,12 @@ public class FuelStationController {
     }
 
     @GetMapping("/{fuelStationId}")
-    public ResponseEntity<?> getFuelStationById(@PathVariable UUID fuelStationId){
+    public ResponseEntity<?> getFuelStationById(@PathVariable int fuelStationId){
         return fuelStationServiceRepository.getFuelStationById(fuelStationId);
     }
 
     @PutMapping("/{fuelStationId}")
-    public ResponseEntity<?> updateFuelStation(@PathVariable UUID fuelStationId,@RequestBody FuelStationRequestDTO fuelStationRequestDTO){
+    public ResponseEntity<?> updateFuelStation(@PathVariable int fuelStationId,@RequestBody FuelStationRequestDTO fuelStationRequestDTO){
         return fuelStationServiceRepository.updateFuelStation(fuelStationId,fuelStationRequestDTO);
     }
 
@@ -40,7 +45,8 @@ public class FuelStationController {
     }
 
     @DeleteMapping("/{fuelStationId}")
-    public ResponseEntity<?> deleteFuelStation(@PathVariable UUID fuelStationId){
+    public ResponseEntity<?> deleteFuelStation(@PathVariable int fuelStationId){
         return fuelStationServiceRepository.deleteFuelStation(fuelStationId);
     }
+
 }

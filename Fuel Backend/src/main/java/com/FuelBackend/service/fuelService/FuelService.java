@@ -41,11 +41,9 @@ public class FuelService implements FuelServiceRepository{
 
 
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "fuel created successfully",
-                        responseDTO
-                ),
+
+                    responseDTO
+                ,
                 HttpStatus.CREATED
         );
     }
@@ -63,11 +61,9 @@ public class FuelService implements FuelServiceRepository{
 
 
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        null,
+
                         responseDTO
-                ),
+                ,
                 HttpStatus.OK
         );
     }
@@ -88,11 +84,9 @@ public class FuelService implements FuelServiceRepository{
                 updateFuel.getPrice()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "fuelPrice updated successfully",
-                        responseDTO
-                ),
+
+                        responseDTO,
+
                 HttpStatus.OK
         );
     }
@@ -114,11 +108,9 @@ public class FuelService implements FuelServiceRepository{
                 }
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        null,
-                        responseDTOList
-                ),
+
+                        responseDTOList,
+
                 HttpStatus.OK
         );
     }

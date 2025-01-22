@@ -7,8 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface FuelStationRepository extends JpaRepository<FuelStation, UUID> {
-
-    @Query
-    Optional<FuelStation> findByFuelStationRegisterId(String fuelStationRegisterId);
+public interface FuelStationRepository extends JpaRepository<FuelStation, Integer> {
 }
