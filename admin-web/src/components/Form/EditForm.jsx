@@ -1,33 +1,38 @@
 import React from "react";
+import { Button, Form } from "react-bootstrap"; // Import Bootstrap components
 import "./Form.css";
 
 const EditForm = ({ onSubmit, formData, handleInputChange }) => {
   return (
-    <form className="form" onSubmit={onSubmit}>
+    <Form className="form" onSubmit={onSubmit}>
       <h3>Edit Item</h3>
-      <div className="form-group">
-        <label htmlFor="name">Name:</label>
-        <input
+      
+      <Form.Group className="mb-3" controlId="name">
+        <Form.Label>Name:</Form.Label>
+        <Form.Control
           type="text"
-          id="name"
           name="name"
           value={formData.name || ""}
           onChange={handleInputChange}
           required
         />
-      </div>
-      <div className="form-group">
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="description">
+        <Form.Label>Description:</Form.Label>
+        <Form.Control
+          as="textarea"
           name="description"
           value={formData.description || ""}
           onChange={handleInputChange}
           required
         />
-      </div>
-      <button type="submit">Edit</button>
-    </form>
+      </Form.Group>
+
+      <Button variant="primary" type="submit" block>
+        Edit
+      </Button>
+    </Form>
   );
 };
 
