@@ -3,21 +3,17 @@ package com.FuelBackend.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(
-        name = "fuel_station",
-        indexes = {
-                @Index(name = "idx_email", columnList = "fuelStationEmail")
-        }
-)
+
 public class FuelStation {
 
     @Id
-    @GeneratedValue
-    @Column(updatable = false,nullable = false)
-    private int fuelStationId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
+    private Long fuelStationId;
 
     @Column(nullable = false,unique = true,updatable = false)
     private String fuelStationRegisterId;
@@ -32,8 +28,18 @@ public class FuelStation {
     @Column(nullable = false)
     private String password;
 
+    @OneToMany(mappedBy = "fuelStation", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Employee> employees;
     public FuelStation(){
 
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     public FuelStation(
@@ -49,7 +55,7 @@ public class FuelStation {
     }
 
     public FuelStation(
-        int fuelStationId,
+        Long fuelStationId,
             String fuelStationRegisterId,
             String fuelStationOwnerName,
             String fuelStationEmail,
@@ -62,11 +68,11 @@ public class FuelStation {
         this.password = password;
     }
 
-    public int getFuelStationId() {
+    public Long getFuelStationId() {
         return fuelStationId;
     }
 
-    public void setFuelStationId(int fuelStationId) {
+    public void setFuelStationId(Long fuelStationId) {
         this.fuelStationId = fuelStationId;
     }
 

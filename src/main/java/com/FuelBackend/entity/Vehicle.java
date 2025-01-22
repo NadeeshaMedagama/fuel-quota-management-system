@@ -29,7 +29,7 @@ public class Vehicle {
     @Column(updatable = false,unique = true,nullable = false)
     private String vehicleEngineNo;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String model;
 
     @Column(nullable = false)
@@ -52,8 +52,9 @@ public class Vehicle {
     private VehicleClasses vehicleClasses;
 
     @ManyToOne
-    @JoinColumn(name = "fuel_id", referencedColumnName = "fuelId", nullable = false)
+    @JoinColumn(name = "fuel_id", referencedColumnName = "fuelId", nullable = true)
     private Fuel fuel;
+
     @Lob
     private byte[] qrCode;
 

@@ -1,7 +1,5 @@
 package com.FuelBackend.dataTransferObject.response.employeeResponseDTO;
 
-import java.util.UUID;
-
 public class EmployeeResponseDTO {
 
     private int employeeId;
@@ -11,11 +9,11 @@ public class EmployeeResponseDTO {
     private String employeeEmail;
 
 
-    private int fuelStationId;
+    private Long fuelStationId;
 
     private Boolean employeeStatus;
 
-    public EmployeeResponseDTO(int employeeId, String employeeUsername, String employeeEmail, int fuelStationId, Boolean employeeStatus) {
+    public EmployeeResponseDTO(int employeeId, String employeeUsername, String employeeEmail, Long fuelStationId, Boolean employeeStatus) {
         this.employeeId = employeeId;
         this.employeeUsername = employeeUsername;
         this.employeeEmail = employeeEmail;
@@ -48,11 +46,11 @@ public class EmployeeResponseDTO {
         this.employeeEmail = employeeEmail;
     }
 
-    public int getFuelStationId() {
+    public Long getFuelStationId() {
         return fuelStationId;
     }
 
-    public void setFuelStationId(int fuelStationId) {
+    public void setFuelStationId(Long fuelStationId) {
         this.fuelStationId = fuelStationId;
     }
 

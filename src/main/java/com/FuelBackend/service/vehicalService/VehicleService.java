@@ -186,40 +186,46 @@ public class VehicleService implements VehicleServiceRepository{
     @Override
     public ResponseEntity<?> deleteVehicle(int vehicleId) {
         try {
-            // Check if the vehicle exists
+
             Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleId);
             if (optionalVehicle.isEmpty()) {
                 return new ResponseEntity<>("Vehicle not found with ID: " + vehicleId, HttpStatus.NOT_FOUND);
             }
 
-            // Delete the vehicle
+         
             vehicleRepository.deleteById(vehicleId);
             return new ResponseEntity<>("Vehicle deleted successfully with ID: " + vehicleId, HttpStatus.OK);
         } catch (Exception e) {
-            // Handle unexpected errors
+
             return new ResponseEntity<>("An error occurred while deleting the vehicle: " + e.getMessage(),
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     public  boolean validateVehicleDetails(VehicleRequestDTO vehicleRequestDTO){
-        return "123ABC".equals(vehicleRequestDTO.getVehicleRegisterId());
+        List<String> allRegisterIds=vehicleRepository.findAllVehicleRegisterIds();
+
+        return allRegisterIds.contains(vehicleRequestDTO.getVehicleRegisterId());
 
     }
 @Override
     public String generateAndSaveQRCode(VehicleRequestDTO vehicleRequestDTO){
         try {
-            String data = "Vehicle: " + vehicleRequestDTO.getVehicleRegisterId();
+            if (vehicleRequestDTO.getVehicleRegisterId() == null || vehicleRequestDTO.getVehicleRegisterId().isEmpty()) {
+                throw new IllegalArgumentException("Vehicle Register ID cannot be null or empty.");}
+            String data = "Vehicle:ABC123456 " ;
+
             byte[] qrCode = QRCodeGenerator.generateQRCode(data, 200, 200);
 
-            // Save vehicle and QR to DB
+
             Vehicle vehicle = new Vehicle();
         vehicle.setVehicleRegisterId(vehicleRequestDTO.getVehicleRegisterId());
             vehicle.setQrCode(qrCode);
             vehicleRepository.save(vehicle);
 
-            // Generate a temporary URL for download
+
             return "/api/vehicle/qr/" + vehicle.getVehicleId();
         } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException("Failed to generate QR Code.", e);
         }
     }

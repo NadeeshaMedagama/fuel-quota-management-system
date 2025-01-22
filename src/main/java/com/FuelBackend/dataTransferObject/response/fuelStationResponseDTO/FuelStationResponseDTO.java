@@ -3,7 +3,7 @@ package com.FuelBackend.dataTransferObject.response.fuelStationResponseDTO;
 
 public class FuelStationResponseDTO {
 
-    private int fuelStationId;
+    private Long fuelStationId;
 
     private String fuelStationRegisterId;
 
@@ -11,18 +11,18 @@ public class FuelStationResponseDTO {
 
     private String fuelStationEmail;
 
-    public FuelStationResponseDTO(int fuelStationId, String fuelStationRegisterId, String fuelStationOwnerName, String fuelStationEmail) {
+    public FuelStationResponseDTO(Long fuelStationId, String fuelStationRegisterId, String fuelStationOwnerName, String fuelStationEmail) {
         this.fuelStationId = fuelStationId;
         this.fuelStationRegisterId = fuelStationRegisterId;
         this.fuelStationOwnerName = fuelStationOwnerName;
         this.fuelStationEmail = fuelStationEmail;
     }
 
-    public int getFuelStationId() {
+    public Long getFuelStationId() {
         return fuelStationId;
     }
 
-    public void setFuelStationId(int fuelStationId) {
+    public void setFuelStationId(Long fuelStationId) {
         this.fuelStationId = fuelStationId;
     }
 
