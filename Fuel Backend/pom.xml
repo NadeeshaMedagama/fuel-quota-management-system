@@ -94,16 +94,37 @@
             <artifactId>jakarta.validation-api</artifactId>
             <version>3.1.0</version>
         </dependency>
+
+            <!-- ZXing Core Library -->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>3.5.2</version>
+            </dependency>
+
+            <!-- ZXing Java SE Library -->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>javase</artifactId>
+                <version>3.5.2</version>
+            </dependency>
+
+
+
+
+
+
         <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>3.5.2</version>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>10.6.7</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>javase</artifactId>
-            <version>3.5.2</version>
-        </dependency>
+
+
+
+
+
+
 
         <!--		<dependency>-->
         <!--			<groupId>org.springframework.security</groupId>-->

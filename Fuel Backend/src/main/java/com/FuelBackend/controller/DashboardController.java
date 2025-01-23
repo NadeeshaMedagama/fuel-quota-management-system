@@ -1,6 +1,6 @@
 package com.FuelBackend.controller;
 
-import com.FuelBackend.service.dashboard.DashboardService;
+import com.FuelBackend.service.dashBoardService.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
