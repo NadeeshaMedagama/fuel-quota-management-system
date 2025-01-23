@@ -11,13 +11,16 @@ public interface VehicleServiceRepository {
 
     ResponseEntity<?> createBusinessGovVehicle(VehicleRequestDTO vehicleRequestDTO);
 
-    ResponseEntity<?> findVehicleById(UUID vehicleId);
+    ResponseEntity<?> findVehicleById(int vehicleId);
 
-    ResponseEntity<?> updateVehicleCurrentFuelCapacity(UUID vehicleId, Double fuelCapacity);
+    ResponseEntity<?> updateVehicleCurrentFuelCapacity(int vehicleId, Double fuelCapacity);
 
     ResponseEntity<?> updateVehicle(VehicleRequestDTO vehicleRequestDTO);
 
-    ResponseEntity<?> deleteVehicle(UUID vehicleId);
+    ResponseEntity<?> deleteVehicle(int vehicleId);
 
     ResponseEntity<?> getAllVehicle();
+
+    public String generateAndSaveQRCode(VehicleRequestDTO vehicleRequestDTO);
+    public  boolean validateVehicleDetails(VehicleRequestDTO vehicleRequestDTO);
 }

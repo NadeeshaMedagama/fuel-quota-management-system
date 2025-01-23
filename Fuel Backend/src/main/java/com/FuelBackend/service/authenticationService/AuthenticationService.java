@@ -16,6 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class AuthenticationService implements AuthenticationServiceRepository{
 
@@ -89,7 +92,7 @@ public class AuthenticationService implements AuthenticationServiceRepository{
 
     @Override
     public ResponseEntity<?> employeeLogin(EmployeeLoginRequestDTO employeeLoginRequestDTO) {
-        Employee employee = employeeRepository.findByEmployeeUsername(employeeLoginRequestDTO.getUsername())
+        Employee employee = (Employee) employeeRepository.findByEmployeeUsername(employeeLoginRequestDTO.getUsername())
                 .orElseThrow(
                         () -> new UnauthorizedAccessException("username or password incorrect")
                 );
@@ -124,7 +127,7 @@ public class AuthenticationService implements AuthenticationServiceRepository{
 
     @Override
     public ResponseEntity<?> fuelStationLogin(FuelStationLoginRequestDTO fuelStationLoginRequestDTO) {
-        FuelStation fuelStation = fuelStationRepository.findByFuelStationRegisterId(
+        FuelStation fuelStation = (FuelStation) fuelStationRepository.findByFuelStationRegisterId(
                 fuelStationLoginRequestDTO.getFuelStationRegisterId()
         ).orElseThrow(
                 () -> new UnauthorizedAccessException("username or password incorrect")
@@ -157,7 +160,7 @@ public class AuthenticationService implements AuthenticationServiceRepository{
 
     @Override
     public ResponseEntity<?> businessLogin(BusinessGovLoginRequestDTO businessGovLoginRequestDTO) {
-        BusinessGovernment businessGovernment = businessGovernmentRepository.findByBusinessGovernmentRegNo(
+        BusinessGovernment businessGovernment = (BusinessGovernment) businessGovernmentRepository.findByBusinessGovernmentRegNo(
                 businessGovLoginRequestDTO.getBusinessGovernmentRegNo()
         ).orElseThrow(
                 () -> new UnauthorizedAccessException("username or password incorrect")
@@ -221,4 +224,23 @@ public class AuthenticationService implements AuthenticationServiceRepository{
                 HttpStatus.OK
         );
     }
+    private Map<String, String> userDatabase = new HashMap<>(); // Simulating a database with user emails
+    private Map<String, String> resetTokens = new HashMap<>(); // Store tokens temporarily
+    public void saveResetToken(String email, String token) {
+        resetTokens.put(token, email);
+    }
+
+    public boolean resetPasswordWithToken(String token, String newPassword) {
+        String email = resetTokens.get(token);
+
+        if (email != null) {
+            // Update password (simplified)
+            userDatabase.put(email, newPassword);
+            resetTokens.remove(token); // Remove token after it's used
+            return true;
+        }
+        return false;
+    }
 }
+
+

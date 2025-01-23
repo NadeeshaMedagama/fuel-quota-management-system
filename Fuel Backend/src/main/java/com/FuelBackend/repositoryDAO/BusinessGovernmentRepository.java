@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Repository
 public interface BusinessGovernmentRepository extends JpaRepository<BusinessGovernment, Integer> {
+    Optional<Object> findById(int businessGovernmentId);
 
-    @Query
-    Optional<BusinessGovernment> findByBusinessGovernmentRegNo (String businessGovernmentRegNo);
+    Optional<Object> findByBusinessGovernmentRegNo(String businessGovernmentRegNo);
 }
