@@ -1,65 +1,140 @@
 import React from 'react';
 import './Terms.css'; // Import the CSS file
 
-const TermsAndConditions = () => {
+const TermsAndConditions = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="terms-container">
-      <header className="terms-header">
-        <h1 className="main-heading">Terms and Conditions</h1>
-      </header>
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      onClick={handleOverlayClick}
+    >
+      <div className="relative w-full max-w-3xl p-8 mx-auto bg-white border-t-4 border-green-500 shadow-xl rounded-xl">
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
+        >
+          ✕
+        </button>
 
-      <section className="terms-content">
-        <h2 className="section-heading">Introduction</h2>
-        <p className="paragraph">
-          Welcome to our website! By using our services, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.
+        {/* Popup Header */}
+        <h1 className="mb-6 text-4xl font-extrabold text-center text-green-700">
+          Terms and Conditions
+        </h1>
+        <p className="mb-8 text-sm text-center text-green-500">
+          Last Updated: January 2025
         </p>
 
-        <h2 className="section-heading">1. Use of Services</h2>
-        <p className="paragraph">
-          Our services are provided to you for personal and non-commercial use. You agree not to use our services for any illegal or unauthorized purposes.
-        </p>
+        {/* Scrollable Content */}
+        <div
+          className="overflow-y-auto max-h-[70vh] px-4"
+          style={{ scrollbarWidth: "thin", scrollbarColor: "#10B981 #F3F4F6" }}
+        >
+          {/* Welcome Section */}
+          <section className="mb-8">
+            <h2 className="mb-4 text-2xl font-semibold text-green-800">
+              Welcome to FuelPulse
+            </h2>
+            <p className="text-lg leading-relaxed text-gray-700">
+              Thank you for choosing FuelPulse. By using our platform, you agree to these terms and conditions. Please read them carefully to understand your rights and responsibilities.
+            </p>
+          </section>
 
-        <h2 className="section-heading">2. User Account</h2>
-        <p className="paragraph">
-          To use certain features of the website, you may need to create a user account. You are responsible for maintaining the confidentiality of your account information.
-        </p>
+          {/* User Responsibilities Section */}
+          <section className="mb-8">
+            <h2 className="mb-4 text-2xl font-semibold text-green-800">
+              User Responsibilities
+            </h2>
+            <p className="text-lg leading-relaxed text-gray-700">
+              As a user, you are responsible for ensuring the accuracy of the information you provide and complying with all applicable laws and regulations while using our platform. Misuse of the platform may result in account suspension or termination.
+            </p>
+          </section>
 
-        <h2 className="section-heading">3. Content Ownership</h2>
-        <p className="paragraph">
-          All content on this website, including text, images, and videos, is owned by us or our licensors. You may not reproduce, distribute, or use this content without permission.
-        </p>
+          {/* Privacy and Data Security Section */}
+          <section className="mb-8">
+            <h2 className="mb-4 text-2xl font-semibold text-green-800">
+              Privacy and Data Security
+            </h2>
+            <p className="text-lg leading-relaxed text-gray-700">
+              Your privacy is important to us. We collect and use your data in accordance with our Privacy Policy to improve your experience on our platform. We implement advanced security measures to safeguard your information.
+            </p>
+          </section>
 
-        <h2 className="section-heading">4. Limitation of Liability</h2>
-        <p className="paragraph">
-          We are not responsible for any damages or losses that result from using our website or services. Our liability is limited to the maximum extent permitted by law.
-        </p>
+          {/* Payment Policies Section */}
+          <section className="mb-8">
+            <h2 className="mb-4 text-2xl font-semibold text-green-800">
+              Payment Policies
+            </h2>
+            <p className="text-lg leading-relaxed text-gray-700">
+              All transactions made through FuelPulse are subject to our payment terms. Refunds will only be processed under specific circumstances, as detailed in our Refund Policy.
+            </p>
+          </section>
 
-        <h2 className="section-heading">5. Changes to Terms</h2>
-        <p className="paragraph">
-          We reserve the right to update or modify these terms at any time. Any changes will be posted on this page with the updated date.
-        </p>
+          {/* Disclaimer of Liability Section */}
+          <section className="mb-8">
+            <h2 className="mb-4 text-2xl font-semibold text-green-800">
+              Disclaimer of Liability
+            </h2>
+            <p className="text-lg leading-relaxed text-gray-700">
+              FuelPulse is provided "as is" without warranties of any kind. While we strive for accuracy, we are not responsible for errors, omissions, or disruptions in service. Use the platform at your own risk.
+            </p>
+          </section>
 
-        <h2 className="section-heading">6. Governing Law</h2>
-        <p className="paragraph">
-          These terms are governed by the laws of the jurisdiction where our company is located. Any disputes will be resolved in the courts of that jurisdiction.
-        </p>
+          {/* Updates to Terms Section */}
+          <section className="mb-8">
+            <h2 className="mb-4 text-2xl font-semibold text-green-800">
+              Updates to Terms
+            </h2>
+            <p className="text-lg leading-relaxed text-gray-700">
+              We reserve the right to modify these terms at any time. Changes will be communicated through our platform or via email. Continued use of the platform constitutes acceptance of the updated terms.
+            </p>
+          </section>
 
-        <h2 className="section-heading">Your Rights</h2>
-        <p className="paragraph">
-          If you have any questions about our terms and conditions or wish to exercise your rights, please contact us at [contact@yourdomain.com].
-        </p>
+          {/* Governing Law Section */}
+          <section className="mb-8">
+            <h2 className="mb-4 text-2xl font-semibold text-green-800">
+              Governing Law
+            </h2>
+            <p className="text-lg leading-relaxed text-gray-700">
+              These terms are governed by the laws of Sri Lanka. Any disputes arising from the use of our platform will be subject to the jurisdiction of Sri Lankan courts.
+            </p>
+          </section>
 
-        <p className="last-updated">Last updated: January 16, 2025</p>
-      </section>
-
-      <footer className="terms-footer">
-        <p>&copy; 2025 YourCompany. All rights reserved.</p>
-      </footer>
+          {/* Contact Us Section */}
+          <section className="mb-8">
+            <h2 className="mb-4 text-2xl font-semibold text-green-800">
+              Contact Us
+            </h2>
+            <p className="text-lg leading-relaxed text-gray-700">
+              If you have any questions, please contact us at{' '}
+              <a
+                href="mailto:support@fuelpulse.com"
+                className="text-green-600 transition duration-200 hover:text-green-800"
+              >
+                support@fuelpulse.com
+              </a>
+              . We are here to help.
+            </p>
+          </section>
+        </div>
+        <div className="mt-4 text-center">
+          <button
+            onClick={onClose}
+            className="px-8 py-2 text-lg font-semibold text-white bg-gradient-to-r from-green-500 to-teal-500 rounded-lg shadow-md hover:from-teal-500 hover:to-green-500 focus:ring-4 focus:ring-green-400"
+          >
+            Close
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default TermsAndConditions;
-
-
-
