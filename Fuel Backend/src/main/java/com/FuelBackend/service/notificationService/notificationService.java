@@ -1,10 +1,12 @@
+package com.FuelBackend.service.notificationService;
+
 import com.twilio.Twilio;
 import com.twilio.type.PhoneNumber;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NotificationServices {
+public class NotificationService {
 
     @Value("${twilio.account-sid}")
     private String accountSid;
@@ -15,7 +17,7 @@ public class NotificationServices {
     @Value("${twilio.phone-number}")
     private String fromPhoneNumber;
 
-    public TwilioService() {
+    public void TwilioService() {
         // Initialize Twilio SDK with Account SID and Auth Token
         Twilio.init(accountSid, authToken);
     }
