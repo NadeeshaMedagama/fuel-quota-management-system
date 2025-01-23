@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap"; // Import Bootstrap components
 import "./ReportForm.css";
 
 function ReportForm({ generateReport }) {
@@ -12,41 +13,41 @@ function ReportForm({ generateReport }) {
   return (
     <div className="report-form-wrapper">
       <h2 className="form-header">Select Report Type</h2>
-      <form className="report-form">
-        <div className="form-group">
-          <label>
-            Fuel Type:
-            <select
-              value={fuelType}
-              onChange={(e) => setFuelType(e.target.value)}
-            >
-              <option value="petrol">Petrol</option>
-              <option value="diesel">Diesel</option>
-              <option value="gas">Gas</option>
-            </select>
-          </label>
-        </div>
-        <div className="form-group">
-          <label>
-            Report Period:
-            <select
-              value={reportType}
-              onChange={(e) => setReportType(e.target.value)}
-            >
-              <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
-              <option value="monthly">Monthly</option>
-            </select>
-          </label>
-        </div>
-        <button
-          type="button"
+      <Form className="report-form">
+        <Form.Group className="mb-3">
+          <Form.Label>Fuel Type:</Form.Label>
+          <Form.Control
+            as="select"
+            value={fuelType}
+            onChange={(e) => setFuelType(e.target.value)}
+          >
+            <option value="petrol">Petrol</option>
+            <option value="diesel">Diesel</option>
+            <option value="gas">Gas</option>
+          </Form.Control>
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Report Period:</Form.Label>
+          <Form.Control
+            as="select"
+            value={reportType}
+            onChange={(e) => setReportType(e.target.value)}
+          >
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </Form.Control>
+        </Form.Group>
+
+        <Button
+          variant="primary"
           className="generate-report-button"
           onClick={handleGenerateClick}
         >
           Generate Report
-        </button>
-      </form>
+        </Button>
+      </Form>
     </div>
   );
 }
