@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -118,5 +119,17 @@ public class EmployeeService implements EmployeeServiceRepository{
     @Override
     public ResponseEntity<?> updateFuelPerVehicle(int employeeId,int vehicleId, Double fuelCapacity) {
         return null;
+    }
+    public ResponseEntity<?> employeeFindById(int employeeId) {
+        Optional<Employee> employee = employeeRepository.findById(employeeId);
+        if (employee.isPresent()) {
+            return ResponseEntity.ok(employee.get());
+        } else {
+            return ResponseEntity.status(404).body("Employee not found with ID: " + employeeId);
+        }
+    }
+
+    public ResponseEntity<?> getAllEmployee() {
+        return ResponseEntity.ok(employeeRepository.findAll());
     }
 }

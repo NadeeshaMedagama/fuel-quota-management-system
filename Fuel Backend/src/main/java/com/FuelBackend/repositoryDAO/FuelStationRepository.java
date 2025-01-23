@@ -8,4 +8,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface FuelStationRepository extends JpaRepository<FuelStation, Integer> {
+    Optional<Object> findByFuelStationRegisterId(String fuelStationRegisterId);
 }

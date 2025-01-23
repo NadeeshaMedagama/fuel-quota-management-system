@@ -3,7 +3,8 @@ package com.FuelBackend.controller;
 import com.FuelBackend.entity.FuelStation;
 import com.FuelBackend.entity.FuelStationRegister;
 import com.FuelBackend.repositoryDAO.FuelStationRegisterRepository;
-import com.FuelBackend.service.fuelstationregistor.FuelStationRegisterService;
+import com.FuelBackend.service.fuelStationRegistrationServices.FuelStationRegisterService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +24,9 @@ private final FuelStationRegisterService fuelStationRegisterService;
     FuelStationRegisterRepository fuelStationRegisterRepository;
     @CrossOrigin(origins = "http://localhost:5174")
     @PostMapping("/register")
-    public ResponseEntity<FuelStationRegister> registerStation(@RequestBody FuelStationRegister fuelStationRegister) {
+    public ResponseEntity<FuelStation> registerStation(@RequestBody FuelStation fuelStation) {
 
-        FuelStationRegister registeredStation= fuelStationRegisterService.registerFuelStation(fuelStationRegister);
+      FuelStation registeredStation= fuelStationRegisterService.registerFuelStation(fuelStation);
         return new ResponseEntity<>(registeredStation, HttpStatus.CREATED);
     }
     @GetMapping("/test")
