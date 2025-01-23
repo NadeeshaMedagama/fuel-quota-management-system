@@ -42,18 +42,16 @@ public class FuelStationService implements FuelStationServiceRepository{
                 savedFuelStation.getFuelStationEmail()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.CREATED.value(),
-                        "fuel station created successfully",
+
                         responseDTO
-                ),
+                ,
                 HttpStatus.CREATED
         );
     }
 
     @Override
     @Transactional
-    public ResponseEntity<?> updateFuelStation(UUID fuelStationId,FuelStationRequestDTO fuelStationRequestDTO) {
+    public ResponseEntity<?> updateFuelStation(int fuelStationId,FuelStationRequestDTO fuelStationRequestDTO) {
         FuelStation fuelStation = fuelStationRepository.findById(fuelStationId).orElseThrow(
                 () -> new NotFoundException("fuel station not found")
         );
@@ -69,17 +67,15 @@ public class FuelStationService implements FuelStationServiceRepository{
                 fuelStation.getFuelStationEmail()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "fuel station updated successfully",
+
                         responseDTO
-                ),
+                ,
                 HttpStatus.OK
         );
     }
 
     @Override
-    public ResponseEntity<?> getFuelStationById(UUID fuelStationId) {
+    public ResponseEntity<?> getFuelStationById(int fuelStationId) {
         FuelStation fuelStation = fuelStationRepository.findById(fuelStationId).orElseThrow(
                 () -> new NotFoundException("fuel station not found")
         );
@@ -91,11 +87,9 @@ public class FuelStationService implements FuelStationServiceRepository{
                 fuelStation.getFuelStationEmail()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "fuel station updated successfully",
+
                         responseDTO
-                ),
+                ,
                 HttpStatus.OK
         );
     }
@@ -118,17 +112,16 @@ public class FuelStationService implements FuelStationServiceRepository{
                 }
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        null,
+
                         responseDTOList
-                ),
+                ,
                 HttpStatus.OK
         );
     }
 
     @Override
-    public ResponseEntity<?> deleteFuelStation(UUID fuelStationId) {
+    public ResponseEntity<?> deleteFuelStation(int fuelStationId) {
         return new ResponseEntity<>("not implemented",HttpStatus.NOT_IMPLEMENTED);
     }
+
 }

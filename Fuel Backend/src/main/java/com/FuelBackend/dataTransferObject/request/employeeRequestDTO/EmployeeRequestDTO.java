@@ -19,9 +19,8 @@ public class EmployeeRequestDTO {
     private String employeeEmail;
 
     @NotBlank(message = "fuelStationId is required")
-    private UUID fuelStationId;
-
-    public EmployeeRequestDTO(String employeeUsername, String password, String employeeEmail, UUID fuelStationId) {
+    private int fuelStationId;
+    public EmployeeRequestDTO(String employeeUsername, String password, String employeeEmail, int fuelStationId) {
         this.employeeUsername = employeeUsername;
         this.password = password;
         this.employeeEmail = employeeEmail;
@@ -52,11 +51,11 @@ public class EmployeeRequestDTO {
         this.employeeEmail = employeeEmail;
     }
 
-    public UUID getFuelStationId() {
+    public int getFuelStationId() {
         return fuelStationId;
     }
 
-    public void setFuelStationId(UUID fuelStationId) {
+    public void setFuelStationId(int fuelStationId) {
         this.fuelStationId = fuelStationId;
     }
 }

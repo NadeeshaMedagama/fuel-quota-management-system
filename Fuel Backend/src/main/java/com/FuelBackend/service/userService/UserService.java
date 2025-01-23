@@ -43,8 +43,7 @@ public class UserService implements UserServiceRepository{
         );
         CustomApiResponse response =new CustomApiResponse(
                 HttpStatus.CREATED.value(),
-                "user created successfully",
-                responseData
+                "user created successfully"
         );
         return new ResponseEntity<>(response,HttpStatus.CREATED);
 
@@ -73,8 +72,7 @@ public class UserService implements UserServiceRepository{
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        "user updated successfully",
-                        responseData
+                        "user updated successfully"
                 ),
                 HttpStatus.OK
         );
@@ -86,8 +84,7 @@ public class UserService implements UserServiceRepository{
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        "user deleted successfully",
-                        ""
+                        "user deleted successfully"
                 ),
                 HttpStatus.OK
 
@@ -111,8 +108,7 @@ public class UserService implements UserServiceRepository{
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        "user founded",
-                        response
+                        "user founded"
                 ),
                 HttpStatus.OK
         );

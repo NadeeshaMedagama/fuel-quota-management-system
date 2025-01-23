@@ -9,11 +9,11 @@ public interface FuelStationServiceRepository {
 
     public ResponseEntity<?> createFuelStation(FuelStationRequestDTO fuelStationRequestDTO);
 
-    public ResponseEntity<?> getFuelStationById(UUID fuelStationId);
+    public ResponseEntity<?> getFuelStationById(int fuelStationId);
 
-    public ResponseEntity<?> updateFuelStation(UUID fuelStationId, FuelStationRequestDTO fuelStationRequestDTO);
+    public ResponseEntity<?> updateFuelStation(int fuelStationId, FuelStationRequestDTO fuelStationRequestDTO);
 
-    public ResponseEntity<?> deleteFuelStation(UUID fuelStationId);
+    public ResponseEntity<?> deleteFuelStation(int fuelStationId);
 
     public ResponseEntity<?> getAllFuelStation();
 }

@@ -26,17 +26,17 @@ public class EmployeeController {
     }
 
     @PutMapping("/{employeeId}")
-    public ResponseEntity<?> updateEmployee(@PathVariable UUID employeeId,@RequestBody EmployeeRequestDTO employeeRequestDTO){
+    public ResponseEntity<?> updateEmployee(@PathVariable int employeeId,@RequestBody EmployeeRequestDTO employeeRequestDTO){
         return employeeServiceRepository.updateEmployee(employeeId,employeeRequestDTO);
     }
 
     @PatchMapping("/{employeeId}")
-    public ResponseEntity<?> changeEmployeeStatus(@PathVariable UUID employeeId){
+    public ResponseEntity<?> changeEmployeeStatus(@PathVariable int employeeId){
         return employeeServiceRepository.changeEmployeeStatus(employeeId);
     }
 
     @GetMapping("/{employeeId}")
-    public ResponseEntity<?> employeeFindById(@PathVariable UUID employeeId){
+    public ResponseEntity<?> employeeFindById(@PathVariable int employeeId){
         return employeeServiceRepository.employeeFindById(employeeId);
     }
 
@@ -47,12 +47,10 @@ public class EmployeeController {
 
     @PutMapping("/fuel/{employeeId}")
     public ResponseEntity<?> updateFuelPerVehicle(
-            @PathVariable UUID employeeId,
-            @RequestBody Map<String,Object> requestBody
+            @PathVariable int employeeId,
+            @RequestBody int vehicleId,Double fuelCapacity
     ){
-        String vehicleIdStr = (String) requestBody.get("vehicleId");
-        UUID vehicleId = UUID.fromString(vehicleIdStr);
-        Double fuelCapacity = (Double) requestBody.get("fuelCapacity");
+
         return employeeServiceRepository.updateFuelPerVehicle(employeeId,vehicleId,fuelCapacity);
     }
 }

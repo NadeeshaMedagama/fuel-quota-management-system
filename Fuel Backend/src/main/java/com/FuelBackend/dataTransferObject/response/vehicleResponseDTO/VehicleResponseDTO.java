@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class VehicleResponseDTO {
 
-    private UUID vehicleId;
+    private int vehicleId;
 
     private String vehicleRegisterId;
 
@@ -30,7 +30,7 @@ public class VehicleResponseDTO {
     public VehicleResponseDTO(){}
 
     public VehicleResponseDTO(
-            UUID vehicleId,
+            int vehicleId,
             String vehicleRegisterId,
             String vehicleEngineNo,
             String model,
@@ -51,11 +51,11 @@ public class VehicleResponseDTO {
         this.fuelId = fuelId;
     }
 
-    public UUID getVehicleId() {
+    public int getVehicleId() {
         return vehicleId;
     }
 
-    public void setVehicleId(UUID vehicleId) {
+    public void setVehicleId(int vehicleId) {
         this.vehicleId = vehicleId;
     }
 

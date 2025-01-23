@@ -1,24 +1,19 @@
 package com.FuelBackend.dataTransferObject.response.employeeResponseDTO;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-
-import java.util.UUID;
-
 public class EmployeeResponseDTO {
 
-    private UUID employeeId;
+    private int employeeId;
     private String employeeUsername;
 
 
     private String employeeEmail;
 
 
-    private UUID fuelStationId;
+    private Long fuelStationId;
 
     private Boolean employeeStatus;
 
-    public EmployeeResponseDTO(UUID employeeId, String employeeUsername, String employeeEmail, UUID fuelStationId,Boolean employeeStatus) {
+    public EmployeeResponseDTO(int employeeId, String employeeUsername, String employeeEmail, Long fuelStationId, Boolean employeeStatus) {
         this.employeeId = employeeId;
         this.employeeUsername = employeeUsername;
         this.employeeEmail = employeeEmail;
@@ -26,11 +21,11 @@ public class EmployeeResponseDTO {
         this.employeeStatus = employeeStatus;
     }
 
-    public UUID getEmployeeId() {
+    public int getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(UUID employeeId) {
+    public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
     }
 
@@ -51,11 +46,11 @@ public class EmployeeResponseDTO {
         this.employeeEmail = employeeEmail;
     }
 
-    public UUID getFuelStationId() {
+    public Long getFuelStationId() {
         return fuelStationId;
     }
 
-    public void setFuelStationId(UUID fuelStationId) {
+    public void setFuelStationId(Long fuelStationId) {
         this.fuelStationId = fuelStationId;
     }
 

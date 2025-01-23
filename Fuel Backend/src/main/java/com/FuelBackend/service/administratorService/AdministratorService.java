@@ -42,8 +42,7 @@ public class AdministratorService implements AdministratorServiceRepository{
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.CREATED.value(),
-                        "administrator created successfully",
-                        responseDTO
+                        "administrator created successfully"
                 ),
                 HttpStatus.CREATED
         );
@@ -80,8 +79,7 @@ public class AdministratorService implements AdministratorServiceRepository{
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        "update successfully",
-                        responseDTO
+                        "update successfully"
                 ),
                 HttpStatus.OK
         ) ;
@@ -101,8 +99,7 @@ public class AdministratorService implements AdministratorServiceRepository{
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        null,
-                        responseDTO
+                        null
                 ),
                 HttpStatus.OK
         );
@@ -115,8 +112,7 @@ public class AdministratorService implements AdministratorServiceRepository{
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        "administrator deleted successfully",
-                        null
+                        "administrator deleted successfully"
                 ),
                 HttpStatus.OK
         );
@@ -142,8 +138,7 @@ public class AdministratorService implements AdministratorServiceRepository{
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        null,
-                        responseDTOList
+                        null
                 ),
                 HttpStatus.OK
         );

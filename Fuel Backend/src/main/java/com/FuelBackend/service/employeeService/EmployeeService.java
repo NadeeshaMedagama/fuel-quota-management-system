@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -59,18 +60,16 @@ public class EmployeeService implements EmployeeServiceRepository{
                 savedEmployee.getEmployeeStatus()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.CREATED.value(),
-                        "employee created successfully",
-                        responseDTO
-                ),
+
+                        responseDTO,
+
                 HttpStatus.CREATED
         );
     }
 
     @Override
     @Transactional
-    public ResponseEntity<?> updateEmployee(UUID employeeId, EmployeeRequestDTO employeeRequestDTO) {
+    public ResponseEntity<?> updateEmployee(int employeeId, EmployeeRequestDTO employeeRequestDTO) {
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(
                 () -> new NotFoundException("employee not found")
         );
@@ -87,18 +86,16 @@ public class EmployeeService implements EmployeeServiceRepository{
                 employee.getEmployeeStatus()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "employee updated successfully",
-                        responseDTO
-                ),
+
+                        responseDTO,
+
                 HttpStatus.OK
         );
     }
 
     @Override
     @Transactional
-    public ResponseEntity<?> changeEmployeeStatus(UUID employeeId) {
+    public ResponseEntity<?> changeEmployeeStatus(int employeeId) {
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(
                 () -> new NotFoundException("employee not found")
         );
@@ -112,98 +109,27 @@ public class EmployeeService implements EmployeeServiceRepository{
                 employee.getEmployeeStatus()
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "change employee status successfully",
-                        responseDTO
-                ),
+
+                        responseDTO,
+
                 HttpStatus.OK
         );
     }
 
     @Override
-    public ResponseEntity<?> employeeFindById(UUID employeeId) {
-        Employee employee = employeeRepository.findById(employeeId).orElseThrow(
-                () -> new NotFoundException("employee id not found")
-        );
-        return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        null,
-                        new EmployeeResponseDTO(
-                                employee.getEmployeeId(),
-                                employee.getEmployeeUsername(),
-                                employee.getEmployeeEmail(),
-                                employee.getFuelStation().getFuelStationId(),
-                                employee.getEmployeeStatus()
-                        )
-                ),
-                HttpStatus.OK
-        );
+    public ResponseEntity<?> updateFuelPerVehicle(int employeeId,int vehicleId, Double fuelCapacity) {
+        return null;
     }
-
-    @Override
-    public ResponseEntity<?> getAllEmployee() {
-        List<Employee> employeeList = employeeRepository.findAll();
-        List<EmployeeResponseDTO> employeeResponseDTOList = new ArrayList<>();
-
-        employeeList.forEach(
-                employee -> {
-                    employeeResponseDTOList.add(
-                            new EmployeeResponseDTO(
-                                    employee.getEmployeeId(),
-                                    employee.getEmployeeUsername(),
-                                    employee.getEmployeeEmail(),
-                                    employee.getFuelStation().getFuelStationId(),
-                                    employee.getEmployeeStatus()
-                            )
-                    );
-                }
-        );
-        return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        null,
-                        employeeResponseDTOList
-                ),
-                HttpStatus.OK
-        );
-    }
-
-    @Override
-    public ResponseEntity<?> updateFuelPerVehicle(UUID employeeId, UUID vehicleId, Double fuelCapacity) {
-        // extract the vehicle details
-        Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow(
-                () -> new NotFoundException("vehicle id not found")
-        );
-
-        Double maxFuelCapacityPerWeek;
-        // check the vehicle owner type and get max capacity
-        if(vehicle.getOwnerType() == OwnerType.User){
-            maxFuelCapacityPerWeek = vehicle.getVehicleClasses().getMaxFuelCapacityPerWeek();
-        }else{
-            maxFuelCapacityPerWeek = vehicle.getVehicleClasses().getMaxFuelCapacityPerWeekForBusinessGov();
+    public ResponseEntity<?> employeeFindById(int employeeId) {
+        Optional<Employee> employee = employeeRepository.findById(employeeId);
+        if (employee.isPresent()) {
+            return ResponseEntity.ok(employee.get());
+        } else {
+            return ResponseEntity.status(404).body("Employee not found with ID: " + employeeId);
         }
+    }
 
-        Double currentFuelCapacity = vehicle.getCurrentFuelCapacity();
-
-        Double fuelCap = FuelCalculation.calculateFuel(
-                maxFuelCapacityPerWeek,
-                currentFuelCapacity,
-                fuelCapacity
-        );
-        // update currentFuelCapacity
-        vehicle.setCurrentFuelCapacity(fuelCap);
-        vehicleRepository.save(vehicle);
-
-        return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "vehicle fuel capacity updated sucessfully",
-                        null
-
-                ),
-                HttpStatus.OK
-        );
+    public ResponseEntity<?> getAllEmployee() {
+        return ResponseEntity.ok(employeeRepository.findAll());
     }
 }
