@@ -16,13 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class VehicleService implements VehicleServiceRepository{
@@ -127,25 +124,14 @@ public class VehicleService implements VehicleServiceRepository{
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        "businessGov vehicle created successfully",
-                        new VehicleResponseDTO(
-                                savedVehicle.getVehicleId(),
-                                savedVehicle.getVehicleRegisterId(),
-                                savedVehicle.getVehicleEngineNo(),
-                                savedVehicle.getModel(),
-                                savedVehicle.getYearOfManufacture(),
-                                savedVehicle.getCurrentFuelCapacity(),
-                                savedVehicle.getOwnerId(),
-                                savedVehicle.getVehicleClasses().getVehicleClassId(),
-                                savedVehicle.getFuel().getFuelId()
-                        )
+                        "businessGov vehicle created successfully"
                 ),
                 HttpStatus.OK
         );
     }
 
     @Override
-    public ResponseEntity<?> findVehicleById(UUID vehicleId) {
+    public ResponseEntity<?> findVehicleById(int vehicleId) {
         Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow(
                 () -> new NotFoundException("vehicle not found")
         );
