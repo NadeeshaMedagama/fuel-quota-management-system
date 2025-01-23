@@ -1,0 +1,64 @@
+/* VehicleRegistrationForm.css */
+
+/* General container styling */
+.container {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+    background-color: #f9f9f9;
+  }
+  
+  /* Top-left logo */
+  .top-left {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .logo {
+    width: 150px;
+    height: auto;
+  }
+  
+  /* Main content */
+  .content {
+    margin-top: 100px;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #003366;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  /* Vehicle registration form section */
+  .vehicle-registration-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Footer */
+  footer {
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #003366;
+    color: #fff;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  

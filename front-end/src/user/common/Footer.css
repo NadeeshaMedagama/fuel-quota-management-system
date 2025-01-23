@@ -1,0 +1,85 @@
+/* Footer Styles */
+.footer {
+  background-color: #00274d; /* Dark blue background */
+  color: #ffffff;
+  padding: 40px 50px;
+  text-align: left;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  max-width: 300px;
+}
+
+.footer-logo {
+  max-width: 100px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+  transform: rotate(-5deg) scale(1.1);
+}
+
+.footer-description {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.footer-right {
+  max-width: 300px;
+}
+
+.contact-title {
+  font-size: 20px;
+  color: #ffcc00;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.contact-details {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 20px;
+  border-top: 1px solid #ffffff;
+  padding-top: 15px;
+}
+
+.footer-bottom a {
+  color: #ffcc00;
+  text-decoration: none;
+  margin: 0 5px;
+  transition: color 0.3s;
+}
+
+.footer-bottom a:hover {
+  color: #ff9933;
+}
+
+/* Responsive Design for Footer */
+@media screen and (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+}
