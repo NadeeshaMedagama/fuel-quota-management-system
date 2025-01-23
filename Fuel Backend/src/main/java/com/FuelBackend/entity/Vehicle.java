@@ -3,6 +3,7 @@ package com.FuelBackend.entity;
 import com.FuelBackend.enums.OwnerType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import org.springframework.lang.Nullable;
 
 import java.util.Date;
 import java.util.UUID;
@@ -19,8 +20,9 @@ import java.util.UUID;
 public class Vehicle {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID vehicleId;
+    @GeneratedValue
+    @Nullable
+    private int vehicleId;
 
     @Column(updatable = false,unique = true,nullable = false)
     private String vehicleRegisterId;
@@ -28,7 +30,7 @@ public class Vehicle {
     @Column(updatable = false,unique = true,nullable = false)
     private String vehicleEngineNo;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String model;
 
     @Column(nullable = false)
@@ -60,8 +62,19 @@ public class Vehicle {
     private VehicleClasses vehicleClasses;
 
     @ManyToOne
-    @JoinColumn(name = "fuel_id", referencedColumnName = "fuelId", nullable = false)
+    @JoinColumn(name = "fuel_id", referencedColumnName = "fuelId", nullable = true)
     private Fuel fuel;
+
+    @Lob
+    private byte[] qrCode;
+
+    public byte[] getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(byte[] qrCode) {
+        this.qrCode = qrCode;
+    }
 
     public Vehicle(){}
 
@@ -85,7 +98,7 @@ public class Vehicle {
     }
 
     public Vehicle(
-            UUID vehicleId,
+            int vehicleId,
             String vehicleRegisterId,
             String vehicleEngineNo,
             String model,
@@ -104,13 +117,11 @@ public class Vehicle {
         this.fuel = fuel;
     }
 
-
-
-    public UUID getVehicleId() {
+    public int getVehicleId() {
         return vehicleId;
     }
 
-    public void setVehicleId(UUID vehicleId) {
+    public void setVehicleId(int vehicleId) {
         this.vehicleId = vehicleId;
     }
 

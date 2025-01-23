@@ -92,7 +92,7 @@ public class AuthenticationService implements AuthenticationServiceRepository{
 
     @Override
     public ResponseEntity<?> employeeLogin(EmployeeLoginRequestDTO employeeLoginRequestDTO) {
-        Employee employee = employeeRepository.findByEmployeeUsername(employeeLoginRequestDTO.getUsername())
+        Employee employee = (Employee) employeeRepository.findByEmployeeUsername(employeeLoginRequestDTO.getUsername())
                 .orElseThrow(
                         () -> new UnauthorizedAccessException("username or password incorrect")
                 );
@@ -127,7 +127,7 @@ public class AuthenticationService implements AuthenticationServiceRepository{
 
     @Override
     public ResponseEntity<?> fuelStationLogin(FuelStationLoginRequestDTO fuelStationLoginRequestDTO) {
-        FuelStation fuelStation = fuelStationRepository.findByFuelStationRegisterId(
+        FuelStation fuelStation = (FuelStation) fuelStationRepository.findByFuelStationRegisterId(
                 fuelStationLoginRequestDTO.getFuelStationRegisterId()
         ).orElseThrow(
                 () -> new UnauthorizedAccessException("username or password incorrect")
@@ -160,7 +160,7 @@ public class AuthenticationService implements AuthenticationServiceRepository{
 
     @Override
     public ResponseEntity<?> businessLogin(BusinessGovLoginRequestDTO businessGovLoginRequestDTO) {
-        BusinessGovernment businessGovernment = businessGovernmentRepository.findByBusinessGovernmentRegNo(
+        BusinessGovernment businessGovernment = (BusinessGovernment) businessGovernmentRepository.findByBusinessGovernmentRegNo(
                 businessGovLoginRequestDTO.getBusinessGovernmentRegNo()
         ).orElseThrow(
                 () -> new UnauthorizedAccessException("username or password incorrect")

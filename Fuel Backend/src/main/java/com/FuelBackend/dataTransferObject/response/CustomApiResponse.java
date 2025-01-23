@@ -11,7 +11,7 @@ public class CustomApiResponse {
     private String message;
     private Object data;
 
-    public CustomApiResponse(int statusCode, String message, Object data) {
+    public CustomApiResponse(int statusCode, String message) {
         this.statusCode = statusCode;
         this.message = message;
         this.data = data;
