@@ -2,12 +2,18 @@ package com.FuelBackend.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-
+@Getter
+@Setter
+@AllArgsConstructor
 public class FuelStation {
 
     @Id
