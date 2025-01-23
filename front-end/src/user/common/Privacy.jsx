@@ -9,22 +9,24 @@ const PrivacyPolicy = () => {
       </header>
 
       <section style={styles.privacyContent}>
-        <h2 style={styles.sectionHeading}>Privacy & Policy</h2>
+        <h2 style={styles.sectionHeading}>Privacy Statement</h2>
         <p style={styles.paragraph}>
-          Your privacy is important to us. This Privacy Policy explains the personal data we collect, how we use it, and the measures we take to protect it.
+          FuelPulse is committed to safeguarding your privacy and protecting the personal information you provide while using our website, www.fuelpulse.com. This Privacy Statement explains how we collect, use, and protect your data when you access and interact with our site.
         </p>
 
         <h2 style={styles.sectionHeading}>Information We Collect</h2>
         <p style={styles.paragraph}>
-          We collect information to provide better services to all of our users. The types of information we collect include:
+          We may collect personal information such as your name, contact details, and other data you provide through features like registrations, inquiries, and forms. Additionally, we may automatically collect technical information, such as your IP address, to improve site performance.
         </p>
         <ul style={styles.list}>
           <li>Personal information such as your name, email address, and contact details.</li>
           <li>Usage data such as your browsing activity, device information, and IP address.</li>
         </ul>
 
-        <h2 style={styles.sectionHeading}>How We Use Your Information</h2>
-        <p style={styles.paragraph}>We use the information we collect to:</p>
+        <h2 style={styles.sectionHeading}>Use of Information:</h2>
+        <p style={styles.paragraph}>
+          Your personal information will be used to deliver the services you request, conduct internal research, send relevant updates, and enhance user experience. We will not share your personal information with third parties without your consent, except where required by law or to protect FuelPulse’s interests.
+        </p>
         <ul style={styles.list}>
           <li>Provide, maintain, and improve our services.</li>
           <li>Communicate with you, including sending updates, newsletters, and marketing materials.</li>
@@ -33,12 +35,12 @@ const PrivacyPolicy = () => {
 
         <h2 style={styles.sectionHeading}>Data Security</h2>
         <p style={styles.paragraph}>
-          We take appropriate security measures to protect your personal information. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+          We employ reasonable security measures to protect your information. However, due to the nature of internet transmission, we cannot guarantee complete security against unauthorized access.
         </p>
 
         <h2 style={styles.sectionHeading}>Cookies</h2>
         <p style={styles.paragraph}>
-          We use cookies to enhance your experience on our website. Cookies are small files that are stored on your device. You can choose to disable cookies in your browser settings.
+          We use cookies to improve your experience by customizing content and tracking site performance. You can disable cookies through your browser settings, but this may impact the functionality of certain features on the site.
         </p>
 
         <h2 style={styles.sectionHeading}>Third-Party Services</h2>
@@ -51,16 +53,26 @@ const PrivacyPolicy = () => {
           You have the right to access, update, or delete your personal data. If you would like to exercise any of these rights, please contact us at [contact@yourdomain.com].
         </p>
 
-        <h2 style={styles.sectionHeading}>Changes to This Policy</h2>
+        <h2 style={styles.sectionHeading}>Changes to the Privacy Statement:</h2>
         <p style={styles.paragraph}>
           We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date.
         </p>
-
+        <p style={styles.paragraph}>
+          For any questions or concerns, please reach out to us at <strong>support@fuelpulse.com</strong>.
+        </p>
         <p style={styles.lastUpdated}>Last updated: January 16, 2025</p>
       </section>
+
+      <div className="footer-right">
+        <h3 className="contact-title">Contact Us</h3>
+        <p><strong>FuelPulse Headquarters</strong></p>
+        <p>123 Main Street, Colombo, Sri Lanka</p>
+        <p>Phone: +94 112 345 678</p>
+        <p>Email: <a href="mailto:support@fuelpulse.com">support@fuelpulse.com</a></p>
+      </div>
     </div>
   );
 };
 
-
 export default PrivacyPolicy;
+
