@@ -4,32 +4,49 @@ import axios from "axios";
 import "./Login.css";
 
 const LoginForm = () => {
-  const [password, setPassword] = useState("");
   const [vehicleRegistrationNumber, setVehicleRegistrationNumber] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  async function login(event) {
+  const login = async (event) => {
     event.preventDefault();
-    try {
-      const res = await axios.post("http://localhost:8080/api/v1/VehicleOwner/login", {
-        vehicleRegistrationNumber: vehicleRegistrationNumber,
-        password: password,
-      });
+    setError("");
+    setLoading(true);
 
-      if (res.data.message === "Vehicle Registration Number not exists") {
-        setError("Vehicle Registration Number not exists");
-      } else if (res.data.message === "Login Success") {
-        navigate("/home");
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/VehicleOwner/login",
+        {
+          vehicleRegistrationNumber,
+          password,
+        }
+      );
+
+      if (response.data.message === "Login Success") {
+        navigate("/home"); // Navigate to the home page
       } else {
-        setError("Incorrect Password");
+        setError(response.data.message || "An error occurred.");
       }
-    } catch (err) {
-      console.error(err);
-      setError("An error occurred. Please try again.");
+    } catch (error) {
+      if (error.response) {
+        // Handle backend errors
+        const { status, data } = error.response;
+        if (status === 400 || status === 401) {
+          setError(data.message); // Show backend-provided error message
+        } else {
+          setError("An unexpected error occurred. Please try again.");
+        }
+      } else {
+        // Handle network errors or other issues
+        setError("Unable to connect to the server. Please check your connection.");
+      }
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   const handleForgotPassword = () => {
     alert("Forgot Password feature will send a reset link to your registered email.");
@@ -54,9 +71,8 @@ const LoginForm = () => {
               placeholder="Enter your vehicle registration number"
               className="input-field"
               value={vehicleRegistrationNumber}
-              onChange={(event) => {
-                setVehicleRegistrationNumber(event.target.value);
-              }}
+              onChange={(e) => setVehicleRegistrationNumber(e.target.value)}
+              required
             />
           </div>
 
@@ -72,9 +88,8 @@ const LoginForm = () => {
               placeholder="Enter your password"
               className="input-field"
               value={password}
-              onChange={(event) => {
-                setPassword(event.target.value);
-              }}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
 
@@ -82,8 +97,8 @@ const LoginForm = () => {
           {error && <div className="error-message">{error}</div>}
 
           {/* Login Button */}
-          <button type="submit" className="submit-button">
-            Login
+          <button type="submit" className="submit-button" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
           </button>
 
           {/* Register Link */}
