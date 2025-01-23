@@ -16,6 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class AuthenticationService implements AuthenticationServiceRepository{
 
@@ -221,4 +224,23 @@ public class AuthenticationService implements AuthenticationServiceRepository{
                 HttpStatus.OK
         );
     }
+    private Map<String, String> userDatabase = new HashMap<>(); // Simulating a database with user emails
+    private Map<String, String> resetTokens = new HashMap<>(); // Store tokens temporarily
+    public void saveResetToken(String email, String token) {
+        resetTokens.put(token, email);
+    }
+
+    public boolean resetPasswordWithToken(String token, String newPassword) {
+        String email = resetTokens.get(token);
+
+        if (email != null) {
+            // Update password (simplified)
+            userDatabase.put(email, newPassword);
+            resetTokens.remove(token); // Remove token after it's used
+            return true;
+        }
+        return false;
+    }
 }
+
+

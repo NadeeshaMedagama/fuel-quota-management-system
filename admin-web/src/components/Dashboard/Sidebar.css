@@ -12,18 +12,18 @@
 }
 
 .sidebar-logo {
-  width: 100%;
+  width: 115%;
   height: auto;
   display: block;
-  margin: 0 ; 
-  margin-top: -28px;/* Ensure the logo stays centered */
+  margin: 0;
+  margin-top: -24px; /* Ensure the logo stays centered */
 }
 
 /* Sidebar container styles */
 .sider-container {
   height: 100vh;
   padding: 20px 0; /* Adjust padding for proper spacing */
-  background-color: #020444; /* Navy background */
+  background-color: rgb(1, 1, 49);
   width: 280px; /* Fixed width for desktop */
   position: fixed;
   top: 0;
@@ -33,20 +33,19 @@
   display: flex;
   flex-direction: column; /* Stack elements vertically */
   align-items: center; /* Center-align contents */
-  
-
 }
 
 .nav_block {
   margin-top: 20px; /* Add spacing between logo and menu */
   width: 100%; /* Ensure menu items span the width of the sidebar */
-  margin-top: -150px;
+  margin-top: -20px;
 }
 
 .sider-menu {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-top: -100px;
 }
 
 .sider-menu .nav-link {
@@ -60,17 +59,17 @@
   text-align: left; /* Align text to the left */
   width: 100%; /* Add padding space on both sides */
   margin: 0 auto; /* Center menu items */
-background-color: white;
-margin-bottom: 15px;
-
+  background-color:  #fff;
+  margin-bottom: 15px;
+  align-items: center;
 }
 
 .sider-menu .nav-link:hover {
-  background-color: #1e2a78; /* Highlight menu item on hover */
+  background-color: #909090; /* Highlight menu item on hover */
 }
 
 .sider-menu .nav-link.active {
-  background-color: #1b2366; /* Highlight the active menu item */
+  background-color: #b3b4bd; /* Highlight the active menu item */
 }
 
 /* Responsive styles for mobile */
@@ -83,5 +82,9 @@ margin-bottom: 15px;
 
   .sider-menu .nav-link {
     font-size: 14px;
+  }
+
+  .sidebar-logo {
+    width: 100px; /* Adjust logo size for smaller screens */
   }
 }

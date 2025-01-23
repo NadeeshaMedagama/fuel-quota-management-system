@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  /* Remove background-color and color to prevent overriding Tailwind styles */
+}
+
+body {
+  margin: 3px;
+  display: flex
+;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  flex-direction: row;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+a {
+  font-weight: 500;
+  color: #4caf50; /* Green color for links */
+  text-decoration: none;
+}
+a:hover {
+  color: #388e3c; /* Darker green for hover state */
+}

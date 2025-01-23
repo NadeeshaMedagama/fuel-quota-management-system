@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/auth")
 public class AuthenticationController {
 
+
     private final AuthenticationServiceRepository authenticationServiceRepository;
 
     public AuthenticationController(AuthenticationServiceRepository authenticationServiceRepository) {
@@ -44,4 +45,46 @@ public class AuthenticationController {
     public ResponseEntity<?> businessLogin(@RequestBody BusinessGovLoginRequestDTO businessGovLoginRequestDTO){
         return authenticationServiceRepository.businessLogin(businessGovLoginRequestDTO);
     }
-}
+
+
+
+
+        @PostMapping ("/reset-password")
+        public String resetPassword(@RequestBody ResetPasswordRequest resetPasswordRequest) {
+            String token = resetPasswordRequest.getToken();
+            String newPassword = resetPasswordRequest.getNewPassword();
+
+            // Validate the token and reset the password
+            boolean isPasswordReset = authenticationServiceRepository.resetPasswordWithToken(token, newPassword);
+
+            if (isPasswordReset) {
+                return "Password has been reset successfully.";
+            } else {
+                return "Invalid or expired reset token.";
+            }
+        }
+
+        static class ResetPasswordRequest {
+            private String token;
+            private String newPassword;
+
+            // Getters and Setters
+            public String getToken() {
+                return token;
+            }
+
+            public void setToken(String token) {
+                this.token = token;
+            }
+
+            public String getNewPassword() {
+                return newPassword;
+            }
+
+            public void setNewPassword(String newPassword) {
+                this.newPassword = newPassword;
+            }
+        }
+    }
+
+

@@ -1,0 +1,135 @@
+/* Header.css */
+
+/* Container for the header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ece1e1; /* White background */
+    padding: 10px 20px;  /* Reduced padding for compact design */
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for a floating effect */
+    color: #333; /* Dark text color */
+    position: fixed;  /* Fix the header at the top */
+    top: 0;  /* At the top of the page */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+/* Logo styling */
+.header .logo img {
+    height: 40px;  /* Reduced logo size */
+    width: auto;
+    transition: transform 0.3s ease; /* Hover animation for logo */
+}
+
+.header .logo img:hover {
+    transform: scale(1.1); /* Logo zoom effect */
+}
+
+/* Navigation links */
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px; /* Reduced gap between links */
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: #333; /* Dark text color for links */
+    text-decoration: none;
+    font-size: 25px; /* Smaller font size */
+    font-weight: 1000;
+    padding: 8px 16px;
+    border-radius: 25px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #4d5bbf; /* Blue background on hover */
+    color: #fff; /* White text on hover */
+    transform: translateY(-5px); /* Hover effect with a slight lift */
+}
+
+header nav ul li a:active {
+    transform: translateY(2px); /* Subtle click effect */
+}
+
+/* Profile section */
+.header .profile {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Reduced gap */
+    position: relative;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    height: 40px; /* Smaller profile picture */
+    width: 40px;
+    border: 3px solid #fff; /* Profile picture border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for profile picture */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1); /* Profile image zoom on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+}
+
+.username {
+    font-size: 20px;  /* Smaller username font size */
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #333; /* Dark text color for username */
+}
+
+/* Dropdown button */
+.dropdown-btn {
+    background-color: transparent;
+    color: #333; /* Dark text color for dropdown button */
+    border: none;
+    font-size: 18px;  /* Smaller font size */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-btn:hover {
+    transform: rotate(180deg); /* Dropdown arrow animation */
+}
+
+/* Dropdown menu */
+.dropdown-content {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd; /* Light border for dropdown */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.dropdown-content a {
+    color: #333; /* Dark text color for dropdown links */
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* Light gray background on hover */
+    color: #4d5bbf; /* Blue text color on hover */
+    border-radius: 5px;
+}
+
+  
