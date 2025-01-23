@@ -4,32 +4,53 @@ import axios from "axios";
 import "./Login.css";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
+  const [vehicleRegistrationNumber, setVehicleRegistrationNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  async function login(event) {
+  const login = async (event) => {
     event.preventDefault();
-    try {
-      const res = await axios.post("http://localhost:8080/api/v1/VehicleOwner/login", {
-        email: email,
-        password: password,
-      });
-      console.log(res.data);
+    setError("");
+    setLoading(true);
 
-      if (res.data.message === "Email not exists") {
-        alert("Email not exists");
-      } else if (res.data.message === "Login Success") {
-        navigate("/home");
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/VehicleOwner/login",
+        {
+          vehicleRegistrationNumber,
+          password,
+        }
+      );
+
+      if (response.data.message === "Login Success") {
+        navigate("/home"); // Navigate to the home page
       } else {
-        alert("Incorrect Email and Password do not match");
+        setError(response.data.message || "An error occurred.");
       }
-    } catch (err) {
-      console.error(err);
-      alert("An error occurred. Please try again.");
+    } catch (error) {
+      if (error.response) {
+        // Handle backend errors
+        const { status, data } = error.response;
+        if (status === 400 || status === 401) {
+          setError(data.message); // Show backend-provided error message
+        } else {
+          setError("An unexpected error occurred. Please try again.");
+        }
+      } else {
+        // Handle network errors or other issues
+        setError("Unable to connect to the server. Please check your connection.");
+      }
+    } finally {
+      setLoading(false);
     }
-  }
+  };
+
+  const handleForgotPassword = () => {
+    alert("Forgot Password feature will send a reset link to your registered email.");
+  };
 
   return (
     <div className="login-container">
@@ -38,21 +59,20 @@ const LoginForm = () => {
         <h2 className="form-title">Welcome Back</h2>
 
         <form onSubmit={login} className="login-form">
-          {/* Email Input */}
+          {/* Vehicle Registration Number Input */}
           <div className="input-group">
-            <label htmlFor="email" className="input-label">
-              Username
+            <label htmlFor="vehicleRegistrationNumber" className="input-label">
+              Vehicle Registration Number
             </label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
+              type="text"
+              id="vehicleRegistrationNumber"
+              name="vehicleRegistrationNumber"
+              placeholder="Enter your vehicle registration number"
               className="input-field"
-              value={email}
-              onChange={(event) => {
-                setEmail(event.target.value);
-              }}
+              value={vehicleRegistrationNumber}
+              onChange={(e) => setVehicleRegistrationNumber(e.target.value)}
+              required
             />
           </div>
 
@@ -68,15 +88,17 @@ const LoginForm = () => {
               placeholder="Enter your password"
               className="input-field"
               value={password}
-              onChange={(event) => {
-                setPassword(event.target.value);
-              }}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
 
+          {/* Error Message */}
+          {error && <div className="error-message">{error}</div>}
+
           {/* Login Button */}
-          <button type="submit" className="submit-button">
-            Login
+          <button type="submit" className="submit-button" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
           </button>
 
           {/* Register Link */}
@@ -84,6 +106,13 @@ const LoginForm = () => {
             Don’t have an account?{" "}
             <a href="/register" className="register-link-text">
               Register
+            </a>
+          </div>
+
+          {/* Forgot Password Link */}
+          <div className="forgot-password-link">
+            <a href="#" onClick={handleForgotPassword} className="forgot-password-link-text">
+              Forgot Password?
             </a>
           </div>
         </form>
