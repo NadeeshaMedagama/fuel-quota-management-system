@@ -1,222 +1,169 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import axios from "axios"; // import axios
 import "./SignUpForm.css";
 
 const SignUpForm = () => {
-    const navigate = useNavigate(); // Initialize the navigate function
-  
-    const handleUserdashboardClick = () => {
-      navigate("/Userdashboard"); // Navigate to the Register route
-    };
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    address: "",
     contactNumber: "",
-    username: "",
+    registrationNumber: "",
+    chassisNumber: "",
+    manufactureYear: "",
+    vehicle: "",
     password: "",
-    userType: "",
-    image: null,
+    vehicleType: "",
   });
 
   const [errors, setErrors] = useState({});
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
+    setFormData({
+      ...formData,
       [name]: value,
-    }));
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file && !file.type.startsWith("image/")) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        image: "Please upload a valid image file.",
-      }));
-    } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        image: file,
-      }));
-      setErrors((prevErrors) => ({ ...prevErrors, image: null }));
-    }
+    });
   };
 
   const validateForm = () => {
-    const newErrors = {};
-    if (!formData.fullName) newErrors.fullName = "Full Name is required.";
-    if (!formData.email) {
-      newErrors.email = "Email is required.";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email format is invalid.";
+    let formErrors = {};
+    if (!formData.contactNumber.match(/^\d{10}$/)) {
+      formErrors.contactNumber = "Contact number must be 10 digits.";
     }
-    if (!formData.contactNumber) {
-      newErrors.contactNumber = "Contact Number is required.";
-    } else if (!/^\d{10}$/.test(formData.contactNumber)) {
-      newErrors.contactNumber = "Contact Number must be 10 digits.";
+    if (formData.registrationNumber.trim() === "") {
+      formErrors.registrationNumber = "Registration number is required.";
     }
-    if (!formData.password) {
-      newErrors.password = "Password is required.";
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters.";
+    if (formData.chassisNumber.trim() === "") {
+      formErrors.chassisNumber = "Chassis number is required.";
     }
-    if (!formData.userType) {
-      newErrors.userType = "User Type is required.";
+    if (!formData.manufactureYear.match(/^(19|20)\d{2}$/)) {
+      formErrors.manufactureYear = "Manufacture year must be a valid year.";
     }
-    if (!formData.image) {
-      newErrors.image = "Please upload your profile image.";
+    if (formData.vehicle.trim() === "") {
+      formErrors.vehicle = "Vehicle name is required.";
     }
-    return newErrors;
+    if (formData.password.length < 6) {
+      formErrors.password = "Password must be at least 6 characters long.";
+    }
+    if (formData.vehicleType.trim() === "") {
+      formErrors.vehicleType = "Vehicle type is required.";
+    }
+
+    setErrors(formErrors);
+    return Object.keys(formErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-    } else {
-      console.log("Form submitted successfully:", formData);
-      setErrors({});
-      alert("Registration successful!");
-
-      // After successful registration, navigate to User Dashboard
-      navigate("/Userdashboard"); // Navigate to the Userdashboard route
-
-      // Reset form
-      setFormData({
-        fullName: "",
-        email: "",
-        address: "",
-        contactNumber: "",
-        username: "",
-        password: "",
-        userType: "",
-        image: null,
-      });
+    if (validateForm()) {
+      try {
+        // Send form data to Spring Boot backend
+        const response = await axios.post("http://localhost:8080/api/signup", formData);
+        console.log(response.data); // Handle the response from the backend (e.g., success message)
+        navigate("/RegistrationSuccessfullPage"); // Redirect upon successful registration
+      } catch (error) {
+        console.error("There was an error during registration", error);
+        // You can handle error responses here if needed (e.g., show a message to the user)
+      }
     }
   };
 
   return (
-    <div className="container">
-      <div className="top-left">
-        <img src="/logo.png" alt="FuelPulse Logo" className="logo" />
-      </div>
+    <div className="signup-form-container">
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Contact Number:</label>
+          <input
+            type="text"
+            name="contactNumber"
+            value={formData.contactNumber}
+            onChange={handleInputChange}
+            placeholder="Enter your contact number"
+          />
+          {errors.contactNumber && <p className="error">{errors.contactNumber}</p>}
+        </div>
 
-      <div className="sign-up-form">
-        <h2>Sign Up</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Full Name
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              placeholder="Enter your full name"
-              className={errors.fullName ? "error-input" : ""}
-            />
-            {errors.fullName && <span className="error">{errors.fullName}</span>}
-          </label>
+        <div className="form-group">
+          <label>Registration Number:</label>
+          <input
+            type="text"
+            name="registrationNumber"
+            value={formData.registrationNumber}
+            onChange={handleInputChange}
+            placeholder="Enter your registration number"
+          />
+          {errors.registrationNumber && <p className="error">{errors.registrationNumber}</p>}
+        </div>
 
-          <label>
-            Email Address
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              className={errors.email ? "error-input" : ""}
-            />
-            {errors.email && <span className="error">{errors.email}</span>}
-          </label>
+        <div className="form-group">
+          <label>Chassis Number:</label>
+          <input
+            type="text"
+            name="chassisNumber"
+            value={formData.chassisNumber}
+            onChange={handleInputChange}
+            placeholder="Enter your chassis number"
+          />
+          {errors.chassisNumber && <p className="error">{errors.chassisNumber}</p>}
+        </div>
 
-          <label>
-            Address
-            <input
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              placeholder="Enter your address"
-            />
-          </label>
+        <div className="form-group">
+          <label>Manufacture Year:</label>
+          <input
+            type="text"
+            name="manufactureYear"
+            value={formData.manufactureYear}
+            onChange={handleInputChange}
+            placeholder="Enter manufacture year"
+          />
+          {errors.manufactureYear && <p className="error">{errors.manufactureYear}</p>}
+        </div>
 
-          <label>
-            Contact Number
-            <input
-              type="text"
-              name="contactNumber"
-              value={formData.contactNumber}
-              onChange={handleChange}
-              placeholder="Enter your contact number"
-              className={errors.contactNumber ? "error-input" : ""}
-            />
-            {errors.contactNumber && (
-              <span className="error">{errors.contactNumber}</span>
-            )}
-          </label>
+        <div className="form-group">
+          <label>Vehicle Name:</label>
+          <input
+            type="text"
+            name="vehicle"
+            value={formData.vehicle}
+            onChange={handleInputChange}
+            placeholder="Enter vehicle name"
+          />
+          {errors.vehicle && <p className="error">{errors.vehicle}</p>}
+        </div>
 
-          <label>
-            Username
-            <input
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              placeholder="Choose a username"
-            />
-          </label>
+        <div className="form-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            placeholder="Enter your password"
+          />
+          {errors.password && <p className="error">{errors.password}</p>}
+        </div>
 
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Create a password"
-              className={errors.password ? "error-input" : ""}
-            />
-            {errors.password && (
-              <span className="error">{errors.password}</span>
-            )}
-          </label>
+        <div className="form-group">
+          <label>Vehicle Type:</label>
+          <select
+            name="vehicleType"
+            value={formData.vehicleType}
+            onChange={handleInputChange}
+          >
+            <option value="">Select vehicle type</option>
+            <option value="Car">Car</option>
+            <option value="Truck">Truck</option>
+            <option value="Bike">Bike</option>
+            <option value="Bus">Bus</option>
+          </select>
+          {errors.vehicleType && <p className="error">{errors.vehicleType}</p>}
+        </div>
 
-          <label>
-            User Type
-            <select
-              name="userType"
-              value={formData.userType}
-              onChange={handleChange}
-              className={errors.userType ? "error-input" : ""}
-            >
-              <option value="">Select user type</option>
-              <option value="Admin">Admin</option>
-              <option value="Customer">Customer</option>
-            </select>
-            {errors.userType && <span className="error">{errors.userType}</span>}
-          </label>
-
-          <label>
-            Upload Your Image
-            <input type="file" onChange={handleFileChange} />
-            {errors.image && <span className="error">{errors.image}</span>}
-          </label>
-
-          <button type="submit"
-          onClick={handleUserdashboardClick}>Register</button>
-        </form>
-      </div>
+        <button type="submit" className="submit-button">Sign Up</button>
+      </form>
     </div>
   );
 };
 
 export default SignUpForm;
-
-
-
-

@@ -1,4 +1,5 @@
 import React from "react";
+import './Privacy.css';
 
 const PrivacyPolicy = () => {
   return (
@@ -60,8 +61,6 @@ const PrivacyPolicy = () => {
     </div>
   );
 };
-
-
 
 
 export default PrivacyPolicy;

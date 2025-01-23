@@ -1,6 +1,5 @@
 import React from "react";
 import VehicleRegistrationForm from "./VehicleRegistrationForm";
-import Footer from "../user/common/Footer";
 import "./UserDashboard.css"; // Assuming you have a separate stylesheet for UserDashboard
 
 const UserDashboard = () => {
@@ -26,8 +25,6 @@ const UserDashboard = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <Footer />
     </div>
   );
 };

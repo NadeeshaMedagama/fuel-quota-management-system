@@ -28,9 +28,8 @@ const Footer = () => {
       <div className="footer-bottom">
         <p>
           © 2024 FuelPulse. All rights reserved. 
-          <Link to="/privacy.jsx">Privacy Policy</Link>
-          | 
-          <a href="#terms-conditions"> Terms & Conditions </a>
+          <a href="/Privacy"> Privacy Policy </a>
+          <a href="/Terms"> Terms & Conditions </a>
         </p>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./VehicleRegistrationForm.css";
 
+function useNavigate(){}
 
 const VehicleRegistrationForm = () => {
     
