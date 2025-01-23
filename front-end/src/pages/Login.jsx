@@ -4,8 +4,9 @@ import axios from "axios";
 import "./Login.css";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [vehicleRegistrationNumber, setVehicleRegistrationNumber] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -13,23 +14,26 @@ const LoginForm = () => {
     event.preventDefault();
     try {
       const res = await axios.post("http://localhost:8080/api/v1/VehicleOwner/login", {
-        email: email,
+        vehicleRegistrationNumber: vehicleRegistrationNumber,
         password: password,
       });
-      console.log(res.data);
 
-      if (res.data.message === "Email not exists") {
-        alert("Email not exists");
+      if (res.data.message === "Vehicle Registration Number not exists") {
+        setError("Vehicle Registration Number not exists");
       } else if (res.data.message === "Login Success") {
         navigate("/home");
       } else {
-        alert("Incorrect Email and Password do not match");
+        setError("Incorrect Password");
       }
     } catch (err) {
       console.error(err);
-      alert("An error occurred. Please try again.");
+      setError("An error occurred. Please try again.");
     }
   }
+
+  const handleForgotPassword = () => {
+    alert("Forgot Password feature will send a reset link to your registered email.");
+  };
 
   return (
     <div className="login-container">
@@ -38,20 +42,20 @@ const LoginForm = () => {
         <h2 className="form-title">Welcome Back</h2>
 
         <form onSubmit={login} className="login-form">
-          {/* Email Input */}
+          {/* Vehicle Registration Number Input */}
           <div className="input-group">
-            <label htmlFor="email" className="input-label">
-              Username
+            <label htmlFor="vehicleRegistrationNumber" className="input-label">
+              Vehicle Registration Number
             </label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
+              type="text"
+              id="vehicleRegistrationNumber"
+              name="vehicleRegistrationNumber"
+              placeholder="Enter your vehicle registration number"
               className="input-field"
-              value={email}
+              value={vehicleRegistrationNumber}
               onChange={(event) => {
-                setEmail(event.target.value);
+                setVehicleRegistrationNumber(event.target.value);
               }}
             />
           </div>
@@ -74,6 +78,9 @@ const LoginForm = () => {
             />
           </div>
 
+          {/* Error Message */}
+          {error && <div className="error-message">{error}</div>}
+
           {/* Login Button */}
           <button type="submit" className="submit-button">
             Login
@@ -84,6 +91,13 @@ const LoginForm = () => {
             Don’t have an account?{" "}
             <a href="/register" className="register-link-text">
               Register
+            </a>
+          </div>
+
+          {/* Forgot Password Link */}
+          <div className="forgot-password-link">
+            <a href="#" onClick={handleForgotPassword} className="forgot-password-link-text">
+              Forgot Password?
             </a>
           </div>
         </form>
