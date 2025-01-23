@@ -1,51 +1,109 @@
-.privacy-container {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* General container for the privacy policy page */
+.privacyContainer {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+.privacyHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mainHeading {
+  font-size: 36px;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styling for section titles */
+.sectionHeading {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-top: 20px;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 5px;
+}
+
+/* Paragraph styling */
+.paragraph {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+/* Unordered list styling */
+.list {
+  font-size: 16px;
+  color: #555;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.list li {
+  margin-bottom: 5px;
+}
+
+/* Styling for footer section */
+.footer-right {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ecf0f1;
+}
+
+.contact-title {
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+.footer-right p {
+  font-size: 16px;
+  color: #555;
+}
+
+.footer-right a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.footer-right a:hover {
+  text-decoration: underline;
+}
+
+/* Styling for last updated date */
+.lastUpdated {
+  font-size: 14px;
+  color: #888;
+  margin-top: 20px;
+}
+
+/* Additional responsive design for smaller screens */
+@media (max-width: 768px) {
+  .privacyContainer {
+    padding: 15px;
   }
-  
-  .privacy-header {
-    text-align: center;
-    margin-bottom: 20px;
+
+  .mainHeading {
+    font-size: 30px;
   }
-  
-  .main-heading {
-    font-size: 2rem;
-    color: #003366;
-    font-weight: bold;
+
+  .sectionHeading {
+    font-size: 20px;
   }
-  
-  .privacy-content {
-    text-align: left;
-    color: #333;
-  }
-  
-  .section-heading {
-    font-size: 1.5rem;
-    color: #003366;
-    margin-bottom: 10px;
-  }
-  
-  .paragraph {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 15px;
-  }
-  
-  .list {
-    padding-left: 20px;
-    margin-bottom: 15px;
-    color: #555;
-  }
-  
-  .last-updated {
-    font-size: 0.9rem;
-    color: #777;
+
+  .footer-right {
     margin-top: 20px;
   }
+
+  .footer-right p {
+    font-size: 14px;
+  }
+}
+
   
