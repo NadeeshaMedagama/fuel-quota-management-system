@@ -1,4 +1,5 @@
 import React from "react";
+import { InputGroup, FormControl, Button } from "react-bootstrap"; // Import necessary Bootstrap components
 import "./SearchBar.css";
 
 const SearchBar = ({ placeholder = "Search here...", onSearch }) => {
@@ -10,14 +11,20 @@ const SearchBar = ({ placeholder = "Search here...", onSearch }) => {
 
   return (
     <div className="search-bar-container">
-      <div className="search-bar">
-        <input
+      <InputGroup className="search-bar">
+        <FormControl
           type="text"
           className="search-input"
           placeholder={placeholder}
           onKeyDown={handleKeyDown} // Listen for Enter key press
         />
-      </div>
+        <Button
+          variant="primary"
+          onClick={() => onSearch && onSearch(document.querySelector('.search-input').value)} // Trigger search on button click
+        >
+          Search
+        </Button>
+      </InputGroup>
     </div>
   );
 };
