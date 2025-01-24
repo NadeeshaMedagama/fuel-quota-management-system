@@ -14,7 +14,16 @@ const FuelStation = () => {
   
     useEffect(() => {
       const fetchFuelStations = async () => {
-        
+        try {
+            const response = await axios.get("http://localhost:8080/fuelStations", {
+              headers: { "Accept": "application/json" }, // Expect JSON response
+            });
+    
+            // The response is already in JSON format, so no need for parsing
+            setFuelStations(response.data);
+          } catch (error) {
+            console.error("Error fetching fuel stations:", error);
+          }
       };
 
     fetchFuelStations();
