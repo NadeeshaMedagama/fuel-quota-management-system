@@ -18,7 +18,15 @@ const AddFuelStation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    try {
+        const response = await axios.post("http://localhost:8080/fuelStations", formData, {
+          headers: { "Content-Type": "application/json" },
+        });
+        console.log("Fuel station added:", response.data);
+        navigate("/fuel-stations");  // Use navigate instead of history.push
+      } catch (error) {
+        console.error("Error adding fuel station:", error);
+      }
   };
 
   return (
