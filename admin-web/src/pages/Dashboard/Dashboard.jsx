@@ -14,7 +14,16 @@ const Dashboard = () => {
     totalUsers: 0,
   });
 
-  
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/dashboard-data")
+      .then((response) => {
+        // Assume the JSON response is in the format:
+        // { totalVehicles: 10, totalDistributors: 5, totalFuelStations: 3, totalUsers: 20 }
+        setDashboardData(response.data);
+      })
+      .catch((error) => console.error("Error fetching dashboard data:", error));
+  }, []);
 
   return (
     <div className="dashboard-container">
