@@ -1,20 +1,21 @@
-import com.example.notification.service.TwilioService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+package com.FuelBackend.controller;
 
-@RestController
+import com.FuelBackend.service.notificationServices.NotificationServices;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+
 public class NotificationController {
 
     @Autowired
-    private TwilioService twilioService;
+    private NotificationServices.TwilioService twilioService;
 
-    @RequestMapping(value = "/send-notification", method = RequestMethod.GET)
+@GetMapping("/send-notification")
     public String sendNotification() {
-        String toPhoneNumber = "+1234567890";  // Replace with actual recipient phone number
+        String toPhoneNumber = "0716889714";
         String message = "Your fuel quota has been updated.";
         twilioService.sendSms(toPhoneNumber, message);
         return "Notification sent!";
     }
+
+
 }
