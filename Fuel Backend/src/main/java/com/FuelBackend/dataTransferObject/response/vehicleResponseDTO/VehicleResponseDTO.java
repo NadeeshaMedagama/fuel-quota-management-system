@@ -1,11 +1,5 @@
 package com.FuelBackend.dataTransferObject.response.vehicleResponseDTO;
 
-import com.FuelBackend.entity.BusinessGovernment;
-import com.FuelBackend.entity.User;
-import com.FuelBackend.entity.VehicleClasses;
-import java.util.Date;
-import java.util.UUID;
-
 public class VehicleResponseDTO {
 
     private int vehicleId;
@@ -14,9 +8,7 @@ public class VehicleResponseDTO {
 
     private String vehicleEngineNo;
 
-    private String model;
 
-    private Date yearOfManufacture;
 
     private Double currentFuelCapacity;
 
@@ -33,9 +25,6 @@ public class VehicleResponseDTO {
             int vehicleId,
             String vehicleRegisterId,
             String vehicleEngineNo,
-            String model,
-            Date yearOfManufacture,
-            Double currentFuelCapacity,
             Integer userId,
             Integer vehicleClassId,
             Integer fuelId
@@ -43,8 +32,6 @@ public class VehicleResponseDTO {
         this.vehicleId = vehicleId;
         this.vehicleRegisterId = vehicleRegisterId;
         this.vehicleEngineNo = vehicleEngineNo;
-        this.model = model;
-        this.yearOfManufacture = yearOfManufacture;
         this.currentFuelCapacity = currentFuelCapacity;
         this.userId = userId;
         this.vehicleClassId = vehicleClassId;
@@ -75,21 +62,6 @@ public class VehicleResponseDTO {
         this.vehicleEngineNo = vehicleEngineNo;
     }
 
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public Date getYearOfManufacture() {
-        return yearOfManufacture;
-    }
-
-    public void setYearOfManufacture(Date yearOfManufacture) {
-        this.yearOfManufacture = yearOfManufacture;
-    }
 
     public Double getCurrentFuelCapacity() {
         return currentFuelCapacity;

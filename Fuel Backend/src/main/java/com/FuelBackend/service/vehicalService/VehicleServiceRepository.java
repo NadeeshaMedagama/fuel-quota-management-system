@@ -1,9 +1,8 @@
 package com.FuelBackend.service.vehicalService;
 
 import com.FuelBackend.dataTransferObject.request.vehicleRequestDTO.VehicleRequestDTO;
+import com.FuelBackend.entity.VehicleClasses;
 import org.springframework.http.ResponseEntity;
-
-import java.util.UUID;
 
 public interface VehicleServiceRepository {
 
@@ -22,5 +21,6 @@ public interface VehicleServiceRepository {
     ResponseEntity<?> getAllVehicle();
 
     public String generateAndSaveQRCode(VehicleRequestDTO vehicleRequestDTO);
+
     public  boolean validateVehicleDetails(VehicleRequestDTO vehicleRequestDTO);
 }

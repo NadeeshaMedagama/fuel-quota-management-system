@@ -17,7 +17,6 @@ import java.util.UUID;
 public class FuelStation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long fuelStationId;
 

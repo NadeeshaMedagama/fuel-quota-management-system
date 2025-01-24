@@ -33,9 +33,9 @@ public class VehicleClasses {
 
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "fuel_id", referencedColumnName = "fuelId")
-//    private Fuel fuel;
+    @ManyToOne
+    @JoinColumn(name = "fuel_id", referencedColumnName = "fuelId")
+    private Fuel fuel;
 
     public VehicleClasses(com.FuelBackend.enums.VehicleClassName vehicleClassName, Double maxFuelCapacityPerWeek, Double maxFuelCapacityPerWeekForBusinessGov) {}
 public VehicleClasses(){}

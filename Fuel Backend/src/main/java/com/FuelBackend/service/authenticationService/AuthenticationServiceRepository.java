@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface AuthenticationServiceRepository {
 
-    public ResponseEntity<?> userLogin(UserLoginRequestDTO userLoginRequestDTO);
+    public String userLogin(UserLoginRequestDTO userLoginRequestDTO);
 
     public ResponseEntity<?> businessLogin(BusinessGovLoginRequestDTO businessGovLoginRequestDTO);
 
