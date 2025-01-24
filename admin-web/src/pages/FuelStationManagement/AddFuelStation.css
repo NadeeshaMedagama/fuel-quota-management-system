@@ -63,3 +63,21 @@
     background-color: #ccc;
     cursor: not-allowed;
   }
+
+  @media (max-width: 480px) {
+    .form-container {
+      padding: 15px;
+    }
+  
+    .form-container h2 {
+      font-size: 20px;
+    }
+  
+    .form-group input {
+      font-size: 13px;
+    }
+  
+    button[type="submit"] {
+      font-size: 14px;
+    }
+  }
