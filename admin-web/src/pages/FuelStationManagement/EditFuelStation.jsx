@@ -39,7 +39,15 @@ const EditFuelStation = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-   
+    try {
+        // Submit the updated fuel station data to the backend
+        await axios.put(`http://localhost:8080/fuelStations/${id}`, formData, {
+          headers: { "Content-Type": "application/json" },
+        });
+        navigate("/fuel-stations"); // Redirect to the fuel station list page
+      } catch (error) {
+        console.error("Error updating fuel station:", error);
+      }
   };
 
   return (
