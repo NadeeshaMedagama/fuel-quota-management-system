@@ -29,4 +29,40 @@ export const fetchReportData = async (fuelType, period) => {
     };
   }
 };
+// Utility function to generate a PDF using jsPDF
+export const generatePDF = (report) => {
+  const doc = new jsPDF();
 
+  // Add header information
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(16);
+  doc.text("Fuel Consumption Report", 10, 10);
+
+  // Add report metadata
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(12);
+  doc.text(`Fuel Type: ${report.fuelType}`, 10, 20);
+  doc.text(`Period: ${report.period}`, 10, 30);
+
+  // Add table headers
+  const startY = 40;
+  const columnSpacing = [10, 60]; // Adjust column spacing as needed
+  doc.text("Date", columnSpacing[0], startY);
+  doc.text("Consumption (liters)", columnSpacing[1], startY);
+
+  // Add report data rows
+  let yOffset = startY + 10; // Initial row offset
+  report.data.forEach((entry, index) => {
+    doc.text(`${entry.date}`, columnSpacing[0], yOffset);
+    doc.text(`${entry.consumption}`, columnSpacing[1], yOffset);
+    yOffset += 10;
+
+    // Add a new page if the content overflows
+    if (yOffset > 280) {
+      doc.addPage();
+      yOffset = 10; // Reset yOffset for the new page
+    }
+  });
+
+  return doc.output("blob"); // Generate the PDF as a Blob
+};
