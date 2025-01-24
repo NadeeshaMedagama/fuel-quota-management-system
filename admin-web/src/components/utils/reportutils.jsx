@@ -66,3 +66,28 @@ export const generatePDF = (report) => {
 
   return doc.output("blob"); // Generate the PDF as a Blob
 };
+
+
+// Function to generate the report and handle file download
+export const generateAndDownloadReport = async (fuelType, period) => {
+    try {
+      // Fetch data from the backend
+      const report = await fetchReportData(fuelType, period);
+  
+      // Generate PDF with the fetched data
+      const pdfBlob = generatePDF(report);
+  
+      // Trigger file download in the browser
+      const url = URL.createObjectURL(pdfBlob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `fuel-report-${fuelType}-${period}.pdf`;
+      link.click();
+  
+      console.log("Report downloaded successfully.");
+    } catch (error) {
+      console.error("Error generating or downloading the report:", error);
+      throw new Error("Failed to generate the report.");
+    }
+  };
+  
