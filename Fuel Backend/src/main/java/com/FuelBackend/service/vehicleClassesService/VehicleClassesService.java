@@ -50,11 +50,9 @@ public class VehicleClassesService implements VehicleClassesServiceRepository{
         );
 
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.CREATED.value(),
-                        "vehicle class create successfully",
-                        responseDTO
-                ),
+
+                        responseDTO,
+
                 HttpStatus.CREATED
 
         );
@@ -79,11 +77,9 @@ public class VehicleClassesService implements VehicleClassesServiceRepository{
         );
 
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "maxFuelCapacityPerWeek updated successfully",
+
                         responseDTO
-                ),
+                ,
                 HttpStatus.OK
         );
     }
@@ -109,11 +105,9 @@ public class VehicleClassesService implements VehicleClassesServiceRepository{
         );
 
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        "maxFuelCapacityPerWeekForBusinessGov updated successfully",
+
                         responseDTO
-                ),
+                ,
                 HttpStatus.OK
         );
     }
@@ -134,11 +128,9 @@ public class VehicleClassesService implements VehicleClassesServiceRepository{
         );
 
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        null,
+
                         responseDTO
-                ),
+                ,
                 HttpStatus.OK
         );
     }
@@ -161,11 +153,9 @@ public class VehicleClassesService implements VehicleClassesServiceRepository{
                 }
         );
         return new ResponseEntity<>(
-                new CustomApiResponse(
-                        HttpStatus.OK.value(),
-                        null,
-                        responseDTO
-                ),
+
+                        responseDTO,
+
                 HttpStatus.OK
         );
     }

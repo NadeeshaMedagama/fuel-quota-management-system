@@ -1,0 +1,204 @@
+/* General container styling */
+.container {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  background-color: white;
+  box-sizing: border-box; /* Ensure box-sizing includes padding and border */
+}
+
+/* Top-left logo */
+.top-left {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+
+/* Main content */
+.content {
+  margin-top: 100px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+
+
+/* Vehicle registration form section */
+.vehicle-registration-section {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling */
+.vehicle-registration-section form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Make inputs stretch to fill the width */
+}
+
+/* Input and Select Fields */
+.vehicle-registration-section input,
+.vehicle-registration-section select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+/* Button styling */
+.vehicle-registration-section button {
+  width: 100%;
+  padding: 12px;
+  background-color: #003366;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.vehicle-registration-section button:hover {
+  background-color: #263a93;
+}
+
+/* Error messages */
+.error {
+  color: #f44336;
+  font-size: 0.875rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* Footer styling */
+footer {
+  margin-top: 40px;
+  padding: 10px;
+  background-color: #003366;
+  color: #fff;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+      padding: 10px;
+  }
+
+  .title {
+      font-size: 2rem;
+  }
+
+  .vehicle-registration-section {
+      width: 100%;
+      margin: 10px;
+  }
+
+  .vehicle-registration-section input,
+  .vehicle-registration-section select {
+      font-size: 1rem;
+  }
+}
+
+/* Vehicle Registration Form */
+.vehicle-registration-form-container {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  height: 100vh; /* Take full viewport height */
+
+  padding-top: 20px; /* Padding at the top to avoid overlap */
+}
+
+.vehicle-registration-form-container h2 {
+  color: #003366; /* Dark blue for header text */
+  text-align: center; /* Center-align the header */
+  font-size: 2rem; /* Font size for the header */
+  margin-bottom: 20px; /* Space below the header */
+}
+
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for the form */
+  width: 100%;
+  max-width: 400px; /* Limit the form width */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold; /* Bold label text */
+  margin-bottom: 8px; /* Space below label */
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 15px; /* Space below the input fields */
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+input.error-input,
+select.error-input {
+  border-color: #f44336; /* Red border for error inputs */
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #003366; /* Dark blue button */
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #263a93; /* Lighter blue on hover */
+}
+
+.error {
+  color: #f44336;
+  font-size: 0.875rem;
+  margin-top: -5px;
+  margin-bottom: 10px; /* Space below the error message */
+}
+
+input[type="file"] {
+  padding: 8px;
+  font-size: 1rem;
+}
+
+input[type="file"]:focus {
+  outline: none;
+  border-color: #003366; /* Focused input border color */
+}

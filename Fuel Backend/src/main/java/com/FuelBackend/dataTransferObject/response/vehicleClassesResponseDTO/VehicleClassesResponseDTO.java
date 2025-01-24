@@ -1,5 +1,6 @@
 package com.FuelBackend.dataTransferObject.response.vehicleClassesResponseDTO;
 
+import com.FuelBackend.entity.VehicleClasses;
 import com.FuelBackend.enums.VehicleClassName;
 
 public class VehicleClassesResponseDTO {
@@ -14,7 +15,7 @@ public class VehicleClassesResponseDTO {
 //    private Integer fuelId;
 
 
-    public VehicleClassesResponseDTO() {
+    public VehicleClassesResponseDTO(Integer vehicleClassId, VehicleClasses.VehicleClassName vehicleClassName, Double maxFuelCapacityPerWeek, Double maxFuelCapacityPerWeekForBusinessGov) {
     }
 
     public VehicleClassesResponseDTO(

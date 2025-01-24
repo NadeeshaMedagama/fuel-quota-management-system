@@ -50,8 +50,7 @@ public class BusinessGovernmentService implements BusinessGovernmentServiceRepos
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.CREATED.value(),
-                        "businessGov object created successfully",
-                        responseDTO
+                        "businessGov object created successfully"
                 ),
                 HttpStatus.CREATED
         );
@@ -59,9 +58,9 @@ public class BusinessGovernmentService implements BusinessGovernmentServiceRepos
 
     @Override
     @Transactional
-    public ResponseEntity<?> verifyBusinessGovernmentMobile(Integer businessGovernmentId, Integer otp) {
+    public ResponseEntity<?> verifyBusinessGovernmentMobile(int businessGovernmentId, Integer otp) {
         // find the object
-        BusinessGovernment businessGovernment = businessGovernmentRepository.findById(businessGovernmentId)
+        BusinessGovernment businessGovernment = (BusinessGovernment) businessGovernmentRepository.findById(businessGovernmentId)
                 .orElseThrow(
                         () -> new NotFoundException("object not found")
                 );
@@ -78,16 +77,15 @@ public class BusinessGovernmentService implements BusinessGovernmentServiceRepos
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        "account is verified",
-                        responseDTO
+                        "account is verified"
                 ),
                 HttpStatus.OK
         );
     }
 
     @Override
-    public ResponseEntity<?> businessGovernmentFindById(Integer businessGovernmentId) {
-        BusinessGovernment businessGovernment = businessGovernmentRepository.findById(businessGovernmentId)
+    public ResponseEntity<?> businessGovernmentFindById(int businessGovernmentId) {
+        BusinessGovernment businessGovernment = (BusinessGovernment) businessGovernmentRepository.findById(businessGovernmentId)
                 .orElseThrow(
                         () -> new NotFoundException("object not found")
                 );
@@ -101,8 +99,7 @@ public class BusinessGovernmentService implements BusinessGovernmentServiceRepos
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        "account is verified",
-                        responseDTO
+                        "account is verified"
                 ),
                 HttpStatus.OK
         );
@@ -129,8 +126,7 @@ public class BusinessGovernmentService implements BusinessGovernmentServiceRepos
         return new ResponseEntity<>(
                 new CustomApiResponse(
                         HttpStatus.OK.value(),
-                        "account is verified",
-                        responseDTOList
+                        "account is verified"
                 ),
                 HttpStatus.OK
         );

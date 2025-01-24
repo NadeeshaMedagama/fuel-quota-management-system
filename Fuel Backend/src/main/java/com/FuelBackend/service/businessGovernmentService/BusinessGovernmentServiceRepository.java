@@ -9,9 +9,9 @@ public interface BusinessGovernmentServiceRepository {
 
     public ResponseEntity<?> createBusinessGovernment(BusinessGovernmentRequestDTO businessGovernmentRequestDTO);
 
-    public ResponseEntity<?> verifyBusinessGovernmentMobile(Integer businessGovernmentId, Integer otp);
+    public ResponseEntity<?> verifyBusinessGovernmentMobile(int businessGovernmentId, Integer otp);
 
-    public ResponseEntity<?> businessGovernmentFindById(Integer businessGovernmentId);
+    public ResponseEntity<?> businessGovernmentFindById(int businessGovernmentId);
 
     public ResponseEntity<?> businessGovernmentGetAll();
 }
