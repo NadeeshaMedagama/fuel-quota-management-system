@@ -13,13 +13,6 @@ public class VehicleRequestDTO {
     @NotBlank(message = "vehicleEngineNo is required")
     private String vehicleEngineNo;
 
-    @NotBlank(message = "model is required")
-    private String model;
-
-    @NotBlank(message = "yearOfManufacture is required")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date yearOfManufacture;
-
     @NotBlank(message = "ownerId is required")
     private Integer ownerId;
 
@@ -34,16 +27,12 @@ public class VehicleRequestDTO {
     public VehicleRequestDTO(
             String vehicleRegisterId,
             String vehicleEngineNo,
-            String model,
-            Date yearOfManufacture,
             Integer ownerId,
             Integer vehicleClassId,
             Integer fuelId
     ) {
         this.vehicleRegisterId = vehicleRegisterId;
         this.vehicleEngineNo = vehicleEngineNo;
-        this.model = model;
-        this.yearOfManufacture = yearOfManufacture;
         this.ownerId = ownerId;
         this.vehicleClassId = vehicleClassId;
         this.fuelId = fuelId;
@@ -63,22 +52,6 @@ public class VehicleRequestDTO {
 
     public void setVehicleEngineNo(String vehicleEngineNo) {
         this.vehicleEngineNo = vehicleEngineNo;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public Date getYearOfManufacture() {
-        return yearOfManufacture;
-    }
-
-    public void setYearOfManufacture(Date yearOfManufacture) {
-        this.yearOfManufacture = yearOfManufacture;
     }
 
 
