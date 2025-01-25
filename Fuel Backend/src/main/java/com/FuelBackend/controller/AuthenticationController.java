@@ -27,8 +27,9 @@ public class AuthenticationController {
     }
 
     @PostMapping("/userAuth")
-    public ResponseEntity<?> userLogin(@RequestBody UserLoginRequestDTO userLoginRequestDTO){
-        return authenticationServiceRepository.userLogin(userLoginRequestDTO);
+    public String userLogin(@RequestBody UserLoginRequestDTO userLoginRequestDTO){
+//      log.info("user login controller");
+       return authenticationServiceRepository.userLogin(userLoginRequestDTO);
     }
 
     @PostMapping("/employeeAuth")

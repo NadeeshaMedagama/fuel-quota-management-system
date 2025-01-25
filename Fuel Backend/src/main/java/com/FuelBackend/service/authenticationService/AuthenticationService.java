@@ -6,7 +6,6 @@ import com.FuelBackend.dataTransferObject.response.administratorResponseDTO.Admi
 import com.FuelBackend.dataTransferObject.response.businessGovernmentResponseDTO.BusinessGovernmentResponseDTO;
 import com.FuelBackend.dataTransferObject.response.employeeResponseDTO.EmployeeResponseDTO;
 import com.FuelBackend.dataTransferObject.response.fuelStationResponseDTO.FuelStationResponseDTO;
-import com.FuelBackend.dataTransferObject.response.userResponseDTO.UserResponseDTO;
 import com.FuelBackend.entity.*;
 import com.FuelBackend.exception.UnauthorizedAccessException;
 import com.FuelBackend.repositoryDAO.*;
@@ -48,47 +47,24 @@ public class AuthenticationService implements AuthenticationServiceRepository{
     }
 
     @Override
-    public ResponseEntity<?> userLogin(UserLoginRequestDTO userLoginRequestDTO) {
-        User user = userRepository.findByMobile(userLoginRequestDTO.getMobile()).orElseThrow(
-                () -> new UnauthorizedAccessException("username or password incorrect")
-        );
+    public String userLogin(UserLoginRequestDTO userLoginRequestDTO) {
 
-        String token= "";
-        if (
-                user != null &&
-                    user.getVerifyMobile() &&
-                        user.getPassword().equals(userLoginRequestDTO.getPassword())
-        ) {
-//            authenticationManager.authenticate(
-//                    new UsernamePasswordAuthenticationToken(
-//                            userLoginRequestDTO.getMobile(),
-//                            userLoginRequestDTO.getPassword()
-//                    )
-//            );
-            // create a jwt token
-            token = jwtUtility.generateToken(user.getMobile());
-        } else {
-            throw new UnauthorizedAccessException("username or password incorrect");
+        User user = userRepository.findByMobile(userLoginRequestDTO.getMobile())
+                .orElseThrow(() -> new UnauthorizedAccessException("Username or password incorrect"));
+
+
+        if (user.getVerifyMobile() && user.getPassword().equals(userLoginRequestDTO.getPassword())) {
+
+            String token = jwtUtility.generateToken(user.getMobile());
+            System.out.println("User logged in with token: " + token);
+            return token;
         }
+        else {
 
-
-        return new ResponseEntity<>(
-                new LoginResponseDTO(
-                        HttpStatus.OK.value(),
-                        "user login successfully",
-                        token,
-                        new UserResponseDTO(
-                                user.getUserId(),
-                                user.getF_name(),
-                                user.getL_name(),
-                                user.getEmail(),
-                                user.getMobile(),
-                                user.getVerifyMobile()
-                        )
-                ),
-                HttpStatus.OK
-        );
+            throw new UnauthorizedAccessException("Username or password incorrect");
+        }
     }
+
 
     @Override
     public ResponseEntity<?> employeeLogin(EmployeeLoginRequestDTO employeeLoginRequestDTO) {

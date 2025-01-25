@@ -62,8 +62,6 @@ public class VehicleService implements VehicleServiceRepository{
         Vehicle vehicle = new Vehicle(
                 vehicleRequestDTO.getVehicleRegisterId(),
                 vehicleRequestDTO.getVehicleEngineNo(),
-                vehicleRequestDTO.getModel(),
-                vehicleRequestDTO.getYearOfManufacture(),
                 OwnerType.User,
                 vehicleRequestDTO.getOwnerId(),
                 vehicleClass,
@@ -76,9 +74,6 @@ public class VehicleService implements VehicleServiceRepository{
                 savedVehicle.getVehicleId(),
                 savedVehicle.getVehicleRegisterId(),
                 savedVehicle.getVehicleEngineNo(),
-                savedVehicle.getModel(),
-                savedVehicle.getYearOfManufacture(),
-                savedVehicle.getCurrentFuelCapacity(),
                 savedVehicle.getOwnerId(),
                 savedVehicle.getVehicleClasses().getVehicleClassId(),
                 savedVehicle.getFuel().getFuelId()
@@ -111,13 +106,10 @@ public class VehicleService implements VehicleServiceRepository{
         Vehicle vehicle = new Vehicle(
                 vehicleRequestDTO.getVehicleRegisterId(),
                 vehicleRequestDTO.getVehicleEngineNo(),
-                vehicleRequestDTO.getModel(),
-                vehicleRequestDTO.getYearOfManufacture(),
-                OwnerType.BusinessGovUser,
+                OwnerType.User,
                 vehicleRequestDTO.getOwnerId(),
                 vehicleClass,
-                fuel
-        );
+                fuel);
 
         Vehicle savedVehicle = vehicleRepository.save(vehicle);
 
@@ -139,9 +131,6 @@ public class VehicleService implements VehicleServiceRepository{
                 vehicle.getVehicleId(),
                 vehicle.getVehicleRegisterId(),
                 vehicle.getVehicleEngineNo(),
-                vehicle.getModel(),
-                vehicle.getYearOfManufacture(),
-                vehicle.getCurrentFuelCapacity(),
                 vehicle.getOwnerId(),
                 vehicle.getVehicleClasses().getVehicleClassId(),
                 vehicle.getFuel().getFuelId()
@@ -195,9 +184,7 @@ public class VehicleService implements VehicleServiceRepository{
                                     vehicle.getVehicleId(),
                                     vehicle.getVehicleRegisterId(),
                                     vehicle.getVehicleEngineNo(),
-                                    vehicle.getModel(),
-                                    vehicle.getYearOfManufacture(),
-                                    vehicle.getCurrentFuelCapacity(),
+
                                     vehicle.getOwnerId(),
                                     vehicle.getVehicleClasses().getVehicleClassId(),
                                     vehicle.getFuel().getFuelId()
@@ -253,8 +240,16 @@ public class VehicleService implements VehicleServiceRepository{
             byte[] qrCode = QRCodeGenerator.generateQRCode(data, 200, 200);
 
 
-            Vehicle vehicle = new Vehicle();
-        vehicle.setVehicleRegisterId(vehicleRequestDTO.getVehicleRegisterId());
+            Vehicle vehicle = new Vehicle(
+                    vehicleRequestDTO.getVehicleRegisterId(),
+                    vehicleRequestDTO.getVehicleEngineNo(),
+                    vehicleRequestDTO.getOwnerId(),
+                 vehicleRequestDTO.getFuelId(),
+                 vehicleRequestDTO.getVehicleClassId()
+
+                    );
+
+            vehicle.setVehicleRegisterId(vehicleRequestDTO.getVehicleRegisterId());
             vehicle.setQrCode(qrCode);
             vehicleRepository.save(vehicle);
 
