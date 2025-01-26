@@ -27,7 +27,7 @@ public class NotificationServices {
         private final String authToken;
         private final String fromPhoneNumber;
 
-public TwilioService(String accountSid, String authToken, String fromPhoneNumber) {
+        public TwilioService(String accountSid, String authToken, String fromPhoneNumber) {
             this.accountSid = accountSid;
             this.authToken = authToken;
             this.fromPhoneNumber = fromPhoneNumber;
@@ -50,5 +50,5 @@ public TwilioService(String accountSid, String authToken, String fromPhoneNumber
                 System.err.println("Error sending message: " + e.getMessage());
             }
         }
-  }
+    }
 }
