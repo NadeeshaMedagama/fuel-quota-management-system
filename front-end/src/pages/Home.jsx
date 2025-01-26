@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../user/common/Footer";
+import "./Home.css";
 
 const Home = () => {
   const [fuelInfo, setFuelInfo] = useState("");
