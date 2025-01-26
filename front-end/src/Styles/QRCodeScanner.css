@@ -1,0 +1,77 @@
+.scanner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.scanner-title {
+  font-size: 3rem;
+  color: #003366;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.scanner-message {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #555;
+  margin-bottom: 20px;
+  font-weight: bold;
+
+}
+
+.qr-scanner-box {
+  position: relative;
+  width: 80%;
+  height: 300px;
+  max-width: 500px;
+  border: 2px dashed #003366; /* Blue dashed border */
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+.qr-scanner-placeholder {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #003366;
+  argin-bottom: 20px;
+  font-weight: bold;
+}
+
+.scanner-result {
+  margin-top: 20px;
+  background-color: #e0f7fa;
+  padding: 10px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.loading-message {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #ff9800;
+}
+
+.error {
+  color: #f44336;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #003366;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+

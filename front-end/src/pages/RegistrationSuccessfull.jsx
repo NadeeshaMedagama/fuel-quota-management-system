@@ -1,29 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './RegistrationSuccessfullPage.css';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../styles/RegistrationSuccessfull.css";
 
 const RegistrationSuccessfull = () => {
   const [vehicleDetails, setVehicleDetails] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch the vehicle details from the backend
     const fetchVehicleDetails = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/v1/vehicle/{id}');
+        const response = await axios.get("http://localhost:8080/api/v1/vehicle/{id}");
         setVehicleDetails(response.data);
       } catch (error) {
-        console.error('Error fetching vehicle details:', error);
+        console.error("Error fetching vehicle details:", error);
       }
     };
 
     fetchVehicleDetails();
   }, []);
 
-  const startQRScanner = () => {
-    // Navigate to the QR Scanner page
-    navigate('QRCodeScanner');
+  const generateQRCode = () => {
+    navigate("/QRdisplay", { state: { vehicleDetails } });
   };
 
   return (
@@ -43,8 +41,8 @@ const RegistrationSuccessfull = () => {
         )}
 
         {/* QR Code Scanner Button */}
-        <button className="qr-button" onClick={startQRScanner}>
-          Scan QR Code
+        <button className="qr-button" onClick={generateQRCode}>
+        Generate QR Code
         </button>
       </div>
     </div>
@@ -52,6 +50,3 @@ const RegistrationSuccessfull = () => {
 };
 
 export default RegistrationSuccessfull;
-
-
-

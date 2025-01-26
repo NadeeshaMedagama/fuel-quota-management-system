@@ -1,5 +1,5 @@
 
-import "./Privacy.css";
+import "../Styles/PrivacyPolicy.css";
 
 const PrivacyPolicy = () => {
 

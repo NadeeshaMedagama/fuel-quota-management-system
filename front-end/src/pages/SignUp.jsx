@@ -1,7 +1,8 @@
+// src/pages/SignUpForm.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./SignUpForm.css";
+import "../styles/SignUpForm.css";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -53,14 +54,14 @@ const SignUpForm = () => {
     } else {
       setErrors({});
       try {
-        // Send POST request to Spring Boot backend
+        // Send POST request to backend (adjust the API URL as necessary)
         const response = await axios.post("http://localhost:8080/api/v1/users/register", formData);
         console.log(response.data);
 
         if (response.status === 200) {
           alert("Registration successful!");
-          // Navigate to Vehicle Registration Form
-          navigate("/VehicleRegistrationForm");
+          // Redirect to login page after successful registration
+          navigate("/login");
         }
       } catch (error) {
         console.error("Error submitting form:", error);
