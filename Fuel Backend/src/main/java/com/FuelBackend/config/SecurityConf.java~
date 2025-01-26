@@ -1,0 +1,4 @@
+package com.FuelBackend.config;
+
+public class SecurityConf {
+}
