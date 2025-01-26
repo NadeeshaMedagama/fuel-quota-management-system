@@ -5,9 +5,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import org.springframework.lang.Nullable;
 
-import java.util.Date;
-import java.util.UUID;
-
 @Entity
 @Table(
         name = "vehicle",
@@ -30,20 +27,11 @@ public class Vehicle {
     @Column(updatable = false,unique = true,nullable = false)
     private String vehicleEngineNo;
 
-    @Column(nullable = true)
-    private String model;
-
-    @Column(nullable = false)
-    private Date yearOfManufacture;
-
     @Column(nullable = true, columnDefinition = "double default 0")
     @Min(0)
     private Double currentFuelCapacity;
 
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private OwnerType ownerType;
 
     @Column(nullable = false)
     private Integer ownerId;
@@ -61,12 +49,17 @@ public class Vehicle {
     @JoinColumn(name = "vehicle_class_id", referencedColumnName = "vehicleClassId", nullable = false)
     private VehicleClasses vehicleClasses;
 
+
     @ManyToOne
     @JoinColumn(name = "fuel_id", referencedColumnName = "fuelId", nullable = true)
     private Fuel fuel;
 
+
     @Lob
     private byte[] qrCode;
+
+    public Vehicle(String vehicleRegisterId, String vehicleEngineNo, Integer ownerId, Integer vehicleClass, Integer fuel) {
+    }
 
     public byte[] getQrCode() {
         return qrCode;
@@ -76,33 +69,14 @@ public class Vehicle {
         this.qrCode = qrCode;
     }
 
-    public Vehicle(){}
+    public Vehicle(String vehicleRegisterId, String vehicleEngineNo, OwnerType user, Integer ownerId, VehicleClasses vehicleClass, Fuel fuel){}
 
-    public Vehicle(
-            String vehicleRegisterId,
-            String vehicleEngineNo,
-            String model,
-            Date yearOfManufacture,
-            OwnerType ownerType,
-            Integer ownerId,
-            VehicleClasses vehicleClasses,
-            Fuel fuel) {
-        this.vehicleRegisterId = vehicleRegisterId;
-        this.vehicleEngineNo = vehicleEngineNo;
-        this.model = model;
-        this.yearOfManufacture = yearOfManufacture;
-        this.ownerType = ownerType;
-        this.ownerId = ownerId;
-        this.vehicleClasses = vehicleClasses;
-        this.fuel = fuel;
-    }
+
 
     public Vehicle(
             int vehicleId,
             String vehicleRegisterId,
             String vehicleEngineNo,
-            String model,
-            Date yearOfManufacture,
             Double currentFuelCapacity,
             VehicleClasses vehicleClasses,
             Fuel fuel
@@ -110,8 +84,6 @@ public class Vehicle {
         this.vehicleId = vehicleId;
         this.vehicleRegisterId = vehicleRegisterId;
         this.vehicleEngineNo = vehicleEngineNo;
-        this.model = model;
-        this.yearOfManufacture = yearOfManufacture;
         this.currentFuelCapacity = currentFuelCapacity;
         this.vehicleClasses = vehicleClasses;
         this.fuel = fuel;
@@ -141,22 +113,6 @@ public class Vehicle {
         this.vehicleEngineNo = vehicleEngineNo;
     }
 
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public Date getYearOfManufacture() {
-        return yearOfManufacture;
-    }
-
-    public void setYearOfManufacture(Date yearOfManufacture) {
-        this.yearOfManufacture = yearOfManufacture;
-    }
-
     public Double getCurrentFuelCapacity() {
         return currentFuelCapacity;
     }
@@ -181,13 +137,7 @@ public class Vehicle {
         this.vehicleClasses = vehicleClasses;
     }
 
-    public OwnerType getOwnerType() {
-        return ownerType;
-    }
 
-    public void setOwnerType(OwnerType ownerType) {
-        this.ownerType = ownerType;
-    }
 
     public Integer getOwnerId() {
         return ownerId;

@@ -3,7 +3,6 @@ package com.FuelBackend.controller;
 import com.FuelBackend.dataTransferObject.request.vehicleRequestDTO.VehicleRequestDTO;
 import com.FuelBackend.entity.Vehicle;
 import com.FuelBackend.repositoryDAO.VehicleRepository;
-import com.FuelBackend.service.vehicalService.VehicleService;
 import com.FuelBackend.service.vehicalService.VehicleServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/vehicle")

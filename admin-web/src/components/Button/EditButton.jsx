@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Ensure Bootstrap is included
 const EditButton = ({ onClick }) => {
   return (
     <button
-      className="btn btn-primary btn-lg" // Bootstrap classes for primary large button
+      className="btn btn-primary me-2" 
       onClick={onClick}
       aria-label="Edit" // Accessibility improvement
     >
