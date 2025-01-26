@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './RegistrationSuccessfullPage.css';
 import axios from 'axios';
-
+import "../Styles/RegistrationSuccessfullPage.css";
+import Footer from '../user/common/Footer';
 const RegistrationSuccessfull = () => {
   const [vehicleDetails, setVehicleDetails] = useState(null);
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const RegistrationSuccessfull = () => {
 
   const startQRScanner = () => {
     // Navigate to the QR Scanner page
-    navigate('QRCodeScanner');
+    navigate('QRcodeScanner');
   };
 
   return (
@@ -47,6 +47,7 @@ const RegistrationSuccessfull = () => {
           Scan QR Code
         </button>
       </div>
+<Footer />
     </div>
   );
 };

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./SignUpForm.css";
+
+import "../Styles/SignUpForm.css";
+import Footer from "../user/common/Footer";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -70,6 +72,7 @@ const SignUpForm = () => {
   };
 
   return (
+  
     <div className="container">
       <div className="sign-up-form">
         <h2>Sign Up</h2>
@@ -155,6 +158,7 @@ const SignUpForm = () => {
           {submissionError && <p className="error">{submissionError}</p>}
         </form>
       </div>
+      <Footer />
     </div>
   );
 };

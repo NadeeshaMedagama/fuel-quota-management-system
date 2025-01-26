@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; // Import axios
-import "./VehicleRegistrationForm.css"; // Use the updated CSS file
-
+import "../Styles/VehicleRegistrationForm.css";
+import Footer from "../user/common/Footer";
 const VehicleRegistrationForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -162,6 +162,7 @@ const VehicleRegistrationForm = () => {
 
         <button type="submit" className="submit-button">Register</button>
       </form>
+      <Footer />
     </div>
   );
 };

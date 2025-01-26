@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Login.css";
+import "../Styles/Login.css";
+import Footer from "../user/common/Footer";
 
 const LoginForm = () => {
   const [vehicleRegistrationNumber, setVehicleRegistrationNumber] = useState("");
@@ -117,6 +118,7 @@ const LoginForm = () => {
           </div>
         </form>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -1,109 +1,103 @@
-/* General container for the privacy policy page */
-.privacyContainer {
+/* Privacy.css */
+
+/* General styles */
+body {
   font-family: Arial, sans-serif;
-  margin: 20px;
-  padding: 20px;
-  background-color: #f4f4f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Header styling */
-.privacyHeader {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.mainHeading {
-  font-size: 36px;
-  color: #333;
   margin: 0;
   padding: 0;
+  background-color: #f4f4f4;
+  direction: ltr; /* Ensure content is left to right */
 }
 
-/* Styling for section titles */
-.sectionHeading {
-  font-size: 24px;
-  color: #2c3e50;
+.privacy-policy-wrapper {
+  width: 100%;
+  max-width: 1200px; /* Limit max width */
+  margin: 0 auto;
+  padding: 30px;
+  background-color: white;
+  border: 1px solid #ddd; /* Add border around the container */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Header section */
+.policy-header {
+  margin-bottom: 30px;
+}
+
+.title-heading {
+  font-size: 46px;
+  color: #03101f;
+  font-weight: bold;
+  margin: 0;
+  text-align: center; /* Ensure title is centered */
+}
+
+/* Privacy content section */
+.policy-content-section {
+  padding: 20px;
+  text-align: left; /* Align content text to the left */
+  direction: ltr; /* Ensure the content follows a left-to-right flow */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Content section headings */
+.content-heading {
+  font-size: 34px;
+  color: #03101f;
   margin-top: 20px;
-  border-bottom: 2px solid #ecf0f1;
-  padding-bottom: 5px;
+  margin-bottom: 10px;
+  text-align: left; /* Ensure headings align left */
+  padding: 10px 0; /* Add vertical padding */
+  border-bottom: 2px solid #03101f; /* Underline the headings */
 }
 
-/* Paragraph styling */
-.paragraph {
+/* Content paragraphs */
+.content-paragraph {
   font-size: 16px;
-  color: #555;
   line-height: 1.6;
-  margin: 10px 0;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: left; /* Align paragraphs to the left */
+  padding: 5px 0; /* Add vertical padding to paragraphs */
 }
 
-/* Unordered list styling */
-.list {
-  font-size: 16px;
-  color: #555;
-  padding-left: 20px;
-  margin-top: 10px;
-}
-
-.list li {
-  margin-bottom: 5px;
-}
-
-/* Styling for footer section */
-.footer-right {
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid #ecf0f1;
-}
-
-.contact-title {
-  font-size: 20px;
-  color: #2c3e50;
-}
-
-.footer-right p {
-  font-size: 16px;
-  color: #555;
-}
-
-.footer-right a {
-  color: #3498db;
+/* Link styles */
+a {
+  color: #0056b3;
   text-decoration: none;
 }
 
-.footer-right a:hover {
+a:hover {
   text-decoration: underline;
 }
 
-/* Styling for last updated date */
-.lastUpdated {
+.last-updated-text {
   font-size: 14px;
-  color: #888;
-  margin-top: 20px;
+  color: #777;
+  text-align: center; /* Align last updated text to the center */
+  margin-top: 30px;
+  padding: 10px 0;
+  border-top: 1px solid #ddd; /* Add a border at the top of last updated text */
 }
 
-/* Additional responsive design for smaller screens */
+/* Responsiveness */
 @media (max-width: 768px) {
-  .privacyContainer {
+  .privacy-policy-wrapper {
     padding: 15px;
   }
 
-  .mainHeading {
-    font-size: 30px;
+  .title-heading {
+    font-size: 28px;
   }
 
-  .sectionHeading {
+  .content-heading {
     font-size: 20px;
   }
 
-  .footer-right {
-    margin-top: 20px;
-  }
-
-  .footer-right p {
+  .content-paragraph, .info-list {
     font-size: 14px;
   }
 }
 
-  

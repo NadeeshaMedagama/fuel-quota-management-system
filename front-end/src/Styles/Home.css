@@ -1,0 +1,134 @@
+body {
+  font-family: 'poppins',Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  
+}
+* {
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    direction: ltr; /* Ensure content is left to right */
+  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Full page background */
+.home-background {
+  background-image: url("/background.jpg"); /* Your background image path */
+  background-size: cover; /* Cover the entire page */
+  background-position: center center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent background repeat */
+  height: 100vh; /* Ensure the background spans the entire viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+}
+
+/* Full-height container for your page content */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensures it takes full height */
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  position: relative; /* Makes sure the content is properly positioned within */
+}
+
+/* Header with logo and login button at the top */
+.home-header {
+  position: absolute;
+  top: 20px; /* Space from the top */
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-logo {
+  width: 190px;
+  border-radius: 15px;
+  /*Adjustthelogosize*/
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.home-login-container {
+ 
+  width: 180px;
+}
+*/* Register button styled to be smaller */
+.home-register-button {
+  background-color: #03101f;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  /*Reducedpadding*/border-radius: 15px;
+  font-size: 28px;
+  /*Smallerfontsize*/cursor: pointer;
+  width: 250px;
+  /*Reducedwidth*/height: 75px;
+  /*Reducedheight*/font-weight: bold;
+  margin-top: 70px;
+  
+}
+
+.home-register-button:hover {
+  background-color: #0056b3;
+}
+.home-login-button {
+  background-color: #03101f;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.home-login-button:hover {
+  background-color: #0056b3;
+}
+
+/* Content section */
+.home-content {
+ color: white;
+  margin-top: 1px; /* Add space from the top for content */
+}
+
+.home-title {
+  font-size: 66px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.home-subtitle {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #e9bd0e;
+  font-weight: bolder;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -12,11 +12,15 @@ width: 500px;
 .form-container {
   background-color: #fff;
   padding: 40px;
-  border-radius: 15px;
+  border-radius: 25px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 1000px;
   transition: transform 0.3s ease-in-out;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }
 
 .form-container:hover {
