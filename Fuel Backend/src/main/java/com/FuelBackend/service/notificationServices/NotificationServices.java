@@ -20,7 +20,7 @@ public class NotificationServices {
     private String fromPhoneNumber;
 
 
-
+    @Service
     public static class TwilioService {
 
         private final String accountSid;
