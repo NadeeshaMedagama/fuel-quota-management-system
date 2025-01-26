@@ -1,22 +1,21 @@
 .search-bar-container {
-    display: flex;
-    justify-content: flex-end; /* Align to the right */
-    padding: 20px;
-  }
-  .search-bar {
-    width: 300px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: rgb(145, 145, 145);
-  
-  }
-  .search-bar input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-  }
-  
+  display: flex;
+  justify-content: flex-end; /* Align to the right */
+  padding: 20px;
+}
+.search-bar {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: rgb(238, 240, 245);
+
+}
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}

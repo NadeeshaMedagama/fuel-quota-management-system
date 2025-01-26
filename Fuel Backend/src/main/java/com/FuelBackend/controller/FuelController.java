@@ -45,5 +45,8 @@ public class FuelController {
         return fuelServiceRepository.DeleteFuelById(fuelId);
     }
 
-
+//    @GetMapping("/chart-data")
+//    public chartData getChartData(){
+//
+//    }
 }
