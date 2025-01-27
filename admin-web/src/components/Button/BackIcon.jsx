@@ -12,7 +12,7 @@ const BackIcon = () => {
 
   const handleClick = () => {
     if (window.history.length > 2) {
-      navigate(-1); // Go back to the previous page if possible
+      navigate(-1); // Go back to the previous page 
     } else {
       navigate("/"); 
     }
