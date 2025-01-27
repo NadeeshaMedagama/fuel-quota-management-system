@@ -1,6 +1,6 @@
 .search-bar-container {
   display: flex;
-  justify-content: flex-end; /* Align to the right */
+  justify-content: flex-end; 
   padding: 20px;
 }
 .search-bar {
@@ -13,7 +13,7 @@
 
 }
 .search-bar input {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   border: none;
   border-radius: 5px;
