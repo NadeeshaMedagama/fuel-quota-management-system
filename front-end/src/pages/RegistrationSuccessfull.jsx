@@ -49,4 +49,4 @@ const RegistrationSuccessfull = () => {
   );
 };
 
-export default RegistrationSuccessfull;
+export default RegistrationSuccessfull
