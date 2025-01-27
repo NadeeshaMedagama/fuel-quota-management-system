@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Home.css";
+import "../Styles/home.css";
 import LoginButton from "../Styles/components/LoginButton";
 import RegisterButton from "../Styles/components/RegisterButton";
 import Footer from "../Styles/components/Footer";
@@ -18,7 +18,12 @@ function Home() {
           <RegisterButton />
         </main>
   
-        
+        <section className="home-description">
+          <div className="info-card">
+            <h2>FuelPulse</h2>
+            <p>FuelPulse is an innovative platform designed to streamline fuel management processes.</p>
+          </div>
+        </section>
   
         <Footer />
       </div>
@@ -27,4 +32,5 @@ function Home() {
   
 
 export default Home;
+
 
