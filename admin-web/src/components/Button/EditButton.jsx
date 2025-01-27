@@ -1,5 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; // Ensure Bootstrap is included
+import "bootstrap/dist/css/bootstrap.min.css"; 
 
 const EditButton = ({ onClick }) => {
   return (
