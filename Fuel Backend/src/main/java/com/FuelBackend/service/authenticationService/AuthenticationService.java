@@ -103,7 +103,7 @@ public class AuthenticationService implements AuthenticationServiceRepository{
 
     @Override
     public ResponseEntity<?> fuelStationLogin(FuelStationLoginRequestDTO fuelStationLoginRequestDTO) {
-        FuelStation fuelStation = (FuelStation) fuelStationRepository.findByFuelStationRegisterId(
+        FuelStation fuelStation = (FuelStation) fuelStationRepository.findByLicenseNumber(
                 fuelStationLoginRequestDTO.getFuelStationRegisterId()
         ).orElseThrow(
                 () -> new UnauthorizedAccessException("username or password incorrect")
@@ -114,7 +114,7 @@ public class AuthenticationService implements AuthenticationServiceRepository{
                         fuelStation.getPassword().equals(fuelStationLoginRequestDTO.getPassword())
         ){
 
-            token = jwtUtility.generateToken(fuelStation.getFuelStationRegisterId());
+            token = jwtUtility.generateToken(fuelStation.getLicenseNumber());
         }else{
             throw new UnauthorizedAccessException("username or password incorrect");
         }
@@ -125,9 +125,9 @@ public class AuthenticationService implements AuthenticationServiceRepository{
                         token,
                         new FuelStationResponseDTO(
                                 fuelStation.getFuelStationId(),
-                                fuelStation.getFuelStationRegisterId(),
-                                fuelStation.getFuelStationOwnerName(),
-                                fuelStation.getFuelStationEmail()
+                                fuelStation.getLicenseNumber(),
+                                fuelStation.getOwnerName(),
+                                fuelStation.getEmail()
                         )
                 ),
                 HttpStatus.OK

@@ -22,19 +22,27 @@ public class Vehicle {
     private int vehicleId;
 
     @Column(updatable = false,unique = true,nullable = false)
-    private String vehicleRegisterId;
+    private String vehicleNumber;
 
     @Column(updatable = false,unique = true,nullable = false)
     private String vehicleEngineNo;
 
-    @Column(nullable = true, columnDefinition = "double default 0")
-    @Min(0)
-    private Double currentFuelCapacity;
 
+
+    @Column
+    private String password;
 
 
     @Column(nullable = false)
     private Integer ownerId;
+
+    @Column
+
+    private Double fuelQuota;
+
+    @Column
+    @Min(0)
+    private Double currentFuelCapacity;
 
 //    @ManyToOne
 //    @JoinColumn(name = "user_id", referencedColumnName = "userId", nullable = true)
@@ -47,16 +55,15 @@ public class Vehicle {
 
     @ManyToOne
     @JoinColumn(name = "vehicle_class_id", referencedColumnName = "vehicleClassId", nullable = false)
-    private VehicleClasses vehicleClasses;
-
-
-    @ManyToOne
-    @JoinColumn(name = "fuel_id", referencedColumnName = "fuelId", nullable = true)
-    private Fuel fuel;
+    private VehicleClasses.VehicleClassName vehicleClass;
 
 
     @Lob
     private byte[] qrCode;
+//
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "loginid", nullable = false)
+//    private UserLog ownerLog;
 
     public Vehicle(String vehicleRegisterId, String vehicleEngineNo, Integer ownerId, Integer vehicleClass, Integer fuel) {
     }
@@ -75,18 +82,16 @@ public class Vehicle {
 
     public Vehicle(
             int vehicleId,
-            String vehicleRegisterId,
+            String vehicleNumber,
             String vehicleEngineNo,
             Double currentFuelCapacity,
-            VehicleClasses vehicleClasses,
-            Fuel fuel
+           Double fuelQuota
     ) {
         this.vehicleId = vehicleId;
-        this.vehicleRegisterId = vehicleRegisterId;
+        this.vehicleNumber =vehicleNumber;
         this.vehicleEngineNo = vehicleEngineNo;
         this.currentFuelCapacity = currentFuelCapacity;
-        this.vehicleClasses = vehicleClasses;
-        this.fuel = fuel;
+       this.fuelQuota=fuelQuota;
     }
 
     public int getVehicleId() {
@@ -97,12 +102,12 @@ public class Vehicle {
         this.vehicleId = vehicleId;
     }
 
-    public String getVehicleRegisterId() {
-        return vehicleRegisterId;
+    public String getVehicleNumber() {
+        return vehicleNumber;
     }
 
-    public void setVehicleRegisterId(String vehicleRegisterId) {
-        this.vehicleRegisterId = vehicleRegisterId;
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
     }
 
     public String getVehicleEngineNo() {
@@ -129,15 +134,30 @@ public class Vehicle {
 //        this.user = user;
 //    }
 
-    public VehicleClasses getVehicleClasses() {
-        return vehicleClasses;
+
+    public String getPassword() {
+        return password;
     }
 
-    public void setVehicleClasses(VehicleClasses vehicleClasses) {
-        this.vehicleClasses = vehicleClasses;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
+    public VehicleClasses.VehicleClassName getVehicleClass() {
+        return vehicleClass;
+    }
 
+    public void setVehicleClass(VehicleClasses.VehicleClassName vehicleClass) {
+        this.vehicleClass = vehicleClass;
+    }
+
+    public Double getFuelQuota() {
+        return fuelQuota;
+    }
+
+    public void setFuelQuota(Double fuelQuota) {
+        this.fuelQuota = fuelQuota;
+    }
 
     public Integer getOwnerId() {
         return ownerId;
@@ -147,11 +167,4 @@ public class Vehicle {
         this.ownerId = ownerId;
     }
 
-    public Fuel getFuel() {
-        return fuel;
-    }
-
-    public void setFuel(Fuel fuel) {
-        this.fuel = fuel;
-    }
 }
