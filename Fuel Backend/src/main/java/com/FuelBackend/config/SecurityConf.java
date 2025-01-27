@@ -36,7 +36,7 @@ public class SecurityConf {
         return http.getSharedObject(AuthenticationManagerBuilder.class).build();
     }
 
-    @Bean
+    @Bean(name = "securityFilterChainConfig2")
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http,
             CorsConfigurationSource corsConfigurationSource
