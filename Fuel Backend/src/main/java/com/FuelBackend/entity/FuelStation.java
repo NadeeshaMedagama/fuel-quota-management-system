@@ -2,76 +2,68 @@ package com.FuelBackend.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.List;
-import java.util.UUID;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
+@Table(name = "fuel_station_register")
 public class FuelStation {
 
     @Id
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long fuelStationId;
 
-    @Column(nullable = false,unique = true,updatable = false)
-    private String fuelStationRegisterId;
+    @NotNull(message = "Location is required")
+    private String location;
 
-    @Column(nullable = false)
-    private String fuelStationOwnerName;
+    @NotNull(message = "Station name is required")
+    @Size(min = 3, max = 50, message = "Station name must be between 3 and 50 characters")
+    private String stationName;
 
-    @Column(nullable = false,unique = true)
-    @Email
-    private String fuelStationEmail;
+    @NotNull(message = "license number is required")
+    private String licenseNumber;
 
-    @Column(nullable = false)
+    @NotNull(message = "Email is required")
+    @Email(message = "Invalid email format")
+    private String email;
+
+    @NotNull(message = "Contact number is required")
+
+    private String contactNumber;
     private String password;
 
-    @OneToMany(mappedBy = "fuelStation", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Employee> employees;
-    public FuelStation(){
-
+    public FuelStation(String fuelStationLicenseNumber, String fuelStationOwnerName, String fuelStationEmail, String password) {
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
+    public String getPassword() {
+        return password;
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
-
-    public FuelStation(
-            String fuelStationRegisterId,
-            String fuelStationOwnerName,
-            String fuelStationEmail,
-            String password
-    ) {
-        this.fuelStationRegisterId = fuelStationRegisterId;
-        this.fuelStationOwnerName = fuelStationOwnerName;
-        this.fuelStationEmail = fuelStationEmail;
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public FuelStation(
-        Long fuelStationId,
-            String fuelStationRegisterId,
-            String fuelStationOwnerName,
-            String fuelStationEmail,
-            String password
-    ) {
-        this.fuelStationId = fuelStationId;
-        this.fuelStationRegisterId = fuelStationRegisterId;
-        this.fuelStationOwnerName = fuelStationOwnerName;
-        this.fuelStationEmail = fuelStationEmail;
-        this.password = password;
+    public String getOwnerName() {
+        return ownerName;
     }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
+    @Column
+    private String ownerName;
+
+//    // Repeat for other fields
+//    @ElementCollection
+//    @CollectionTable(name = "fuel_station_inventory", joinColumns = @JoinColumn(name = "fuel_station_id"))
+//    @MapKeyColumn(name = "fuel_type")
+//    @Column(name = "available_fuel")
+//    private Map<String, Double> fuelInventory;
+
+
+    // Getter and Setter for id
+
 
     public Long getFuelStationId() {
         return fuelStationId;
@@ -81,35 +73,59 @@ public class FuelStation {
         this.fuelStationId = fuelStationId;
     }
 
-    public String getFuelStationRegisterId() {
-        return fuelStationRegisterId;
+    // Getter and Setter for location
+    public String getLocation() {
+        return location;
     }
 
-    public void setFuelStationRegisterId(String fuelStationRegisterId) {
-        this.fuelStationRegisterId = fuelStationRegisterId;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getFuelStationOwnerName() {
-        return fuelStationOwnerName;
+    // Getter and Setter for stationName
+    public String getStationName() {
+        return stationName;
     }
 
-    public void setFuelStationOwnerName(String fuelStationOwnerName) {
-        this.fuelStationOwnerName = fuelStationOwnerName;
+    public void setStationName(String stationName) {
+        this.stationName = stationName;
     }
 
-    public String getFuelStationEmail() {
-        return fuelStationEmail;
+    // Getter and Setter for email
+    public String getEmail() {
+        return email;
     }
 
-    public void setFuelStationEmail(String fuelStationEmail) {
-        this.fuelStationEmail = fuelStationEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    // Getter and Setter for contactNumber
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getLicenseNumber() {
+        return licenseNumber;
+    }
+
+    public void setLicenseNumber(String licenseNumber) {
+        this.licenseNumber = licenseNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "FuelStationRegister{" +
+                "id=" + fuelStationId +
+                ", location='" + location + '\'' +
+                ", stationName='" + stationName + '\'' +
+                ", email='" + email + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                ", lisenceNumber='" + licenseNumber + '\'' +
+                '}';
     }
 }

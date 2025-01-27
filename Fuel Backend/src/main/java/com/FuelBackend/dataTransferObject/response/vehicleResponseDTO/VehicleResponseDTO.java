@@ -1,5 +1,7 @@
 package com.FuelBackend.dataTransferObject.response.vehicleResponseDTO;
 
+import com.FuelBackend.entity.VehicleClasses;
+
 public class VehicleResponseDTO {
 
     private int vehicleId;
@@ -19,7 +21,7 @@ public class VehicleResponseDTO {
 
     private Integer fuelId;
 
-    public VehicleResponseDTO(){}
+    public VehicleResponseDTO(int vehicleId, String vehicleNumber, String vehicleEngineNo, Integer ownerId, VehicleClasses.VehicleClassName vehicleClass, Double fuelQuota){}
 
     public VehicleResponseDTO(
             int vehicleId,

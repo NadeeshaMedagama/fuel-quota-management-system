@@ -1,14 +1,11 @@
 package com.FuelBackend.controller;
 
 import com.FuelBackend.dataTransferObject.request.fuelStationRequestDTO.FuelStationRequestDTO;
-import com.FuelBackend.entity.FuelStation;
 import com.FuelBackend.service.FuelStationService.FuelStationService;
 import com.FuelBackend.service.FuelStationService.FuelStationServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/fuelStation")

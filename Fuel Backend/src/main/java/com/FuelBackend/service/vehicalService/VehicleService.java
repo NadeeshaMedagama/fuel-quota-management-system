@@ -72,11 +72,11 @@ public class VehicleService implements VehicleServiceRepository{
 
         VehicleResponseDTO responseDTO = new VehicleResponseDTO(
                 savedVehicle.getVehicleId(),
-                savedVehicle.getVehicleRegisterId(),
+                savedVehicle.getVehicleNumber(),
                 savedVehicle.getVehicleEngineNo(),
                 savedVehicle.getOwnerId(),
-                savedVehicle.getVehicleClasses().getVehicleClassId(),
-                savedVehicle.getFuel().getFuelId()
+                savedVehicle.getVehicleClass(),
+                savedVehicle.getFuelQuota()
         );
         return new ResponseEntity<>(
                 new CustomApiResponse(
@@ -129,11 +129,11 @@ public class VehicleService implements VehicleServiceRepository{
         );
         VehicleResponseDTO responseDTO = new VehicleResponseDTO(
                 vehicle.getVehicleId(),
-                vehicle.getVehicleRegisterId(),
+                vehicle.getVehicleNumber(),
                 vehicle.getVehicleEngineNo(),
                 vehicle.getOwnerId(),
-                vehicle.getVehicleClasses().getVehicleClassId(),
-                vehicle.getFuel().getFuelId()
+                vehicle.getVehicleClass(),
+                vehicle.getFuelQuota()
         );
         return new ResponseEntity<>(
 
@@ -182,12 +182,12 @@ public class VehicleService implements VehicleServiceRepository{
                     responseList.add(
                             new VehicleResponseDTO(
                                     vehicle.getVehicleId(),
-                                    vehicle.getVehicleRegisterId(),
+                                    vehicle.getVehicleNumber(),
                                     vehicle.getVehicleEngineNo(),
 
                                     vehicle.getOwnerId(),
-                                    vehicle.getVehicleClasses().getVehicleClassId(),
-                                    vehicle.getFuel().getFuelId()
+                                    vehicle.getVehicleClass(),
+                                    vehicle.getFuelQuota()
                             )
                     );
                 }
@@ -249,7 +249,7 @@ public class VehicleService implements VehicleServiceRepository{
 
                     );
 
-            vehicle.setVehicleRegisterId(vehicleRequestDTO.getVehicleRegisterId());
+            vehicle.setVehicleNumber(vehicleRequestDTO.getVehicleRegisterId());
             vehicle.setQrCode(qrCode);
             vehicleRepository.save(vehicle);
 
