@@ -7,6 +7,8 @@ function ReportForm({ generateReport }) {
   const [fuelType, setFuelType] = useState("petrol");
 
   const handleGenerateClick = () => {
+    console.log("Selected Fuel Type:", fuelType); // Debug log
+    console.log("Selected Report Period:", reportType); // Debug log
     generateReport(fuelType, reportType);
   };
 
