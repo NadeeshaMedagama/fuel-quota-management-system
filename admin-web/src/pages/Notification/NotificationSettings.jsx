@@ -40,7 +40,7 @@ const NotificationPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(http://localhost:8080/api/notifications/${id});
+      await axios.delete(`http://localhost:8080/api/notifications/${id}`);
       setNotifications(notifications.filter((notification) => notification.id !== id));
     } catch (error) {
       console.error("Error deleting notification:", error);
