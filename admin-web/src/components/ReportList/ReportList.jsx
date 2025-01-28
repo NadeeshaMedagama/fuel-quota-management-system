@@ -3,11 +3,11 @@ import axios from "axios";
 import "./ReportList.css";
 
 const ReportList = ({ fuelType, period }) => {
-  const [reports, setReports] = useState([]); // Always initialize as an empty array
+  const [reports, setReports] = useState([]); 
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Check if valid fuelType and period are provided before making the API call
+
     if (fuelType && period) {
       const fetchReports = async () => {
         try {
@@ -30,7 +30,7 @@ const ReportList = ({ fuelType, period }) => {
 
       fetchReports();
     }
-  }, [fuelType, period]); // This effect runs only when fuelType or period changes
+  }, [fuelType, period]); 
 
   const handleDownload = (reportId) => {
     axios({
