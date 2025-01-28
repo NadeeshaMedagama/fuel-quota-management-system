@@ -1,5 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css"; 
 
 const DeleteButton = ({ onClick }) => {
   return (
@@ -7,9 +7,8 @@ const DeleteButton = ({ onClick }) => {
       className="btn btn-danger " 
       onClick={onClick}
       aria-label="Delete" // Accessibility improvement
-    >
-      Delete
-    </button>
+    
+    >  Delete  </button>
   );
 };
 
