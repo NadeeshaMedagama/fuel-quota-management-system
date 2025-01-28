@@ -1,61 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Footer from "../user/common/Footer";
+import React from "react";
+import "../Styles/home.css";
+import LoginButton from "../Styles/components/LoginButton";
+import RegisterButton from "../Styles/components/RegisterButton";
+import Footer from "../Styles/components/Footer";
 
-const Home = () => {
-  const [fuelInfo, setFuelInfo] = useState("");
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Fetch data from Spring Boot backend
-    fetch("http://localhost:8080/api/fuelInfo")
-      .then((response) => response.json())
-      .then((data) => setFuelInfo(data))
-      .catch((error) => console.error("Error fetching fuel data:", error));
-  }, []);
-
-  const handleRegisterClick = () => {
-    navigate("/Register");
-  };
-
-  const handleLoginClick = () => {
-    navigate("/Login");
-  };
-
-  return (
-    <div>
-      <div className="container">
-        <div className="top-left">
+function Home() {
+    return (
+      <div className="home-container">
+        <header className="home-header">
           <img src="/logo.png" alt="FuelPulse Logo" className="logo" />
-        </div>
-        <div className="top-right">
-          <button className="register-button" onClick={handleLoginClick}>
-            Log In
-          </button>
-        </div>
-
-        <div className="content">
-          <h1 className="title">What is FuelPulse?</h1>
-          <p className="subtitle">
-            Managing Fuel, Simplifying Lives: Your Digital Fuel Management Solution
-          </p>
-          <button className="register-button" onClick={handleRegisterClick}>
-            REGISTER NOW
-          </button>
-        </div>
-
-        <div className="about-section">
-          <h2>FuelPulse</h2>
-          <p>
-            FuelPulse is an innovative platform designed to streamline fuel management processes.
-          </p>
-          <p>{fuelInfo}</p> {/* Display fetched fuel data */}
-        </div>
+          <LoginButton />
+        </header>
+  
+        <main className="home-main">
+          <h1>What is FuelPulse?</h1>
+          <p>Managing Fuel, Simplifying Lives: Your Digital Fuel Management Solution</p>
+          <RegisterButton />
+        </main>
+  
+        <section className="home-description">
+          <div className="info-card">
+            <h2>FuelPulse</h2>
+            <p>FuelPulse is an innovative platform designed to streamline fuel management processes.</p>
+          </div>
+        </section>
+  
+        <Footer />
       </div>
-
-      <Footer />
-    </div>
-  );
-};
+    );
+  }
+  
 
 export default Home;
+
+

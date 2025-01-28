@@ -9,7 +9,7 @@ import java.util.UUID;
 public class FuelStationRequestDTO {
 
     @NotBlank(message = "fuelStationRegisterId is required")
-    private String fuelStationRegisterId;
+    private String fuelStationLicenseNumber;
 
     @NotBlank(message = "fuelStationOwnerName is required")
     private String fuelStationOwnerName;
@@ -21,19 +21,20 @@ public class FuelStationRequestDTO {
     @NotBlank(message = "password is required")
     private String password;
 
-    public FuelStationRequestDTO(String fuelStationRegisterId, String fuelStationOwnerName, String fuelStationEmail, String password) {
-        this.fuelStationRegisterId = fuelStationRegisterId;
+    public FuelStationRequestDTO(String fuelStationLicenseNumber, String fuelStationOwnerName, String fuelStationEmail, String password) {
+        this.fuelStationLicenseNumber = fuelStationLicenseNumber;
         this.fuelStationOwnerName = fuelStationOwnerName;
         this.fuelStationEmail = fuelStationEmail;
         this.password = password;
     }
 
-    public String getFuelStationRegisterId() {
-        return fuelStationRegisterId;
+
+    public String getFuelStationLicenseNumber() {
+        return fuelStationLicenseNumber;
     }
 
-    public void setFuelStationRegisterId(String fuelStationRegisterId) {
-        this.fuelStationRegisterId = fuelStationRegisterId;
+    public void setFuelStationLicenseNumber(String fuelStationLicenseNumber) {
+        this.fuelStationLicenseNumber = fuelStationLicenseNumber;
     }
 
     public String getFuelStationOwnerName() {

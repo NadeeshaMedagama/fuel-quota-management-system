@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap is included
+import "bootstrap/dist/css/bootstrap.min.css"; 
 
 
 
@@ -12,16 +12,18 @@ const BackIcon = () => {
 
   const handleClick = () => {
     if (window.history.length > 2) {
-      navigate(-1); // Go back to the previous page if possible
+      navigate(-1); // Go back to the previous page 
     } else {
-      navigate("/"); // Fallback: Navigate to the home page or another default(page not found) route
+      navigate("/"); 
     }
   };
 
 
 
   return (
+    
     <div
+
       className="d-flex align-items-center justify-content-center p-2"
       onClick={handleClick}
       role="button"
@@ -40,12 +42,12 @@ const BackIcon = () => {
         background:"#ffffff",
         marginTop:"-20px",
         paddingLeft:"-115px",
-      }}
-    >
 
+      }}  >
 
       <FaArrowLeft size={24} />
     </div>
+    
   );
 
   

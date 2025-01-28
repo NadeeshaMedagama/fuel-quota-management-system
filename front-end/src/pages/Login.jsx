@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Login.css";
+import '../styles/Login.css'; // Adjust if it's a CSS file
 
 const LoginForm = () => {
   const [vehicleRegistrationNumber, setVehicleRegistrationNumber] = useState("");
@@ -26,21 +26,20 @@ const LoginForm = () => {
       );
 
       if (response.data.message === "Login Success") {
-        navigate("/home"); // Navigate to the home page
+        // Redirect to the Vehicle Registration Form upon successful login
+        navigate("/VehicleRegistrationForm");
       } else {
         setError(response.data.message || "An error occurred.");
       }
     } catch (error) {
       if (error.response) {
-        // Handle backend errors
         const { status, data } = error.response;
         if (status === 400 || status === 401) {
-          setError(data.message); // Show backend-provided error message
+          setError(data.message);
         } else {
           setError("An unexpected error occurred. Please try again.");
         }
       } else {
-        // Handle network errors or other issues
         setError("Unable to connect to the server. Please check your connection.");
       }
     } finally {
@@ -55,11 +54,8 @@ const LoginForm = () => {
   return (
     <div className="login-container">
       <div className="form-container">
-        {/* Title */}
         <h2 className="form-title">Welcome Back</h2>
-
         <form onSubmit={login} className="login-form">
-          {/* Vehicle Registration Number Input */}
           <div className="input-group">
             <label htmlFor="vehicleRegistrationNumber" className="input-label">
               Vehicle Registration Number
@@ -67,7 +63,6 @@ const LoginForm = () => {
             <input
               type="text"
               id="vehicleRegistrationNumber"
-              name="vehicleRegistrationNumber"
               placeholder="Enter your vehicle registration number"
               className="input-field"
               value={vehicleRegistrationNumber}
@@ -75,8 +70,6 @@ const LoginForm = () => {
               required
             />
           </div>
-
-          {/* Password Input */}
           <div className="input-group">
             <label htmlFor="password" className="input-label">
               Password
@@ -84,7 +77,6 @@ const LoginForm = () => {
             <input
               type="password"
               id="password"
-              name="password"
               placeholder="Enter your password"
               className="input-field"
               value={password}
@@ -92,24 +84,16 @@ const LoginForm = () => {
               required
             />
           </div>
-
-          {/* Error Message */}
           {error && <div className="error-message">{error}</div>}
-
-          {/* Login Button */}
           <button type="submit" className="submit-button" disabled={loading}>
             {loading ? "Logging in..." : "Login"}
           </button>
-
-          {/* Register Link */}
           <div className="register-link">
             Don’t have an account?{" "}
-            <a href="/register" className="register-link-text">
+            <a href="/VehicleRegistrationForm" className="register-link-text">
               Register
             </a>
           </div>
-
-          {/* Forgot Password Link */}
           <div className="forgot-password-link">
             <a href="#" onClick={handleForgotPassword} className="forgot-password-link-text">
               Forgot Password?
@@ -122,3 +106,5 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
+

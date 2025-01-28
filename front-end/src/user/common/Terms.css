@@ -1,52 +1,92 @@
+/* Terms.css */
+
+/* Container for the terms and conditions popup */
 .terms-container {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+  width: 80%;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Header style */
+.header {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Subheader style */
+.subheader {
+  font-size: 1rem;
+  color: #777;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Content wrapper for sections */
+.content {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px; /* To account for scrollbar */
+  margin-bottom: 20px;
+}
+
+/* Individual section */
+.section {
+  margin-bottom: 20px;
+}
+
+/* Section title */
+.section-title {
+  font-size: 1.5rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+/* Section text */
+.section-text {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+
+.close-button {
+  background-color: #03101f;
+  border: none;
+  color: white;
+  padding: 25px 15px ;
+  /*Reducedpadding*/border-radius: 15px;
+  font-size: 18px;
+  /*Smallerfontsize*/cursor: pointer;
+  width: 150px;
+  /*Reducedwidth*/height: 50px;
+  /*Reducedheight*/font-weight: bold;
+  margin-top: 30px;
   
-  .terms-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
   
-  .main-heading {
+}
+
+.close-button:hover {
+  background-color: #0056b3; /* Darker background color on hover */
+}
+
+/* Make content scrollable if the content exceeds the height */
+@media screen and (max-width: 600px) {
+  .terms-container {
+    width: 90%;
+    padding: 15px;
+  }
+  .header {
     font-size: 2rem;
-    color: #003366;
-    font-weight: bold;
   }
-  
-  .terms-content {
-    text-align: left;
-    color: #333;
+  .section-title {
+    font-size: 1.3rem;
   }
-  
-  .section-heading {
-    font-size: 1.5rem;
-    color: #003366;
-    margin-bottom: 10px;
-  }
-  
-  .paragraph {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 15px;
-  }
-  
-  .last-updated {
-    font-size: 0.9rem;
-    color: #777;
-    margin-top: 20px;
-  }
-  
-  .terms-footer {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 0.9rem;
-    color: #777;
-  }
-  
+}
+
