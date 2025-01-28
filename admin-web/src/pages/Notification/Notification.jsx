@@ -58,7 +58,7 @@ const NotificationPage = () => {
     <div className="notification-page-container">
       <Header title="Notifications" total={notifications.length} />
       <SearchBar placeholder="Search by User ID..." onSearch={handleSearch} />
-      <BackButton onClick={handleBack} />
+     
 
       {/* Table component to display notifications */}
       <Table
@@ -70,4 +70,4 @@ const NotificationPage = () => {
   );
 };
 
-export default Notification;
+export default NotificationPage;
