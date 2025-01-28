@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";  // Update import
+import { useNavigate } from "react-router-dom";  
 import "./AddFuelStation.css";
+
+
 const AddFuelStation = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -9,25 +11,30 @@ const AddFuelStation = () => {
     fuelType: "",
   });
 
-  const navigate = useNavigate();  // Use useNavigate hook instead of useHistory
+  const navigate = useNavigate();  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post("http://localhost:8080/fuelStations", formData, {
-          headers: { "Content-Type": "application/json" },
-        });
-        console.log("Fuel station added:", response.data);
-        navigate("/fuel-stations");  // Use navigate instead of history.push
-      } catch (error) {
-        console.error("Error adding fuel station:", error);
-      }
+      const response = await axios.post("http://localhost:8080/fuelStations", formData, {
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log("Fuel station added:", response.data);
+      navigate("/fuel-stations");  // Use navigate instead of history.push
+    } catch (error) {
+      console.error("Error adding fuel station:", error);
+    }
   };
+
+
+
 
   return (
     <div className="form-container">
@@ -66,10 +73,12 @@ const AddFuelStation = () => {
             required
           />
         </div>
-        <button type="submit">Add Fuel Station</button>
+        <button type="submit" className="addfuel">Add Fuel Station</button>
       </form>
     </div>
   );
 };
+
+
 
 export default AddFuelStation;
