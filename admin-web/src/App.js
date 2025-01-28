@@ -10,7 +10,7 @@ import FuelQuota from "./pages/FuelQuota/FuelQuota";
 import EditFuelQuota from "./pages/FuelQuota/EditFuelQuota";
 import AddFuelQuota from "./pages/FuelQuota/AddFuelQuota";
 import ReportPage from "./pages/reports/reports";
-import NotificationPage from "./pages/Notification/NotificationPage";
+import NotificationPage from "./pages/Notification/Notification";
 import PageNotFound from "./pages/PageNotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginPage from "./pages/LoginPage/LoginPage";
