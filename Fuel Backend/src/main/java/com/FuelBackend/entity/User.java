@@ -1,6 +1,7 @@
 package com.FuelBackend.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class User {
 
 
     @Column(nullable = false,unique = true)
+    @Email
     private String email;
 
     @Column(nullable = false)
