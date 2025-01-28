@@ -1,33 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const EditFuelQuota = () => {
-  const { id } = useParams();
+const AddFuelQuota = () => {
   const [formData, setFormData] = useState({ fuelType: "", vehicleType: "", quota: "" });
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/fuel-quotas/${id}`);
-        setFormData(response.data);
-      } catch (error) {
-        console.error("Error fetching details:", error);
-      }
-    };
-    fetchData();
-  }, [id]);
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/api/fuel-quotas/${id}`, formData);
+      await axios.post("http://localhost:8080/api/fuel-quotas", formData);
       navigate("/fuel-quotas");
     } catch (error) {
-      console.error("Error updating quota:", error);
+      console.error("Error adding quota:", error);
     }
   };
 
@@ -45,9 +32,9 @@ const EditFuelQuota = () => {
         Quota (Liters/Week):
         <input name="quota" type="number" value={formData.quota} onChange={handleChange} required />
       </label>
-      <button type="submit">Update</button>
+      <button type="submit">Add</button>
     </form>
   );
 };
 
-export default EditFuelQuota;
+export default AddFuelQuota;
