@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap"; // Import Bootstrap components
+import { Button, Form } from "react-bootstrap"; 
 import "./ReportForm.css";
 
 function ReportForm({ generateReport }) {
@@ -7,8 +7,8 @@ function ReportForm({ generateReport }) {
   const [fuelType, setFuelType] = useState("petrol");
 
   const handleGenerateClick = () => {
-    console.log("Selected Fuel Type:", fuelType); // Debug log
-    console.log("Selected Report Period:", reportType); // Debug log
+    console.log("Selected Fuel Type:", fuelType); 
+    console.log("Selected Report Period:", reportType); 
     generateReport(fuelType, reportType);
   };
 
