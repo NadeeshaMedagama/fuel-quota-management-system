@@ -55,7 +55,7 @@ public class Vehicle {
 
     @ManyToOne
     @JoinColumn(name = "vehicle_class_id", referencedColumnName = "vehicleClassId", nullable = false)
-    private VehicleClasses.VehicleClassName vehicleClass;
+    private VehicleClasses vehicleClass;
 
 
     @Lob
@@ -143,11 +143,11 @@ public class Vehicle {
         this.password = password;
     }
 
-    public VehicleClasses.VehicleClassName getVehicleClass() {
+    public VehicleClasses getVehicleClass() {
         return vehicleClass;
     }
 
-    public void setVehicleClass(VehicleClasses.VehicleClassName vehicleClass) {
+    public void setVehicleClass(VehicleClasses vehicleClass) {
         this.vehicleClass = vehicleClass;
     }
 

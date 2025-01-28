@@ -75,7 +75,7 @@ public class VehicleService implements VehicleServiceRepository{
                 savedVehicle.getVehicleNumber(),
                 savedVehicle.getVehicleEngineNo(),
                 savedVehicle.getOwnerId(),
-                savedVehicle.getVehicleClass(),
+                savedVehicle.getVehicleClass().getVehicleClassName(),
                 savedVehicle.getFuelQuota()
         );
         return new ResponseEntity<>(
@@ -132,7 +132,7 @@ public class VehicleService implements VehicleServiceRepository{
                 vehicle.getVehicleNumber(),
                 vehicle.getVehicleEngineNo(),
                 vehicle.getOwnerId(),
-                vehicle.getVehicleClass(),
+                vehicle.getVehicleClass().getVehicleClassName(),
                 vehicle.getFuelQuota()
         );
         return new ResponseEntity<>(
@@ -186,7 +186,7 @@ public class VehicleService implements VehicleServiceRepository{
                                     vehicle.getVehicleEngineNo(),
 
                                     vehicle.getOwnerId(),
-                                    vehicle.getVehicleClass(),
+                                    vehicle.getVehicleClass().getVehicleClassName(),
                                     vehicle.getFuelQuota()
                             )
                     );
@@ -225,7 +225,7 @@ public class VehicleService implements VehicleServiceRepository{
         }
     }
     public  boolean validateVehicleDetails(VehicleRequestDTO vehicleRequestDTO){
-        List<String> allRegisterIds=vehicleRepository.findAllVehicleRegisterIds();
+        List<String> allRegisterIds=vehicleRepository.findAllVehicleNumber();
 
         return allRegisterIds.contains(vehicleRequestDTO.getVehicleRegisterId());
 

@@ -11,6 +11,6 @@ import java.util.UUID;
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle , Integer> {
 
-    @Query("SELECT v.vehicleRegisterId FROM Vehicle v")
-    List<String> findAllVehicleRegisterIds();
+    @Query("SELECT v.vehicleNumber FROM Vehicle v")
+    List<String> findAllVehicleNumber();
 }
