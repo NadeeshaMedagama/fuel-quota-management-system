@@ -1,7 +1,7 @@
 package com.FuelBackend.entity;
 
 import jakarta.persistence.*;
-
+@Entity
 public class UserLogin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
