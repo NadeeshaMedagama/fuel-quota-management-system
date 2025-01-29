@@ -1,4 +1,3 @@
-// src/pages/SignUpForm.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -29,44 +28,56 @@ const SignUpForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
+
     if (!formData.fullName) newErrors.fullName = "Full Name is required.";
+
     if (!formData.contactNumber) {
       newErrors.contactNumber = "Contact Number is required.";
     } else if (!/^\d{10}$/.test(formData.contactNumber)) {
       newErrors.contactNumber = "Contact Number must be 10 digits.";
     }
+
+    if (!formData.username) {
+      newErrors.username = "Username is required.";
+    }
+
     if (!formData.password) {
       newErrors.password = "Password is required.";
     } else if (formData.password.length < 6) {
       newErrors.password = "Password must be at least 6 characters.";
+    } else if (!/(?=.*[A-Z])(?=.*\d)/.test(formData.password)) {
+      newErrors.password = "Password must contain at least one uppercase letter and one number.";
     }
+
     if (!formData.userType) {
       newErrors.userType = "User Type is required.";
     }
+
     return newErrors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmissionError(""); // Reset error message
+
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-    } else {
-      setErrors({});
-      try {
-        // Send POST request to backend (adjust the API URL as necessary)
-        const response = await axios.post("http://localhost:8080/api/v1/users/register", formData);
-        console.log(response.data);
+      return;
+    }
 
-        if (response.status === 200) {
-          alert("Registration successful!");
-          // Redirect to login page after successful registration
-          navigate("/login");
-        }
-      } catch (error) {
-        console.error("Error submitting form:", error);
-        setSubmissionError("Registration failed. Please try again.");
+    setErrors({});
+    try {
+      const response = await axios.post("http://localhost:8080/api/v1/users/register", formData);
+      console.log(response.data);
+
+      if (response.status === 200) {
+        alert("Registration successful!");
+        navigate("/login");
       }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmissionError(error.response?.data?.message || "Registration failed. Please try again.");
     }
   };
 
@@ -109,9 +120,7 @@ const SignUpForm = () => {
               placeholder="Enter your contact number"
               className={errors.contactNumber ? "error-input" : ""}
             />
-            {errors.contactNumber && (
-              <span className="error">{errors.contactNumber}</span>
-            )}
+            {errors.contactNumber && <span className="error">{errors.contactNumber}</span>}
           </label>
 
           <label>
@@ -122,7 +131,9 @@ const SignUpForm = () => {
               value={formData.username}
               onChange={handleChange}
               placeholder="Choose a username"
+              className={errors.username ? "error-input" : ""}
             />
+            {errors.username && <span className="error">{errors.username}</span>}
           </label>
 
           <label>

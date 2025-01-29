@@ -1,0 +1,86 @@
+/* General Styles */
+.privacy-container {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 20px;
+  color: #333;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.privacy-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.main-heading {
+  font-size: 2.5rem;
+  color: #124c98;
+}
+
+.privacy-content {
+  line-height: 1.6;
+  margin: 0 auto;
+}
+
+.section-heading {
+  font-size: 1.8rem;
+  margin: 20px 0 10px;
+  color: #1a1570;
+  text-align: left;
+}
+
+.paragraph {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #555;
+}
+
+.list {
+  margin: 15px 0 20px;
+  padding-left: 40px;
+}
+
+.list li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Footer Styles */
+.footer {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #032859;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.footer-right {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.contact-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+a {
+  color: #08643f;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.last-updated {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 20px;
+}
+
+

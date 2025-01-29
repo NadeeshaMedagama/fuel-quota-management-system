@@ -1,26 +1,25 @@
 /* General container styling */
 .login-container {
-width: 500px;
+  width: 500px;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f7f9fc;
-  margin: 0;
+ margin-top: 210px;
+  margin-left: 440px;
+  margin-right: 440PX;
+ 
 }
 
 /* Form container */
 .form-container {
   background-color: #fff;
   padding: 40px;
-  border-radius: 25px;
+  border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 1000px;
+  
   transition: transform 0.3s ease-in-out;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  -ms-border-radius: 25px;
-  -o-border-radius: 25px;
 }
 
 .form-container:hover {
@@ -68,27 +67,7 @@ width: 500px;
   outline: none;
 }
 
-/* Submit button */
-.submit-button {
-  width: 100%;
-  padding: 14px;
-  background-color: #003366;
-  color: white;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-}
 
-.submit-button:hover {
-  background-color: #263a93;
-  transform: translateY(-2px);
-}
-
-.submit-button:active {
-  transform: translateY(2px);
-}
 
 /* Register Link */
 .register-link {
@@ -122,7 +101,7 @@ width: 500px;
 
 .forgot-password-link-text:hover {
   text-decoration: underline;
-  color:green;
+  color: red;
 }
 
 /* Mobile responsiveness */
@@ -150,6 +129,7 @@ width: 500px;
     font-size: 1rem;
   }
 }
+
 /* Error message styling */
 .error-message {
   color: #f44336; /* Red color for error messages */
@@ -158,5 +138,4 @@ width: 500px;
   font-weight: 500;
   text-align: center; /* Center the error message */
   padding: 5px; /* Add some padding for a better look */
-  
 }
