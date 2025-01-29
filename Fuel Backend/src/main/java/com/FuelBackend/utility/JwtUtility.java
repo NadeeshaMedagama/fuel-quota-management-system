@@ -2,9 +2,14 @@ package com.FuelBackend.utility;
 
 import com.FuelBackend.exception.JwtValidationException;
 import io.jsonwebtoken.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class JwtUtility {
@@ -54,4 +59,27 @@ public class JwtUtility {
                 .getExpiration()
                 .before(new Date());
     }
+
+    private String secretKey = "your-secret-key"; // Replace with your actual secret key
+
+    // Method to extract roles/authorities from the token
+    public Collection<SimpleGrantedAuthority> extractAuthorities(String token) {
+        Claims claims = extractAllClaims(token);
+        List<String> roles = claims.get("roles", List.class); // Assumes roles are stored in a claim called "roles"
+
+        // Map roles to GrantedAuthority
+        return roles.stream()
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+    }
+
+    // Method to extract all claims from the token
+    private Claims extractAllClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(secretKey.getBytes())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
 }
