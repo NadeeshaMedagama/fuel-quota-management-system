@@ -18,7 +18,7 @@ import java.io.IOException;
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private final String SECRET_KEY = "your_secret_key"; // Replace with your JWT secret key
+    private final String SECRET_KEY = "HakunaMaTaTa"; // Replace with your JWT secret key
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
