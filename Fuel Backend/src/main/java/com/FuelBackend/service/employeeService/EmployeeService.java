@@ -1,13 +1,9 @@
 package com.FuelBackend.service.employeeService;
 
-import com.FuelBackend.calculation.FuelCalculation;
 import com.FuelBackend.dataTransferObject.request.employeeRequestDTO.EmployeeRequestDTO;
-import com.FuelBackend.dataTransferObject.response.CustomApiResponse;
 import com.FuelBackend.dataTransferObject.response.employeeResponseDTO.EmployeeResponseDTO;
 import com.FuelBackend.entity.Employee;
 import com.FuelBackend.entity.FuelStation;
-import com.FuelBackend.entity.Vehicle;
-import com.FuelBackend.enums.OwnerType;
 import com.FuelBackend.exception.NotFoundException;
 import com.FuelBackend.repositoryDAO.EmployeeRepository;
 import com.FuelBackend.repositoryDAO.FuelStationRepository;
@@ -17,10 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class EmployeeService implements EmployeeServiceRepository{

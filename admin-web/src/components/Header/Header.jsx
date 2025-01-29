@@ -1,7 +1,7 @@
 import React from "react";
-
+import { Button } from "react-bootstrap"; 
 import "./Header.css";
-import BackIcon from "../Button/BackIcon"; // Import the BackIcon component
+import BackIcon from "../Button/BackIcon"; 
 
 const Header = ({ title }) => {
   return (

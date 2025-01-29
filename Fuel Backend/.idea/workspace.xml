@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44de4459-0bf0-490a-b045-8f8950ed641b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/fuel-quota-management-system.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log.log" beforeDir="false" afterPath="$PROJECT_DIR$/log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/FuelBackend/controller/FuelStationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/FuelBackend/controller/FuelStationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/FuelBackend/service/notificationService/notificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/FuelBackend/service/notificationService/NotificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/components/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/yarn.lock" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../log.log.2025-01-26.0.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../log.log" beforeDir="false" afterPath="$PROJECT_DIR$/../log.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +16,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "NadeeshaMedagama"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/NadeeshaMedagama/fuel-quota-management-system.git",
+    "accountId": "4f111f4a-ac83-4650-b8c1-e8c477135e0e"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2s44OAOkgi7p227Blwlo7zL3NI5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,15 +41,17 @@
     "Application.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ASUS/Desktop/raveesha/fuel-quota-management-system/admin-web",
+    "last_opened_file_path": "C:/Users/MEDAGAMA/IdeaProjects/fuel-quota-management-system/Fuel Backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -62,8 +67,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
       </set>
     </attachedChunks>
   </component>
@@ -76,6 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737701478206</updated>
       <workItem from="1737701479360" duration="1636000" />
+      <workItem from="1737968005663" duration="154000" />
     </task>
     <servers />
   </component>

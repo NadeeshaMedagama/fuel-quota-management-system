@@ -1,4 +1,4 @@
-/* Wrapper container styles */
+
 .report-form-wrapper {
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Header styles */
+
 .form-header {
   font-size: 1.5rem;
   font-weight: bold;
@@ -20,7 +20,7 @@
   text-align: center;
 }
 
-/* Form styles */
+
 .report-form {
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@
   width: 100%;
 }
 
-/* Form group styles */
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -36,14 +36,14 @@
   gap: 5px;
 }
 
-/* Label styles */
+
 label {
   font-size: 1rem;
   color: #000000;
   width: 100%;
 }
 
-/* Select input styles */
+
 select {
   width: 100%;
   padding: 10px;

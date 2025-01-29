@@ -1,7 +1,6 @@
 package com.FuelBackend.controller;
 
 import com.FuelBackend.entity.FuelStation;
-import com.FuelBackend.entity.FuelStationRegister;
 import com.FuelBackend.repositoryDAO.FuelStationRegisterRepository;
 import com.FuelBackend.service.fuelStationRegistrationServices.FuelStationRegisterService;
 
@@ -30,6 +29,6 @@ private final FuelStationRegisterService fuelStationRegisterService;
         return new ResponseEntity<>(registeredStation, HttpStatus.CREATED);
     }
     @GetMapping("/test")
-    public ResponseEntity<List<FuelStationRegister>> testConnection() {
+    public ResponseEntity<List<FuelStation>> testConnection() {
         return new ResponseEntity<>(fuelStationRegisterRepository.findAll(), HttpStatus.OK);
 }}

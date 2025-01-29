@@ -6,6 +6,8 @@ import com.twilio.rest.api.v2010.account.Message;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import jakarta.annotation.PostConstruct;
+
 @Service
 public class TwilioService {
 
@@ -18,9 +20,15 @@ public class TwilioService {
     @Value("${twilio.phone-number}")
     private String fromPhoneNumber;
 
-    // Initialize Twilio using the injected values
-    public TwilioService() {
-        Twilio.init(accountSid, authToken);
+    // Method to initialize Twilio after properties are injected
+    @PostConstruct
+    public void init() {
+        if (accountSid != null && authToken != null) {
+            Twilio.init(accountSid, authToken);
+            System.out.println("Twilio initialized successfully.");
+        } else {
+            System.err.println("Twilio credentials are missing.");
+        }
     }
 
     public void sendSms(String toPhoneNumber, String message) {
