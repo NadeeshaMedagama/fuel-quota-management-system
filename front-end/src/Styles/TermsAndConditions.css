@@ -1,0 +1,92 @@
+/* General container styling */
+.terms-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 900px;
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow-x: hidden;
+}
+
+/* Header Styling */
+.terms-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.main-heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #020260; /* Dark green */
+  margin-bottom: 10px;
+}
+
+.last-updated {
+  font-size: 1rem;
+  color: #6c757d; /* Subtle gray */
+}
+
+/* Section Styling */
+.terms-content {
+  text-align: left;
+}
+
+.terms-section {
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+.section-heading {
+  font-size: 1.75rem;
+  color: #1b4332; /* Darker green */
+  margin-bottom: 10px;
+  
+  padding-left: 10px;
+}
+
+.paragraph {
+  font-size: 1.1rem;
+  color: #495057; /* Muted gray text for readability */
+  margin-bottom: 15px;
+}
+
+/* Footer Styling */
+.terms-footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.footer-link {
+  color: #2d6a4f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #52b788; /* Lighter green on hover */
+  text-decoration: underline;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .main-heading {
+    font-size: 2rem;
+  }
+
+  .paragraph {
+    font-size: 1rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+  }
+
+  .terms-container {
+    padding: 20px;
+  }
+}
