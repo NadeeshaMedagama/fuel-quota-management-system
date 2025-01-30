@@ -65,7 +65,7 @@ const VehicleRegistrationForm = () => {
     if (validateForm()) {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/signup",
+          "http://localhost:8080/api/v1/vehicle/register",
           formData
         );
         if (response.status === 200) {
