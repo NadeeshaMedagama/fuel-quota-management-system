@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/dashboard-data")
+      .get("http://localhost:8080/api/v1/dashboard-data")
       .then((response) => {
         // Assume the JSON response is in the format:
         // { totalVehicles: 10, totalDistributors: 5, totalFuelStations: 3, totalUsers: 20 }

@@ -11,7 +11,7 @@ const EditVehicle = () => {
   useEffect(() => {
     const fetchVehicle = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/vehicles/${id}`);
+        const response = await axios.get(`http://localhost:8080/api/v1/vehicle/${id}`);
         setFormData(response.data);
       } catch (error) {
         console.error("Error fetching vehicle:", error);
@@ -32,7 +32,7 @@ const EditVehicle = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/vehicles/${id}`, formData, {
+      await axios.put(`http://localhost:8080/api/v1/vehicle/${id}`, formData, {
         headers: { "Content-Type": "application/json" },
       });
       navigate("/vehicles"); 
