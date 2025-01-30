@@ -7,10 +7,10 @@
 
 
 .home-container {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 20px;
-  background-image: url("../assets/background.jpg"); /* Adjust this path if the image is inside a subfolder */
+font-family: Arial, sans-serif;
+text-align: center;
+padding: 20px;
+background-image: url("../assets/background.jpg"); /* Adjust this path if the image is inside a subfolder */
 background-size: cover; /* Ensures the image covers the entire container */
 background-repeat: no-repeat; /* Prevents the image from repeating */
 background-position: center; /* Centers the image */
@@ -18,8 +18,7 @@ min-height: 100vh; /* Makes the container take up the full viewport height */
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-margin-left: -1024PX;
-margin-right: -1024px;
+
 margin-top: -5px;
 color: white; /* Ensures content text contrasts with the background */
 }
@@ -52,10 +51,10 @@ color: white; /* Ensures content text contrasts with the background */
 }
 
 .info-card {
-  background: #dadeeb;
+  background: #ffffff;
   padding: 20px;
   margin: 20px auto;
-  border: 1px solid white;
+  border: 1px solid #edeef1;
   border-radius: 8px;
   max-width: 900px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
