@@ -6,28 +6,28 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import Header from "../../components/Header/Header";
 import AddButton from "../../components/Button/AddButton";
 
-
 const FuelStation = () => {
-    const [fuelStations, setFuelStations] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
-    const navigate = useNavigate();
-  
-    useEffect(() => {
-      const fetchFuelStations = async () => {
-        try {
-            const response = await axios.get("http://localhost:8080/fuelStations", {
-              headers: { "Accept": "application/json" }, // Expect JSON response
-            });
-    
-            // The response is already in JSON format, so no need for parsing
-            setFuelStations(response.data);
-          } catch (error) {
-            console.error("Error fetching fuel stations:", error);
-          }
-      };
+  const [fuelStations, setFuelStations] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchFuelStations = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/fuelStations", {
+          headers: { "Accept": "application/json" }, // Expect JSON response
+        });
+
+
+        setFuelStations(response.data);
+      } catch (error) {
+        console.error("Error fetching fuel stations:", error);
+      }
+    };
 
     fetchFuelStations();
   }, []);
+
   const handleSearch = (term) => {
     setSearchTerm(term.toLowerCase());
   };
