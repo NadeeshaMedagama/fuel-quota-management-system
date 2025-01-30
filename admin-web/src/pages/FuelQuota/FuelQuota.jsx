@@ -16,7 +16,7 @@ const FuelQuota = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/fuel-quotas");
+        const response = await axios.get("http://localhost:8080/api/v1/fuel");
         setData(response.data);
         setFilteredData(response.data);
       } catch (error) {
@@ -45,7 +45,7 @@ const FuelQuota = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure?")) {
       try {
-        await axios.delete(`http://localhost:8080/api/fuel-quotas/${id}`);
+        await axios.delete(`http://localhost:8080/api/v1/fuel/${id}`);
         setData(data.filter((item) => item.id !== id));
         setFilteredData(filteredData.filter((item) => item.id !== id));
       } catch (error) {

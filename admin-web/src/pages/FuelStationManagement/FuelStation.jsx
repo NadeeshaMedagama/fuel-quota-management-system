@@ -14,7 +14,7 @@ const FuelStation = () => {
   useEffect(() => {
     const fetchFuelStations = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/fuelStations", {
+        const response = await axios.get("http://localhost:8080/api/fuelStation", {
           headers: { "Accept": "application/json" }, // Expect JSON response
         });
 
@@ -42,7 +42,7 @@ const FuelStation = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/fuelStations/${id}`);
+      await axios.delete(`http://localhost:8080/api/fuelStation/${id}`);
       setFuelStations(fuelStations.filter((station) => station.id !== id));
     } catch (error) {
       console.error("Error deleting fuel station:", error);

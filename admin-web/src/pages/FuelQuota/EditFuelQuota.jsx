@@ -10,7 +10,7 @@ const EditFuelQuota = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/fuel-quotas/${id}`);
+        const response = await axios.get(`http://localhost:8080/api/v1/fuel/${id}`);
         setFormData(response.data);
       } catch (error) {
         console.error("Error fetching details:", error);
@@ -24,7 +24,7 @@ const EditFuelQuota = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/api/fuel-quotas/${id}`, formData);
+      await axios.put(`http://localhost:8080/api/v1/fuel/${id}`, formData);
       navigate("/fuel-quotas");
     } catch (error) {
       console.error("Error updating quota:", error);
