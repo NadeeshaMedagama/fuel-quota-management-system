@@ -1,76 +1,84 @@
 package com.FuelBackend.dataTransferObject.response.userResponseDTO;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
 public class UserResponseDTO {
 
-    private Integer userId;
-    private String f_name;
+    @NotBlank(message = "Full Name is required.")
+    private String fullName;
 
-    private String l_name;
+    private String address;
 
-    private String email;
+    @NotBlank(message = "Contact Number is required.")
+    @Pattern(regexp = "\\d{10}", message = "Contact Number must be 10 digits.")
+    private String contactNumber;
 
-    private String mobile;
+    @NotBlank(message = "Username is required.")
+    private String username;
 
-    private Boolean verifyMobile;
+    @NotBlank(message = "Password is required.")
+    @Size(min = 6, message = "Password must be at least 6 characters.")
+    private String password;
 
-    public UserResponseDTO() {
+    @NotBlank(message = "User Type is required.")
+    private String userType;
 
+    public UserResponseDTO(String fullName, String address, String contactNumber, String username, String password, String userType) {
+        this.fullName = fullName;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.username = username;
+        this.password = password;
+        this.userType = userType;
     }
 
-    public UserResponseDTO(Integer userId, String f_name, String l_name, String email, String mobile, Boolean verifyMobile) {
-        this.userId = userId;
-        this.f_name = f_name;
-        this.l_name = l_name;
-        this.email = email;
-        this.mobile = mobile;
-        this.verifyMobile = verifyMobile;
+    public String getFullName() {
+        return fullName;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public String getAddress() {
+        return address;
     }
 
-    public String getF_name() {
-        return f_name;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void setF_name(String f_name) {
-        this.f_name = f_name;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public String getL_name() {
-        return l_name;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
-    public void setL_name(String l_name) {
-        this.l_name = l_name;
+    public String getUsername() {
+        return username;
     }
 
-    public String getEmail() {
-        return email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getPassword() {
+        return password;
     }
 
-    public String getMobile() {
-        return mobile;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public String getUserType() {
+        return userType;
     }
 
-    public Boolean getVerifyMobile() {
-        return verifyMobile;
-    }
-
-    public void setVerifyMobile(Boolean verifyMobile) {
-        this.verifyMobile = verifyMobile;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }

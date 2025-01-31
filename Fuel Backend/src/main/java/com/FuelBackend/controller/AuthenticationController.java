@@ -18,13 +18,13 @@ public class AuthenticationController {
     public AuthenticationController(AuthenticationServiceRepository authenticationServiceRepository) {
         this.authenticationServiceRepository = authenticationServiceRepository;
     }
-
-    @PostMapping("/administratorAuth")
-    public ResponseEntity<?> AdministratorLogin(
-            @RequestBody AdministratorLoginRequestDTO administratorLoginRequestDTO
-    ){
-        return authenticationServiceRepository.administratorLogin(administratorLoginRequestDTO);
-    }
+//
+//    @PostMapping("/administratorAuth")
+//    public ResponseEntity<?> AdministratorLogin(
+//            @RequestBody AdministratorLoginRequestDTO administratorLoginRequestDTO
+//    ){
+//        return authenticationServiceRepository.administratorLogin(administratorLoginRequestDTO);
+//    }
 
     @PostMapping("/userAuth")
     public String userLogin(@RequestBody UserLoginRequestDTO userLoginRequestDTO){
@@ -32,20 +32,20 @@ public class AuthenticationController {
        return authenticationServiceRepository.userLogin(userLoginRequestDTO);
     }
 
-    @PostMapping("/employeeAuth")
-    public ResponseEntity<?> employeeLogin(@RequestBody EmployeeLoginRequestDTO employeeLoginRequestDTO){
-        return authenticationServiceRepository.employeeLogin(employeeLoginRequestDTO);
-    }
+//    @PostMapping("/employeeAuth")
+//    public ResponseEntity<?> employeeLogin(@RequestBody EmployeeLoginRequestDTO employeeLoginRequestDTO){
+//        return authenticationServiceRepository.employeeLogin(employeeLoginRequestDTO);
+//    }
 
-    @PostMapping("/fuelStationAuth")
-    public ResponseEntity<?> fuelStationLogin(@RequestBody FuelStationLoginRequestDTO fuelStationLoginRequestDTO){
-        return authenticationServiceRepository.fuelStationLogin(fuelStationLoginRequestDTO);
-    }
-
-    @PostMapping("/businessGovAuth")
-    public ResponseEntity<?> businessLogin(@RequestBody BusinessGovLoginRequestDTO businessGovLoginRequestDTO){
-        return authenticationServiceRepository.businessLogin(businessGovLoginRequestDTO);
-    }
+//    @PostMapping("/fuelStationAuth")
+//    public ResponseEntity<?> fuelStationLogin(@RequestBody FuelStationLoginRequestDTO fuelStationLoginRequestDTO){
+//        return authenticationServiceRepository.fuelStationLogin(fuelStationLoginRequestDTO);
+//    }
+//
+//    @PostMapping("/businessGovAuth")
+//    public ResponseEntity<?> businessLogin(@RequestBody BusinessGovLoginRequestDTO businessGovLoginRequestDTO){
+//        return authenticationServiceRepository.businessLogin(businessGovLoginRequestDTO);
+//    }
 
 
 

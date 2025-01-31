@@ -1,12 +1,18 @@
 package com.FuelBackend.entity;
 
+import com.FuelBackend.enums.VehicleClassName;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(
-        name = "vehicle_classes"
-)
+@Table(name = "vehicle_classes")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class VehicleClasses {
 
     @Id
@@ -15,52 +21,34 @@ public class VehicleClasses {
     private Integer vehicleClassId;
 
     @Enumerated(EnumType.STRING)
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private VehicleClassName vehicleClassName;
-    public enum VehicleClassName {
-        CAR,
-        BIKE,
-        TRUCK // Ensure this is defined
+
+    public VehicleClasses(com.FuelBackend.enums.VehicleClassName vehicleClassName, Double maxFuelCapacityPerWeek, Double maxFuelCapacityPerWeekForBusinessGov) {
     }
 
-    @Column
+    public enum VehicleClassName {
+        CAR, BIKE, TRUCK
+    }
+
+    @Column(nullable = false)
     @Min(0)
     private Double maxFuelCapacityPerWeek;
 
-    @Column
+    @Column(nullable = false)
     @Min(0)
     private Double maxFuelCapacityPerWeekForBusinessGov;
-
-
 
     @ManyToOne
     @JoinColumn(name = "fuel_id", referencedColumnName = "fuelId")
     private Fuel fuel;
 
-    public VehicleClasses(com.FuelBackend.enums.VehicleClassName vehicleClassName, Double maxFuelCapacityPerWeek, Double maxFuelCapacityPerWeekForBusinessGov) {}
-public VehicleClasses(){}
-//    public VehicleClasses(
-//            VehicleClassName vehicleClassName,
-//            Double maxFuelCapacityPerWeek,
-//            Double maxFuelCapacityPerWeekForBusinessGov
-//    ) {
-//        this.vehicleClassName = vehicleClassName;
-//        this.maxFuelCapacityPerWeek = maxFuelCapacityPerWeek;
-//        this.maxFuelCapacityPerWeekForBusinessGov = maxFuelCapacityPerWeekForBusinessGov;
-////        this.fuel = fuel;
-//    }
+    public Double getMaxFuelCapacityPerWeek() {
+        return maxFuelCapacityPerWeek;
+    }
 
-    public VehicleClasses(
-            Integer vehicleClassId,
-            VehicleClassName vehicleClassName,
-            Double maxFuelCapacityPerWeek,
-            Double maxFuelCapacityPerWeekForBusinessGov
-    ) {
-        this.vehicleClassId = vehicleClassId;
-        this.vehicleClassName = vehicleClassName;
+    public void setMaxFuelCapacityPerWeek(Double maxFuelCapacityPerWeek) {
         this.maxFuelCapacityPerWeek = maxFuelCapacityPerWeek;
-        this.maxFuelCapacityPerWeekForBusinessGov = maxFuelCapacityPerWeekForBusinessGov;
-//        this.fuel = fuel;
     }
 
     public Integer getVehicleClassId() {
@@ -79,15 +67,6 @@ public VehicleClasses(){}
         this.vehicleClassName = vehicleClassName;
     }
 
-
-    public Double getMaxFuelCapacityPerWeek() {
-        return maxFuelCapacityPerWeek;
-    }
-
-    public void setMaxFuelCapacityPerWeek(Double maxFuelCapacityPerWeek) {
-        this.maxFuelCapacityPerWeek = maxFuelCapacityPerWeek;
-    }
-
     public Double getMaxFuelCapacityPerWeekForBusinessGov() {
         return maxFuelCapacityPerWeekForBusinessGov;
     }
@@ -96,11 +75,11 @@ public VehicleClasses(){}
         this.maxFuelCapacityPerWeekForBusinessGov = maxFuelCapacityPerWeekForBusinessGov;
     }
 
-    //    public Fuel getFuel() {
-//        return fuel;
-//    }
-//
-//    public void setFuel(Fuel fuel) {
-//        this.fuel = fuel;
-//    }
+    public Fuel getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(Fuel fuel) {
+        this.fuel = fuel;
+    }
 }

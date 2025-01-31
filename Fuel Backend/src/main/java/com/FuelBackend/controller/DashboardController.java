@@ -12,7 +12,7 @@ public class DashboardController {
     @Autowired
     private DashboardService dashboardService;
 
-    @GetMapping("/api/dashboard-data")
+    @GetMapping("/api/v1/dashboard-data")
     public Map<String, Long> getDashboardData() {
         return Map.of(
                 "totalVehicles", dashboardService.getTotalVehicles(),
