@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44de4459-0bf0-490a-b045-8f8950ed641b" name="Changes" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../admin-web/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/Dashboard/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/Dashboard/Dashboard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/DistributionTracking/DistributionTracking.css" beforeDir="false" />
@@ -45,6 +46,10 @@
       <change beforePath="$PROJECT_DIR$/../front-end/src/user/common/Privacy.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../front-end/src/user/common/Terms.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../front-end/src/user/common/Terms.jsx" beforeDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/../log.log.2025-01-26.0.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../log.log" beforeDir="false" afterPath="$PROJECT_DIR$/../log.log" afterDir="false" />
+>>>>>>> e25e509fab144624483c224cf55912dfe9db65a5
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +69,7 @@
   <component name="GitHubPullRequestSearchHistory"><![CDATA[{
   "lastFilter": {
     "state": "OPEN",
+<<<<<<< HEAD
     "assignee": "thanoo120"
   }
 }]]></component>
@@ -95,6 +101,17 @@
   },
   &quot;editorReviewEnabled&quot;: false
 }</component>
+=======
+    "assignee": "NadeeshaMedagama"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/NadeeshaMedagama/fuel-quota-management-system.git",
+    "accountId": "4f111f4a-ac83-4650-b8c1-e8c477135e0e"
+  }
+}]]></component>
+>>>>>>> e25e509fab144624483c224cf55912dfe9db65a5
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -109,15 +126,24 @@
     "Application.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+<<<<<<< HEAD
     "git-widget-placeholder": "Thanoo",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/DELL/Downloads/zoology-be",
+=======
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/MEDAGAMA/IdeaProjects/fuel-quota-management-system/Fuel Backend",
+>>>>>>> e25e509fab144624483c224cf55912dfe9db65a5
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -130,6 +156,17 @@
       </method>
     </configuration>
   </component>
+<<<<<<< HEAD
+=======
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+>>>>>>> e25e509fab144624483c224cf55912dfe9db65a5
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -139,6 +176,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737701478206</updated>
       <workItem from="1737701479360" duration="1636000" />
+      <workItem from="1737968005663" duration="154000" />
     </task>
     <servers />
   </component>
