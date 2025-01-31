@@ -20,10 +20,10 @@ public class NotificationController {
 
     @GetMapping("/send-notification")
     public String sendNotification() {
-        String toPhoneNumber = "0716889714";
+        String toPhoneNumber = "+94726406224";
         String message = "Your fuel quota has been updated.";
         twilioService.sendSms(toPhoneNumber, message);
-        return "Notification sent!";
+        return "SMS sent successfully!";
     }
 
 
