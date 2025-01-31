@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import '../styles/Login.css'; // Adjust if it's a CSS file
+import '../Styles/Login.css'; // Adjust if it's a CSS file
 
 const LoginForm = () => {
   const [vehicleRegistrationNumber, setVehicleRegistrationNumber] = useState("");
@@ -90,7 +90,7 @@ const LoginForm = () => {
           </button>
           <div className="register-link">
             Don’t have an account?{" "}
-            <a href="/VehicleRegistrationForm" className="register-link-text">
+            <a href="/SignUp" className="register-link-text">
               Register
             </a>
           </div>
@@ -106,5 +106,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
-
