@@ -1,6 +1,6 @@
 package com.FuelBackend.controller;
 
-import com.FuelBackend.dataTransferObject.request.vehicleRequestDTO.VehicleRequestDTO;
+import com.FuelBackend.dataTransferObject.response.vehicleResponseDTO.VehicleResponseDTO;
 import com.FuelBackend.entity.Vehicle;
 import com.FuelBackend.repositoryDAO.VehicleRepository;
 import com.FuelBackend.service.vehicalService.VehicleServiceRepository;
@@ -28,7 +28,7 @@ public class VehicleController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createVehicle(@RequestBody VehicleRequestDTO vehicleRequestDTO) {
+    public ResponseEntity<?> createVehicle(@RequestBody VehicleResponseDTO vehicleRequestDTO) {
         return vehicleServiceRepository.createVehicle(vehicleRequestDTO);
     }
 
@@ -66,9 +66,9 @@ public class VehicleController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerVehicle(@RequestBody VehicleRequestDTO vehicleRequestDTO) {
+    public ResponseEntity<?> registerVehicle(@RequestBody VehicleResponseDTO vehicleRequestDTO) {
         boolean isValid = vehicleServiceRepository.validateVehicleDetails(vehicleRequestDTO);
-
+        System.out.println(isValid);
         if (!isValid) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid vehicle details.");
         }
@@ -79,4 +79,6 @@ public class VehicleController {
                 "qrCodeUrl", qrCodeUrl
         ));
     }
+
+
 }

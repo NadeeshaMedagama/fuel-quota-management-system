@@ -1,59 +1,40 @@
 package com.FuelBackend.dataTransferObject.response.vehicleResponseDTO;
 
-import com.FuelBackend.entity.VehicleClasses;
+import jakarta.validation.constraints.NotBlank;
 
 public class VehicleResponseDTO {
 
-    private int vehicleId;
+    @NotBlank
+    private String vehicleNumber;
 
-    private String vehicleRegisterId;
-
+    @NotBlank
     private String vehicleEngineNo;
 
+    @NotBlank
+    private Integer ownerId;
+
+    @NotBlank
+    private String password;
+
+    @NotBlank
+    private String vehicleType;
 
 
-    private Double currentFuelCapacity;
 
-    private Integer userId;
-
-
-    private Integer vehicleClassId;
-
-    private Integer fuelId;
-
-    public VehicleResponseDTO(int vehicleId, String vehicleNumber, String vehicleEngineNo, Integer ownerId, VehicleClasses.VehicleClassName vehicleClass, Double fuelQuota){}
-
-    public VehicleResponseDTO(
-            int vehicleId,
-            String vehicleRegisterId,
-            String vehicleEngineNo,
-            Integer userId,
-            Integer vehicleClassId,
-            Integer fuelId
-    ) {
-        this.vehicleId = vehicleId;
-        this.vehicleRegisterId = vehicleRegisterId;
+    public VehicleResponseDTO(String vehicleNumber, String vehicleEngineNo, Integer ownerId, String password, String vehicleType) {
+        this.vehicleNumber = vehicleNumber;
         this.vehicleEngineNo = vehicleEngineNo;
-        this.currentFuelCapacity = currentFuelCapacity;
-        this.userId = userId;
-        this.vehicleClassId = vehicleClassId;
-        this.fuelId = fuelId;
+        this.ownerId = ownerId;
+        this.password = password;
+        this.vehicleType = vehicleType;
     }
 
-    public int getVehicleId() {
-        return vehicleId;
+    public String getVehicleNumber() {
+        return vehicleNumber;
     }
 
-    public void setVehicleId(int vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
-    public String getVehicleRegisterId() {
-        return vehicleRegisterId;
-    }
-
-    public void setVehicleRegisterId(String vehicleRegisterId) {
-        this.vehicleRegisterId = vehicleRegisterId;
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
     }
 
     public String getVehicleEngineNo() {
@@ -64,36 +45,27 @@ public class VehicleResponseDTO {
         this.vehicleEngineNo = vehicleEngineNo;
     }
 
-
-    public Double getCurrentFuelCapacity() {
-        return currentFuelCapacity;
+    public Integer getOwnerId() {
+        return ownerId;
     }
 
-    public void setCurrentFuelCapacity(Double currentFuelCapacity) {
-        this.currentFuelCapacity = currentFuelCapacity;
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Integer getVehicleClassId() {
-        return vehicleClassId;
+    public String getVehicleType() {
+        return vehicleType;
     }
 
-    public void setVehicleClassId(Integer vehicleClassId) {
-        this.vehicleClassId = vehicleClassId;
-    }
-
-    public Integer getFuelId() {
-        return fuelId;
-    }
-
-    public void setFuelId(Integer fuelId) {
-        this.fuelId = fuelId;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 }

@@ -46,7 +46,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             if (StringUtils.hasText(authenticationHeader) && authenticationHeader.startsWith("Bearer ")) {
                 String token = authenticationHeader.substring(7);
                 String username = jwtUtility.extractUsername(token);
-
+                System.out.println(username);
                 if (jwtUtility.validateToken(token, username)) {
                     Collection<SimpleGrantedAuthority> authorities = jwtUtility.extractAuthorities(token);
                     UsernamePasswordAuthenticationToken authenticationToken =
@@ -77,9 +77,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private void writeErrorResponse(HttpServletResponse response, int status, String message) throws IOException {
         response.setStatus(status);
         response.setContentType("application/json");
-        response.getWriter().write(
-                new ObjectMapper().writeValueAsString(new ExceptionResponseDTO(false, message))
-        );
+
+        System.out.println(message);
+       /* response.getWriter().write(
+                new ObjectMapper()(new ExceptionResponseDTO(false, message))
+        );*/
         response.getWriter().flush();
     }
 }

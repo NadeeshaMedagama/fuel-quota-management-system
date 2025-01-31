@@ -18,10 +18,13 @@ public class FuelTransactionDetails {
 
     private LocalDateTime transactionDate;
 
+    private String fuelType;
+    
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
+
 
 
     @ManyToOne

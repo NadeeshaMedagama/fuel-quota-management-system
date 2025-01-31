@@ -2,101 +2,95 @@ package com.FuelBackend.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(
-        name = "user",
-        indexes = {
-                @Index(name = "idx_email",columnList = "email"),
-                @Index(name = "idx_mobile", columnList = "mobile")
-        }
-)
+
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    private Long userid;
 
-    @Column(nullable = false)
-    private String f_name;
+    @Column
+    private String fullName;
 
-    @Column(nullable = false)
-    private String l_name;
+    @Column
+    private String address;
+
+   @Column
+    @Pattern(regexp = "\\d{10}", message = "Contact Number must be 10 digits.")
+    private String contactNumber;
 
 
-    @Column(nullable = false,unique = true)
-    @Email
-    private String email;
+    @Column(unique = true)
+    private String username;
 
-    @Column(nullable = false)
+    @NotBlank(message = "Password is required.")
+    @Size(min = 6, message = "Password must be at least 6 characters.")
     private String password;
 
-    @Column(nullable = false,unique = true)
-    private String mobile;
-
-    // add verify the mobile number
-    @Column(columnDefinition = "boolean DEFAULT false")
-    private Boolean verifyMobile = false;
-
+    @NotBlank(message = "User Type is required.")
+    private String userType;
 
 
     public User(){
 
     }
 
-    public User(String f_name, String l_name, String email, String password, String mobile, Boolean verifyMobile) {
-        this.f_name = f_name;
-        this.l_name = l_name;
-        this.email = email;
+    public User(String fullName, String address, String contactNumber, String username, String userType, String password) {
+        this.fullName = fullName;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.username = username;
+        this.userType = userType;
         this.password = password;
-        this.mobile = mobile;
-        this.verifyMobile = verifyMobile;
     }
 
-    public User(Integer userId, String f_name, String l_name, String email, String password, String mobile,Boolean verifyMobile) {
-        this.userId = userId;
-        this.f_name = f_name;
-        this.l_name = l_name;
-        this.email = email;
-        this.password = password;
-        this.mobile = mobile;
-        this.verifyMobile = verifyMobile;
+    public Long getUserid() {
+        return userid;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public void setUserid(Long userid) {
+        this.userid = userid;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public String getFullName() {
+        return fullName;
     }
 
-    public String getF_name() {
-        return f_name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public void setF_name(String f_name) {
-        this.f_name = f_name;
+    public String getAddress() {
+        return address;
     }
 
-    public String getL_name() {
-        return l_name;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void setL_name(String l_name) {
-        this.l_name = l_name;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public String getEmail() {
-        return email;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -107,21 +101,11 @@ public class User {
         this.password = password;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
-
-    public Boolean getVerifyMobile() {
-        return verifyMobile;
-    }
-
-    public void setVerifyMobile(Boolean verifyMobile) {
-        this.verifyMobile = verifyMobile;
-    }
-
-
 }

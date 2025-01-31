@@ -2,56 +2,68 @@ package com.FuelBackend.dataTransferObject.request.userRequestDTO;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class UserRequestDTO {
-//    private Integer userId;
-    @NotBlank(message = "first name is required")
-    private String f_name;
+    @NotBlank(message = "Full Name is required.")
+    private String fullName;
 
-    @NotBlank(message = "last name is required")
-    private String l_name;
+    private String address;
 
-    @NotBlank(message = "email is required")
-    @Email(message = "email is not valid")
-    private String email;
-    @NotBlank(message = "password is required")
-    @Size(min = 6, message = "password must be at least 6 chars")
+    @NotBlank(message = "Contact Number is required.")
+    @Pattern(regexp = "\\d{10}", message = "Contact Number must be 10 digits.")
+    private String contactNumber;
+
+    @NotBlank(message = "Username is required.")
+    private String username;
+
+    @NotBlank(message = "Password is required.")
+    @Size(min = 6, message = "Password must be at least 6 characters.")
     private String password;
 
-    @NotBlank(message = "mobile number is required")
-    private String mobile;
+    @NotBlank(message = "User Type is required.")
+    private String userType;
 
-    public UserRequestDTO(String f_name, String l_name, String email, String password, String mobile) {
-        this.f_name = f_name;
-        this.l_name = l_name;
-        this.email = email;
+    public UserRequestDTO(String fullName, String address, String contactNumber, String username, String password, String userType) {
+        this.fullName = fullName;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.username = username;
         this.password = password;
-        this.mobile = mobile;
+        this.userType = userType;
     }
 
-    public String getF_name() {
-        return f_name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setF_name(String f_name) {
-        this.f_name = f_name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getL_name() {
-        return l_name;
+    public String getAddress() {
+        return address;
     }
 
-    public void setL_name(String l_name) {
-        this.l_name = l_name;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getEmail() {
-        return email;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -62,11 +74,11 @@ public class UserRequestDTO {
         this.password = password;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }
