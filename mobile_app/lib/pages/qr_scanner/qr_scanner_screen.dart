@@ -20,8 +20,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   @override
   void initState() {
     super.initState();
-    controller = MobileScannerController(
-    );
+    controller = MobileScannerController();
   }
 
   @override
@@ -80,11 +79,13 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
                     vehicleNumber: 'ABC-1234',
                     totalQuota: 100,
                     usedQuota: 35,
-                    lastPurchase: DateTime.now().subtract(const Duration(days: 2)),
+                    lastPurchase:
+                        DateTime.now().subtract(const Duration(days: 2)),
                     fuelType: 'Diesel',
                     vehicleType: 'Heavy Truck',
                   );
-                  Get.off(() => CustomerQuotaScreen(customerData: customerData));
+                  Get.off(
+                      () => CustomerQuotaScreen(customerData: customerData));
                   break;
                 }
               }
@@ -185,16 +186,18 @@ class ScannerOverlayPainter extends CustomPainter {
     // Bottom right corner
     canvas.drawLine(
       Offset(scanAreaLeft + scanAreaSize, scanAreaTop + scanAreaSize),
-      Offset(scanAreaLeft + scanAreaSize - markerLength, scanAreaTop + scanAreaSize),
+      Offset(scanAreaLeft + scanAreaSize - markerLength,
+          scanAreaTop + scanAreaSize),
       markerPaint,
     );
     canvas.drawLine(
       Offset(scanAreaLeft + scanAreaSize, scanAreaTop + scanAreaSize),
-      Offset(scanAreaLeft + scanAreaSize, scanAreaTop + scanAreaSize - markerLength),
+      Offset(scanAreaLeft + scanAreaSize,
+          scanAreaTop + scanAreaSize - markerLength),
       markerPaint,
     );
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-} 
+}
