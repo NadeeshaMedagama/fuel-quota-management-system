@@ -66,11 +66,12 @@ public class VehicleController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerVehicle(@RequestBody VehicleResponseDTO vehicleRequestDTO) {
+    public ResponseEntity<Map<String, String>> registerVehicle(@RequestBody VehicleResponseDTO vehicleRequestDTO) {
         boolean isValid = vehicleServiceRepository.validateVehicleDetails(vehicleRequestDTO);
         System.out.println(isValid);
         if (!isValid) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid vehicle details.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Map.of("error", "Invalid vehicle details."));
         }
 
         String qrCodeUrl = vehicleServiceRepository.generateAndSaveQRCode(vehicleRequestDTO);
@@ -79,6 +80,5 @@ public class VehicleController {
                 "qrCodeUrl", qrCodeUrl
         ));
     }
-
 
 }
