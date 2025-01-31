@@ -1,6 +1,5 @@
 package com.FuelBackend.entity;
 
-import com.FuelBackend.enums.OwnerType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import org.springframework.lang.Nullable;
@@ -9,91 +8,61 @@ import org.springframework.lang.Nullable;
 @Table(
         name = "vehicle",
         indexes = {
-                @Index(name = "idx_vehicle_register_id", columnList = "vehicleRegisterId"),
-                @Index(name = "idx_vehicle_engine_no", columnList = "vehicleEngineNo"),
-                @Index(name = "idx_vehicle_class_id", columnList = "vehicleClassId")
+                @Index(name = "idx_vehicle_number", columnList = "vehicleNumber"),
+                @Index(name = "idx_vehicle_engine_no", columnList = "vehicleEngineNo")
         }
 )
 public class Vehicle {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Nullable
     private int vehicleId;
 
-    @Column(updatable = false,unique = true,nullable = false)
+    @Column(updatable = false, unique = true, nullable = false)
     private String vehicleNumber;
 
-    @Column(updatable = false,unique = true,nullable = false)
+    @Column(updatable = false, unique = true, nullable = false)
     private String vehicleEngineNo;
-
-
-
-    @Column
-    private String password;
-
 
     @Column(nullable = false)
     private Integer ownerId;
 
     @Column
+    private String password;
 
-    private Double fuelQuota;
+    @Column(nullable = false)
+    private String vehicleType;  // Replaced vehicleClass entity with String vehicleType
+
+    @Column
+    private Double fuelQuota;  // Fuel quota will be set in service layer
 
     @Column
     @Min(0)
     private Double currentFuelCapacity;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", referencedColumnName = "userId", nullable = true)
-//    private User user;
-
-//    @ManyToOne
-//    @JoinColumn(name= "business_government_id",referencedColumnName = "businessGovernmentId", nullable = true)
-//    private BusinessGovernment businessGovernment;
-
-
-    @ManyToOne
-    @JoinColumn(name = "vehicle_class_id", referencedColumnName = "vehicleClassId", nullable = false)
-    private VehicleClasses vehicleClass;
-
-
     @Lob
     private byte[] qrCode;
-//
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "loginid", nullable = false)
-//    private UserLog ownerLog;
 
-    public Vehicle(String vehicleRegisterId, String vehicleEngineNo, Integer ownerId, Integer vehicleClass, Integer fuel) {
+    public Vehicle() {
     }
 
-    public byte[] getQrCode() {
-        return qrCode;
-    }
-
-    public void setQrCode(byte[] qrCode) {
-        this.qrCode = qrCode;
-    }
-
-    public Vehicle(String vehicleRegisterId, String vehicleEngineNo, OwnerType user, Integer ownerId, VehicleClasses vehicleClass, Fuel fuel){}
-
-
+    public Vehicle(String vehicleNumber, String vehicleEngineNo, Integer ownerId, String vehicleType, String password) {}
 
     public Vehicle(
-            int vehicleId,
             String vehicleNumber,
             String vehicleEngineNo,
-            Double currentFuelCapacity,
-           Double fuelQuota
+            Integer ownerId,
+            String vehicleType
+
     ) {
-        this.vehicleId = vehicleId;
-        this.vehicleNumber =vehicleNumber;
+        this.vehicleNumber = vehicleNumber;
         this.vehicleEngineNo = vehicleEngineNo;
-        this.currentFuelCapacity = currentFuelCapacity;
-       this.fuelQuota=fuelQuota;
+        this.ownerId = ownerId;
+        this.vehicleType = vehicleType;
     }
 
+    // Getters and Setters
     public int getVehicleId() {
         return vehicleId;
     }
@@ -118,22 +87,13 @@ public class Vehicle {
         this.vehicleEngineNo = vehicleEngineNo;
     }
 
-    public Double getCurrentFuelCapacity() {
-        return currentFuelCapacity;
+    public Integer getOwnerId() {
+        return ownerId;
     }
 
-    public void setCurrentFuelCapacity(Double currentFuelCapacity) {
-        this.currentFuelCapacity = currentFuelCapacity;
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-
 
     public String getPassword() {
         return password;
@@ -143,12 +103,12 @@ public class Vehicle {
         this.password = password;
     }
 
-    public VehicleClasses getVehicleClass() {
-        return vehicleClass;
+    public String getVehicleType() {
+        return vehicleType;
     }
 
-    public void setVehicleClass(VehicleClasses vehicleClass) {
-        this.vehicleClass = vehicleClass;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
     public Double getFuelQuota() {
@@ -159,12 +119,19 @@ public class Vehicle {
         this.fuelQuota = fuelQuota;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
+    public Double getCurrentFuelCapacity() {
+        return currentFuelCapacity;
     }
 
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
+    public void setCurrentFuelCapacity(Double currentFuelCapacity) {
+        this.currentFuelCapacity = currentFuelCapacity;
     }
 
+    public byte[] getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(byte[] qrCode) {
+        this.qrCode = qrCode;
+    }
 }
