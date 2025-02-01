@@ -19,7 +19,7 @@ const FuelConsumptionChart = () => {
         if (!response.ok) {
           throw new Error("Failed to fetch chart data");
         }
-        const result = await response.json(); // Parse JSON response
+        const result = await response.json(); 
 
         setData({
           labels: result.labels, // Assumes API returns { labels: [], data: [] }

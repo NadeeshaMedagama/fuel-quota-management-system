@@ -1,7 +1,6 @@
 package com.FuelBackend.service.FuelStationService;
 
 import com.FuelBackend.dataTransferObject.request.fuelStationRequestDTO.FuelStationRequestDTO;
-import com.FuelBackend.dataTransferObject.response.CustomApiResponse;
 import com.FuelBackend.dataTransferObject.response.fuelStationResponseDTO.FuelStationResponseDTO;
 import com.FuelBackend.entity.FuelStation;
 import com.FuelBackend.exception.NotFoundException;
@@ -13,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class FuelStationService implements FuelStationServiceRepository{
@@ -27,7 +25,7 @@ public class FuelStationService implements FuelStationServiceRepository{
     @Override
     public ResponseEntity<?> createFuelStation(FuelStationRequestDTO fuelStationRequestDTO) {
         FuelStation fuelStation = new FuelStation(
-                fuelStationRequestDTO.getFuelStationRegisterId(),
+                fuelStationRequestDTO.getFuelStationLicenseNumber(),
                 fuelStationRequestDTO.getFuelStationOwnerName(),
                 fuelStationRequestDTO.getFuelStationEmail(),
                 fuelStationRequestDTO.getPassword()
@@ -37,9 +35,9 @@ public class FuelStationService implements FuelStationServiceRepository{
 
         FuelStationResponseDTO responseDTO = new FuelStationResponseDTO(
                 savedFuelStation.getFuelStationId(),
-                savedFuelStation.getFuelStationRegisterId(),
-                savedFuelStation.getFuelStationOwnerName(),
-                savedFuelStation.getFuelStationEmail()
+                savedFuelStation.getLicenseNumber(),
+                savedFuelStation.getContactNumber(),
+                savedFuelStation.getEmail()
         );
         return new ResponseEntity<>(
 
@@ -55,16 +53,16 @@ public class FuelStationService implements FuelStationServiceRepository{
         FuelStation fuelStation = fuelStationRepository.findById(fuelStationId).orElseThrow(
                 () -> new NotFoundException("fuel station not found")
         );
-        fuelStation.setFuelStationOwnerName(fuelStationRequestDTO.getFuelStationOwnerName());
-        fuelStation.setFuelStationEmail(fuelStationRequestDTO.getFuelStationEmail());
+        fuelStation.setOwnerName(fuelStationRequestDTO.getFuelStationOwnerName());
+        fuelStation.setEmail(fuelStationRequestDTO.getFuelStationEmail());
         fuelStation.setPassword(fuelStationRequestDTO.getPassword());
         fuelStationRepository.save(fuelStation);
 
         FuelStationResponseDTO responseDTO = new FuelStationResponseDTO(
                 fuelStation.getFuelStationId(),
-                fuelStation.getFuelStationRegisterId(),
-                fuelStation.getFuelStationOwnerName(),
-                fuelStation.getFuelStationEmail()
+                fuelStation.getLicenseNumber(),
+                fuelStation.getOwnerName(),
+                fuelStation.getEmail()
         );
         return new ResponseEntity<>(
 
@@ -82,9 +80,9 @@ public class FuelStationService implements FuelStationServiceRepository{
 
         FuelStationResponseDTO responseDTO = new FuelStationResponseDTO(
                 fuelStation.getFuelStationId(),
-                fuelStation.getFuelStationRegisterId(),
-                fuelStation.getFuelStationOwnerName(),
-                fuelStation.getFuelStationEmail()
+                fuelStation.getLicenseNumber(),
+                fuelStation.getOwnerName(),
+                fuelStation.getEmail()
         );
         return new ResponseEntity<>(
 
@@ -96,27 +94,26 @@ public class FuelStationService implements FuelStationServiceRepository{
 
     @Override
     public ResponseEntity<?> getAllFuelStation() {
+
         List<FuelStation> fuelStations = fuelStationRepository.findAll();
+
+
         List<FuelStationResponseDTO> responseDTOList = new ArrayList<>();
 
-        fuelStations.forEach(
-                fuelStation -> {
-                    responseDTOList.add(
-                            new FuelStationResponseDTO(
-                                    fuelStation.getFuelStationId(),
-                                    fuelStation.getFuelStationRegisterId(),
-                                    fuelStation.getFuelStationOwnerName(),
-                                    fuelStation.getFuelStationEmail()
-                            )
-                    );
-                }
-        );
-        return new ResponseEntity<>(
 
-                        responseDTOList
-                ,
-                HttpStatus.OK
-        );
+        fuelStations.forEach(fuelStation -> {
+            responseDTOList.add(
+                    new FuelStationResponseDTO(
+                            fuelStation.getFuelStationId(),
+                            fuelStation.getLicenseNumber(),
+                            fuelStation.getOwnerName(),
+                            fuelStation.getEmail()
+                    )
+            );
+        });
+
+
+        return new ResponseEntity<>(responseDTOList, HttpStatus.OK);
     }
 
     @Override

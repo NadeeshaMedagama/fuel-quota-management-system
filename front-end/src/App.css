@@ -1,43 +1,97 @@
-#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-  }
+/* Terms.css */
+
+/* Container for the terms and conditions */
+.terms-container {
+  width: 90%;
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
   
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+/* Header styling */
+.header {
+  font-size: 2.8rem;
+ 
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Subheader style */
+.subheader {
+  font-size: 1rem;
+  color: #777;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+/* Content section styling */
+.content {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 15px;
+}
+
+/* Individual section styling */
+.section {
+  margin-bottom: 30px;
+}
+
+/* Section title styling */
+.section-title {
+  font-size: 1.7rem;
+ 
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Section text styling */
+.section-text {
+  font-size: 1rem;
+ 
+  line-height: 1.6;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+/* Close button styling */
+.close-button {
+  background-color: #013253;
+  color: white;
+  font-size: 35px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hover effect for the close button */
+.close-button:hover {
+  background-color: #021929;
+}
+
+
+/* Ensure responsive design for smaller screens */
+@media (max-width: 600px) {
+  .terms-container {
+    width: 100%;
+    padding: 15px;
   }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
+
+  .header {
+    font-size: 2.2rem;
   }
-  .logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
+
+  .section-title {
+    font-size: 1.5rem;
   }
-  
-  @keyframes logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+
+  .section-text {
+    font-size: 0.95rem;
   }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-      animation: logo-spin infinite 20s linear;
-    }
-  }
-  
-  .card {
-    padding: 2em;
-  }
-  
-  .read-the-docs {
-    color: #888;
-  }
-  
+}
