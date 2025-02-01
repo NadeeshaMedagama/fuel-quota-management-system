@@ -49,13 +49,13 @@ public class AuthenticationService implements AuthenticationServiceRepository{
     @Override
     public String userLogin(UserLoginRequestDTO userLoginRequestDTO) {
 
-        User user = userRepository.findByMobile(userLoginRequestDTO.getMobile())
+        User user = userRepository.findByContactNumber(userLoginRequestDTO.getContactNumber())
                 .orElseThrow(() -> new UnauthorizedAccessException("Username or password incorrect"));
 
-
-        if (user.getVerifyMobile() && user.getPassword().equals(userLoginRequestDTO.getPassword())) {
-
-            String token = jwtUtility.generateToken(user.getMobile());
+        System.out.println(user.getAddress());
+        if (user.getContactNumber().equals(userLoginRequestDTO.getContactNumber()) && user.getPassword().equals(userLoginRequestDTO.getPassword())) {
+            System.out.println("hi");
+            String token = jwtUtility.generateToken(user.getContactNumber(),user.getPassword(),user.getUserType());
             System.out.println("User logged in with token: " + token);
             return token;
         }
@@ -65,141 +65,141 @@ public class AuthenticationService implements AuthenticationServiceRepository{
         }
     }
 
-
-    @Override
-    public ResponseEntity<?> employeeLogin(EmployeeLoginRequestDTO employeeLoginRequestDTO) {
-        Employee employee = (Employee) employeeRepository.findByEmployeeUsername(employeeLoginRequestDTO.getUsername())
-                .orElseThrow(
-                        () -> new UnauthorizedAccessException("username or password incorrect")
-                );
-        String token;
-        if (
-                employee != null &&
-                        employee.getEmployeeStatus() &&
-                            employee.getPassword().equals(employeeLoginRequestDTO.getPassword())
-        ){
-
-            token = jwtUtility.generateToken(employee.getEmployeeUsername());
-
-        }else{
-            throw new UnauthorizedAccessException("username or password incorrect");
-        }
-        return new ResponseEntity<>(
-                new LoginResponseDTO(
-                        HttpStatus.OK.value(),
-                        "employee login successfully",
-                        token,
-                        new EmployeeResponseDTO(
-                                employee.getEmployeeId(),
-                                employee.getEmployeeUsername(),
-                                employee.getEmployeeEmail(),
-                                employee.getFuelStation().getFuelStationId(),
-                                employee.getEmployeeStatus()
-                        )
-                ),
-                HttpStatus.OK
-        );
-    }
-
-    @Override
-    public ResponseEntity<?> fuelStationLogin(FuelStationLoginRequestDTO fuelStationLoginRequestDTO) {
-        FuelStation fuelStation = (FuelStation) fuelStationRepository.findByLicenseNumber(
-                fuelStationLoginRequestDTO.getFuelStationRegisterId()
-        ).orElseThrow(
-                () -> new UnauthorizedAccessException("username or password incorrect")
-        );
-        String token;
-        if (
-                fuelStation != null &&
-                        fuelStation.getPassword().equals(fuelStationLoginRequestDTO.getPassword())
-        ){
-
-            token = jwtUtility.generateToken(fuelStation.getLicenseNumber());
-        }else{
-            throw new UnauthorizedAccessException("username or password incorrect");
-        }
-        return new ResponseEntity<>(
-                new LoginResponseDTO(
-                        HttpStatus.OK.value(),
-                        "fuel station login successfully",
-                        token,
-                        new FuelStationResponseDTO(
-                                fuelStation.getFuelStationId(),
-                                fuelStation.getLicenseNumber(),
-                                fuelStation.getOwnerName(),
-                                fuelStation.getEmail()
-                        )
-                ),
-                HttpStatus.OK
-        );
-    }
-
-    @Override
-    public ResponseEntity<?> businessLogin(BusinessGovLoginRequestDTO businessGovLoginRequestDTO) {
-        BusinessGovernment businessGovernment = (BusinessGovernment) businessGovernmentRepository.findByBusinessGovernmentRegNo(
-                businessGovLoginRequestDTO.getBusinessGovernmentRegNo()
-        ).orElseThrow(
-                () -> new UnauthorizedAccessException("username or password incorrect")
-        );
-        String token;
-        if(
-                businessGovernment != null &&
-                        businessGovernment.getMobileIsVerify() &&
-                            businessGovernment.getPassword().equals(businessGovLoginRequestDTO.getPassword())
-        ){
-
-            token = jwtUtility.generateToken(businessGovernment.getBusinessGovernmentRegNo());
-        }else{
-            throw new UnauthorizedAccessException("username or password incorrect");
-        }
-        return new ResponseEntity<>(
-                new LoginResponseDTO(
-                        HttpStatus.OK.value(),
-                        "businessGov login successfully",
-                        token,
-                        new BusinessGovernmentResponseDTO(
-                                businessGovernment.getBusinessGovernmentId(),
-                                businessGovernment.getBusinessGovernmentRegNo(),
-                                businessGovernment.getEmail(),
-                                businessGovernment.getMobile(),
-                                businessGovernment.getMobileIsVerify()
-                        )
-                ),
-                HttpStatus.OK
-        );
-    }
-
-    @Override
-    public ResponseEntity<?> administratorLogin(AdministratorLoginRequestDTO administratorLoginRequestDTO) {
-        Administrator administrator = administratorRepository.findByAdministratorUsername(
-                administratorLoginRequestDTO.getAdministratorUsername()
-        ).orElseThrow(
-                () -> new UnauthorizedAccessException("username or password incorrect")
-        );
-        String token;
-        if (
-                administrator != null &&
-                        administrator.getPassword().equals(administratorLoginRequestDTO.getPassword())
-        ){
-
-            token = jwtUtility.generateToken(administrator.getAdministratorUsername());
-        }else{
-            throw new UnauthorizedAccessException("username or password incorrect");
-        }
-        return new ResponseEntity<>(
-                new LoginResponseDTO(
-                        HttpStatus.OK.value(),
-                        "administrator login successfully",
-                        token,
-                        new AdministratorResponseDTO(
-                                administrator.getAdministratorId(),
-                                administrator.getAdministratorUsername(),
-                                administrator.getAdministratorEmail()
-                        )
-                ),
-                HttpStatus.OK
-        );
-    }
+//
+//    @Override
+//    public ResponseEntity<?> employeeLogin(EmployeeLoginRequestDTO employeeLoginRequestDTO) {
+//        Employee employee = (Employee) employeeRepository.findByEmployeeUsername(employeeLoginRequestDTO.getUsername())
+//                .orElseThrow(
+//                        () -> new UnauthorizedAccessException("username or password incorrect")
+//                );
+//        String token;
+//        if (
+//                employee != null &&
+//                        employee.getEmployeeStatus() &&
+//                            employee.getPassword().equals(employeeLoginRequestDTO.getPassword())
+//        ){
+//
+//            token = jwtUtility.generateToken(employee.getEmployeeUsername(),employee.getPassword(),employee.);
+//
+//        }else{
+//            throw new UnauthorizedAccessException("username or password incorrect");
+//        }
+//        return new ResponseEntity<>(
+//                new LoginResponseDTO(
+//                        HttpStatus.OK.value(),
+//                        "employee login successfully",
+//                        token,
+//                        new EmployeeResponseDTO(
+//                                employee.getEmployeeId(),
+//                                employee.getEmployeeUsername(),
+//                                employee.getEmployeeEmail(),
+//                                employee.getFuelStation().getFuelStationId(),
+//                                employee.getEmployeeStatus()
+//                        )
+//                ),
+//                HttpStatus.OK
+//        );
+//    }
+//
+//    @Override
+//    public ResponseEntity<?> fuelStationLogin(FuelStationLoginRequestDTO fuelStationLoginRequestDTO) {
+//        FuelStation fuelStation = (FuelStation) fuelStationRepository.findByLicenseNumber(
+//                fuelStationLoginRequestDTO.getFuelStationRegisterId()
+//        ).orElseThrow(
+//                () -> new UnauthorizedAccessException("username or password incorrect")
+//        );
+//        String token;
+//        if (
+//                fuelStation != null &&
+//                        fuelStation.getPassword().equals(fuelStationLoginRequestDTO.getPassword())
+//        ){
+//
+//            token = jwtUtility.generateToken(fuelStation.getLicenseNumber(),fuelStation.getPassword());
+//        }else{
+//            throw new UnauthorizedAccessException("username or password incorrect");
+//        }
+//        return new ResponseEntity<>(
+//                new LoginResponseDTO(
+//                        HttpStatus.OK.value(),
+//                        "fuel station login successfully",
+//                        token,
+//                        new FuelStationResponseDTO(
+//                                fuelStation.getFuelStationId(),
+//                                fuelStation.getLicenseNumber(),
+//                                fuelStation.getOwnerName(),
+//                                fuelStation.getEmail()
+//                        )
+//                ),
+//                HttpStatus.OK
+//        );
+//    }
+//
+//    @Override
+//    public ResponseEntity<?> businessLogin(BusinessGovLoginRequestDTO businessGovLoginRequestDTO) {
+//        BusinessGovernment businessGovernment = (BusinessGovernment) businessGovernmentRepository.findByBusinessGovernmentRegNo(
+//                businessGovLoginRequestDTO.getBusinessGovernmentRegNo()
+//        ).orElseThrow(
+//                () -> new UnauthorizedAccessException("username or password incorrect")
+//        );
+//        String token;
+//        if(
+//                businessGovernment != null &&
+//                        businessGovernment.getMobileIsVerify() &&
+//                            businessGovernment.getPassword().equals(businessGovLoginRequestDTO.getPassword())
+//        ){
+//
+//            token = jwtUtility.generateToken(businessGovernment.getBusinessGovernmentRegNo(),businessGovernment.getPassword());
+//        }else{
+//            throw new UnauthorizedAccessException("username or password incorrect");
+//        }
+//        return new ResponseEntity<>(
+//                new LoginResponseDTO(
+//                        HttpStatus.OK.value(),
+//                        "businessGov login successfully",
+//                        token,
+//                        new BusinessGovernmentResponseDTO(
+//                                businessGovernment.getBusinessGovernmentId(),
+//                                businessGovernment.getBusinessGovernmentRegNo(),
+//                                businessGovernment.getEmail(),
+//                                businessGovernment.getMobile(),
+//                                businessGovernment.getMobileIsVerify()
+//                        )
+//                ),
+//                HttpStatus.OK
+//        );
+//    }
+//
+//    @Override
+//    public ResponseEntity<?> administratorLogin(AdministratorLoginRequestDTO administratorLoginRequestDTO) {
+//        Administrator administrator = administratorRepository.findByAdministratorUsername(
+//                administratorLoginRequestDTO.getAdministratorUsername()
+//        ).orElseThrow(
+//                () -> new UnauthorizedAccessException("username or password incorrect")
+//        );
+//        String token;
+//        if (
+//                administrator != null &&
+//                        administrator.getPassword().equals(administratorLoginRequestDTO.getPassword())
+//        ){
+//
+//            token = jwtUtility.generateToken(administrator.getAdministratorUsername(),administrator.getPassword());
+//        }else{
+//            throw new UnauthorizedAccessException("username or password incorrect");
+//        }
+//        return new ResponseEntity<>(
+//                new LoginResponseDTO(
+//                        HttpStatus.OK.value(),
+//                        "administrator login successfully",
+//                        token,
+//                        new AdministratorResponseDTO(
+//                                administrator.getAdministratorId(),
+//                                administrator.getAdministratorUsername(),
+//                                administrator.getAdministratorEmail()
+//                        )
+//                ),
+//                HttpStatus.OK
+//        );
+//    }
     private Map<String, String> userDatabase = new HashMap<>(); // Simulating a database with user emails
     private Map<String, String> resetTokens = new HashMap<>(); // Store tokens temporarily
     public void saveResetToken(String email, String token) {

@@ -36,7 +36,7 @@ public class FuelStationController {
         return fuelStationServiceRepository.updateFuelStation(fuelStationId,fuelStationRequestDTO);
     }
 
-    @GetMapping("/getallstations")
+    @GetMapping
     public ResponseEntity<?> getAllFuelStation(){
         return fuelStationServiceRepository.getAllFuelStation();
     }

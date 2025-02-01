@@ -1,11 +1,15 @@
 package com.FuelBackend.controller;
 
 import com.FuelBackend.dataTransferObject.request.fuelRequestDTO.FuelRequestDTO;
+import com.FuelBackend.entity.FuelTransactionDetails;
+import com.FuelBackend.service.FuelReportService.FuelReportService;
 import com.FuelBackend.service.fuelService.FuelServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -45,8 +49,19 @@ public class FuelController {
         return fuelServiceRepository.DeleteFuelById(fuelId);
     }
 
-//    @GetMapping("/chart-data")
-//    public chartData getChartData(){
-//
-//    }
+private FuelReportService fuelReportService;
+    @GetMapping("/fuel-report")
+    public ResponseEntity<?> getFuelReport(
+            @RequestParam String fuelType,
+            @RequestParam String period) {
+
+        List<FuelTransactionDetails> reportData = fuelReportService.getFuelReport(fuelType, period);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("fuelType", fuelType);
+        response.put("period", period);
+        response.put("data", reportData);
+
+        return ResponseEntity.ok(response);
+    }
 }

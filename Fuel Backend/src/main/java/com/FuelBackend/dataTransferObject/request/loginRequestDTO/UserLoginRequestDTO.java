@@ -10,23 +10,23 @@ import lombok.Setter;
 @Setter
 public class UserLoginRequestDTO {
 
-    @NotBlank(message = "mobile number is required")
-    private String mobile;
+    @NotBlank
+    private String contactNumber;
 
-    @NotBlank(message = "password is required")
+    @NotBlank
     private String password;
 
-    public UserLoginRequestDTO(String mobile, String password) {
-        this.mobile = mobile;
+    public UserLoginRequestDTO(String contactNumber, String password) {
+        this.contactNumber=contactNumber;
         this.password = password;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
     public String getPassword() {

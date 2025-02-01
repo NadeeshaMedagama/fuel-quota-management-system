@@ -15,7 +15,7 @@ const VehiclePage = () => {
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/vehicles", {
+        const response = await axios.get("http://localhost:8080/api/v1/vehicle", {
           headers: { Accept: "application/json" },
         });
 
@@ -37,7 +37,7 @@ const VehiclePage = () => {
     if (!confirmed) return;
 
     try {
-      await axios.delete(`http://localhost:8080/vehicles/${id}`);
+      await axios.delete(`http://localhost:8080/api/v1/vehicle/${id}`);
       const updatedVehicles = vehicles.filter((vehicle) => vehicle.id !== id);
       setVehicles(updatedVehicles);
       setFilteredVehicles(updatedVehicles); // Update filteredVehicles after deletion
