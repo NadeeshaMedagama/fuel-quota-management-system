@@ -1,4 +1,0 @@
-package com.FuelBackend.utility;
-
-public class JwtUtility {
-}

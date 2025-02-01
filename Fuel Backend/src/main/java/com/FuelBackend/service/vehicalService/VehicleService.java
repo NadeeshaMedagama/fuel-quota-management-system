@@ -156,7 +156,9 @@ public class VehicleService implements VehicleServiceRepository {
         List<String> validVehicleNumbers = dmtOfficeRepository.findAllVehicleNumbers();
 
         if(validVehicleNumbers.contains(vehicleRequestDTO.getVehicleNumber())) {
+            System.out.println("hi hello");
             return true;
+
         }
          return false;
         }
@@ -166,13 +168,14 @@ public class VehicleService implements VehicleServiceRepository {
     public Vehicle registerVehicle(VehicleRequestDTO vehicleDTO) {
         Optional<VehicleClasses> vehicleClassOpt = vehicleClassesRepository.findByVehicleClassName(vehicleDTO.getVehicleType());
 
+    System.out.println(vehicleDTO);
         Vehicle vehicle = new Vehicle();
         vehicle.setVehicleNumber(vehicleDTO.getVehicleNumber());
         vehicle.setVehicleEngineNo(vehicleDTO.getVehicleEngineNo());
         vehicle.setOwnerId(vehicleDTO.getOwnerId());
         vehicle.setPassword(vehicleDTO.getPassword());
         vehicle.setVehicleType(vehicleDTO.getVehicleType());
-
+    System.out.println(vehicle);
         vehicle.setFuelQuota(vehicleClassOpt.map(VehicleClasses::getMaxFuelCapacityPerWeek).orElse(0.0));
 
         return vehicleRepository.save(vehicle);

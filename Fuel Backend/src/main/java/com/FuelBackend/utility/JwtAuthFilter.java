@@ -46,39 +46,40 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             if (StringUtils.hasText(authenticationHeader) && authenticationHeader.startsWith("Bearer ")) {
                 String token = authenticationHeader.substring(7);
                 String username = jwtUtility.extractUsername(token);
-                System.out.println(username);
-                if (jwtUtility.validateToken(token, username)) {
-                    Collection<SimpleGrantedAuthority> authorities = jwtUtility.extractAuthorities(token);
-                    UsernamePasswordAuthenticationToken authenticationToken =
-                            new UsernamePasswordAuthenticationToken(username, null, authorities);
-                    authenticationToken.setDetails(
-                            new WebAuthenticationDetailsSource().buildDetails(request)
-                    );
-                    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+                if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                    if (jwtUtility.validateToken(token, username)) {
+                        Collection<SimpleGrantedAuthority> authorities = jwtUtility.extractAuthorities(token);
+
+                        UsernamePasswordAuthenticationToken authenticationToken =
+                                new UsernamePasswordAuthenticationToken(username, null, authorities);
+                        authenticationToken.setDetails(
+                                new WebAuthenticationDetailsSource().buildDetails(request)
+                        );
+                        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                    }
                 }
             }
 
-        } catch (UnauthorizedAccessException unauthorizedAccessException) {
-            writeErrorResponse(response, HttpStatus.UNAUTHORIZED.value(), unauthorizedAccessException.getMessage());
-            return;
+            filterChain.doFilter(request, response);
 
-        } catch (ForbiddenException forbiddenException) {
-            writeErrorResponse(response, HttpStatus.FORBIDDEN.value(), forbiddenException.getMessage());
-            return;
-
-        } catch (Exception exception) {
-            writeErrorResponse(response, HttpStatus.INTERNAL_SERVER_ERROR.value(), exception.getMessage());
-            return;
+        } catch (UnauthorizedAccessException e) {
+            System.out.println("UnauthorizedAccessException "+e.getMessage());
+            writeErrorResponse(response, HttpStatus.UNAUTHORIZED.value(), e.getMessage());
+        } catch (ForbiddenException e) {
+            System.out.println("ForbiddenException "+e.getMessage());
+            writeErrorResponse(response, HttpStatus.FORBIDDEN.value(), e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Exception "+e.getMessage());
+            writeErrorResponse(response, HttpStatus.INTERNAL_SERVER_ERROR.value(), "An unexpected error occurred.");
         }
-
-        filterChain.doFilter(request, response);
     }
 
     private void writeErrorResponse(HttpServletResponse response, int status, String message) throws IOException {
         response.setStatus(status);
         response.setContentType("application/json");
 
-        System.out.println(message);
+        System.out.println("Error: "+message);
        /* response.getWriter().write(
                 new ObjectMapper()(new ExceptionResponseDTO(false, message))
         );*/
