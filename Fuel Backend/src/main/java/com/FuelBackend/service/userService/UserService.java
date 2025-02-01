@@ -5,6 +5,7 @@ import com.FuelBackend.dataTransferObject.response.CustomApiResponse;
 import com.FuelBackend.dataTransferObject.response.userResponseDTO.UserResponseDTO;
 import com.FuelBackend.entity.User;
 import com.FuelBackend.repositoryDAO.UserRepository;
+import com.FuelBackend.service.otpService.OtpServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +17,12 @@ public class UserService implements UserServiceRepository{
 
     private final UserRepository userRepository;
 
+    private final OtpServiceRepository otpServiceRepository;
+
     @Autowired
-    public UserService (UserRepository userRepository){
+    public UserService (UserRepository userRepository, OtpServiceRepository otpServiceRepository){
         this.userRepository= userRepository;
+        this.otpServiceRepository = otpServiceRepository;
     }
 
     @Override
@@ -33,6 +37,7 @@ public class UserService implements UserServiceRepository{
         );
 
         User savedUser = userRepository.save(user);
+        otpServiceRepository.sendOtp(savedUser.getMobile());
         UserResponseDTO responseData = new UserResponseDTO(
                 savedUser.getUserId(),
                 savedUser.getF_name(),
