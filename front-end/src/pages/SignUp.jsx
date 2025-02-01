@@ -149,19 +149,6 @@ const SignUpForm = () => {
             {errors.password && <span className="error">{errors.password}</span>}
           </label>
 
-          <label>
-            User Type
-            <select
-              name="userType"
-              value={formData.userType}
-              onChange={handleChange}
-              className={errors.userType ? "error-input" : ""}
-            >
-              <option value="">Select user type</option>
-              <option value="Customer">Customer</option>
-            </select>
-            {errors.userType && <span className="error">{errors.userType}</span>}
-          </label>
 
           <button type="submit">Register</button>
           {submissionError && <p className="error">{submissionError}</p>}
