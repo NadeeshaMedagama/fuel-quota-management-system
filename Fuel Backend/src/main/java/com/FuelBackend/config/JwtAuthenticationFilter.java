@@ -45,7 +45,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 }
             } catch (Exception e) {
                 // Invalid token
-                System.out.println("heriers");
+                System.out.println("Exception "+e.toString());
                 SecurityContextHolder.clearContext();
             }
         }

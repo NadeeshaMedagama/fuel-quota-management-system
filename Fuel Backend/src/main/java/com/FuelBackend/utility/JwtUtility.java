@@ -2,6 +2,7 @@ package com.FuelBackend.utility;
 
 import com.FuelBackend.exception.JwtValidationException;
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,28 +14,35 @@ import java.util.stream.Collectors;
 
 @Component
 public class JwtUtility {
-    SecretKey secretKey = Keys.secretKeyFor(io.jsonwebtoken.SignatureAlgorithm.HS256);
-    private static final long EXPIRATION_TIME = 1000 * 60 * 10; // 10 minutes
 
-    public String generateToken(String username, String password,String role) {
-        String[] Role={"admin","fuel station"};
+    private static final long EXPIRATION_TIME = 1000 * 60 * 10; // 10 minutes
+    private String key="4D7A34B5d7863FF74D7A34B5d7863FF74D7A34B5d7863FF7";
+
+
+    public String generateToken(String username, String password, String role) {
+        String[] roles = {"admin", "fuel station"}; // Add roles to your token
         Map<String, Object> claims = new HashMap<>();
         claims.put("username", username);
-        claims.put("password", password); // Remember: it's better to hash passwords, not store them in plaintext
-        claims.put("extra", "x".repeat(200)); // Padding to increase token size if needed
-        claims.put("roles",Role);
+        claims.put("password", password); // It's better to hash the password
+        claims.put("extra", "x".repeat(200)); // Extra padding
+        claims.put("roles", roles); // Assign roles
+
         return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(new Date())
+                .setClaims(claims) // Set claims in the token
+                .setIssuedAt(new Date()) // Set issue date
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(secretKey)
-                .compact();
+                .signWith(SignatureAlgorithm.HS256, key)// Set expiration time
+
+                .compact(); // Generate the compact JWT
     }
+
+
+
 
     public String extractUsername(String token) {
         try {
             return Jwts.parser()
-                    .setSigningKey(secretKey)
+                    .setSigningKey( key)
                     .parseClaimsJws(token)
                     .getBody()
                     .get("username").toString();
@@ -59,7 +67,7 @@ public class JwtUtility {
 
     private boolean isTokenExpired(String token) {
         return Jwts.parser()
-                .setSigningKey(secretKey)
+                .setSigningKey(key)
                 .parseClaimsJws(token)
                 .getBody()
                 .getExpiration()
@@ -81,7 +89,7 @@ public class JwtUtility {
     // Method to extract all claims from the token
     private Claims extractAllClaims(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(secretKey)
+                .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
