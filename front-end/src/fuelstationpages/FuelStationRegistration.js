@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../styles/FuelStationRegistration.css";
+import "./FuelStationRegistration.css";
 
 const FuelStationRegistration = () => {
   const [stationName, setStationName] = useState("");
@@ -29,7 +29,7 @@ const FuelStationRegistration = () => {
       });
 
       if (response.data.message === "Registration Successful") {
-        navigate("/FuelStationSuccess");
+        navigate("/fuel-station-success");
       } else {
         setError(response.data.message || "Registration failed.");
       }
@@ -41,32 +41,34 @@ const FuelStationRegistration = () => {
   };
 
   return (
-    <div className="registration-container">
-      <div className="form-container">
-        <h2 className="form-title">Fuel Station Registration</h2>
-        <form onSubmit={registerFuelStation} className="registration-form">
-          <div className="input-group">
+    <div className="fuel-station-registration-container">
+      <div className="fuel-station-form-container">
+        <h2 className="fuel-station-form-title">Fuel Station Registration</h2>
+        <form onSubmit={registerFuelStation} className="fuel-station-registration-form">
+          <div className="fuel-station-input-group">
             <label>Station Name</label>
             <input type="text" value={stationName} onChange={(e) => setStationName(e.target.value)} required />
           </div>
-          <div className="input-group">
+          <div className="fuel-station-input-group">
             <label>Location</label>
             <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required />
           </div>
-          <div className="input-group">
+          <div className="fuel-station-input-group">
             <label>Owner Name</label>
             <input type="text" value={ownerName} onChange={(e) => setOwnerName(e.target.value)} required />
           </div>
-          <div className="input-group">
+          <div className="fuel-station-input-group">
             <label>Contact Number</label>
             <input type="text" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
           </div>
-          <div className="input-group">
+          <div className="fuel-station-input-group">
             <label>Password</label>
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
           </div>
-          {error && <div className="error-message">{error}</div>}
-          <button type="submit" disabled={loading}>{loading ? "Registering..." : "Register"}</button>
+          {error && <div className="fuel-station-error-message">{error}</div>}
+          <button type="submit" className="fuel-station-submit-button" disabled={loading}>
+            {loading ? "Registering..." : "Register"}
+          </button>
         </form>
       </div>
     </div>
