@@ -18,17 +18,17 @@ public class TwilioService {
     private String fromPhoneNumber;
 
     public void TwilioService() {
-        // Initialize Twilio SDK with Account SID and Auth Token
+
         Twilio.init(accountSid, authToken);
     }
 
     public void sendSms(String toPhoneNumber, String message) {
         try {
-            // Send SMS
+            Twilio.init(accountSid, authToken);
             com.twilio.rest.api.v2010.account.Message.creator(
-                    new PhoneNumber(toPhoneNumber),  // Recipient phone number
-                    new PhoneNumber(fromPhoneNumber), // Twilio phone number
-                    message                          // Message content
+                    new PhoneNumber(toPhoneNumber),
+                    new PhoneNumber(fromPhoneNumber),
+                    message
             ).create();
             System.out.println("Message sent successfully!");
         } catch (Exception e) {

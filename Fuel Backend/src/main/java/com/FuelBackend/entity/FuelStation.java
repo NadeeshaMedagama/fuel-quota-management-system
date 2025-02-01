@@ -32,6 +32,10 @@ public class FuelStation {
     private String contactNumber;
     private String password;
 
+
+    public FuelStation() {
+    }
+
     public FuelStation(String fuelStationLicenseNumber, String fuelStationOwnerName, String fuelStationEmail, String password) {
     }
 

@@ -108,7 +108,7 @@ public class VehicleService implements VehicleServiceRepository {
     }
 
     @Override
-    public ResponseEntity<?> updateVehicle(VehicleResponseDTO vehicleRequestDTO) {
+    public ResponseEntity<?> updateVehicle(VehicleRequestDTO vehicleRequestDTO) {
         return null;
     }
 
@@ -123,7 +123,7 @@ public class VehicleService implements VehicleServiceRepository {
     }
 
     @Override
-    public String generateAndSaveQRCode(VehicleResponseDTO vehicleRequestDTO) {
+    public String generateAndSaveQRCode(VehicleRequestDTO vehicleRequestDTO) {
         try {
             if (vehicleRequestDTO.getVehicleNumber() == null || vehicleRequestDTO.getVehicleNumber().isEmpty()) {
                 throw new IllegalArgumentException("Vehicle Register ID cannot be null or empty.");
@@ -151,7 +151,7 @@ public class VehicleService implements VehicleServiceRepository {
     }
 
     @Override
-    public boolean validateVehicleDetails(VehicleResponseDTO vehicleRequestDTO) {
+    public boolean validateVehicleDetails(VehicleRequestDTO vehicleRequestDTO) {
 
         List<String> validVehicleNumbers = dmtOfficeRepository.findAllVehicleNumbers();
 

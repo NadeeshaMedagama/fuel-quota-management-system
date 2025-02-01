@@ -13,6 +13,7 @@ import com.FuelBackend.utility.JwtUtility;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -34,9 +35,9 @@ public class AuthenticationService implements AuthenticationServiceRepository{
     private final AuthenticationManager authenticationManager;
 
     private final AdministratorRepository administratorRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-
-    public AuthenticationService(UserRepository userRepository, EmployeeRepository employeeRepository, BusinessGovernmentRepository businessGovernmentRepository, FuelStationRepository fuelStationRepository, JwtUtility jwtUtility, AuthenticationManager authenticationManager, AdministratorRepository administratorRepository) {
+    public AuthenticationService(UserRepository userRepository, EmployeeRepository employeeRepository, BusinessGovernmentRepository businessGovernmentRepository, FuelStationRepository fuelStationRepository, JwtUtility jwtUtility, AuthenticationManager authenticationManager, AdministratorRepository administratorRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.employeeRepository = employeeRepository;
         this.businessGovernmentRepository = businessGovernmentRepository;
@@ -44,6 +45,7 @@ public class AuthenticationService implements AuthenticationServiceRepository{
         this.jwtUtility = jwtUtility;
         this.authenticationManager = authenticationManager;
         this.administratorRepository = administratorRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
     @Override
@@ -52,8 +54,8 @@ public class AuthenticationService implements AuthenticationServiceRepository{
         User user = userRepository.findByContactNumber(userLoginRequestDTO.getContactNumber())
                 .orElseThrow(() -> new UnauthorizedAccessException("Username or password incorrect"));
 
-        System.out.println(user.getAddress());
-        if (user.getContactNumber().equals(userLoginRequestDTO.getContactNumber()) && user.getPassword().equals(userLoginRequestDTO.getPassword())) {
+        if (user.getContactNumber().equals(userLoginRequestDTO.getContactNumber()) && passwordEncoder.matches(userLoginRequestDTO.getPassword(), user.getPassword()))
+         {
             System.out.println("hi");
             String token = jwtUtility.generateToken(user.getContactNumber(),user.getPassword(),user.getUserType());
             System.out.println("User logged in with token: " + token);

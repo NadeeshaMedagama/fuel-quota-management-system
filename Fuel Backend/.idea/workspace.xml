@@ -4,52 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44de4459-0bf0-490a-b045-8f8950ed641b" name="Changes" comment="">
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/Dashboard/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/Dashboard/Dashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/DistributionTracking/DistributionTracking.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/FuelQuota/EditFuelQuota.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/FuelQuota/EditFuelQuota.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/FuelQuota/FuelQuota.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/FuelQuota/FuelQuota.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/FuelQuota/FuelQuota.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/FuelStationManagement/AddFuelStation.css" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/FuelStationManagement/AddFuelStation.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/FuelStationManagement/AddFuelStation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/FuelStationManagement/AddFuelStation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/FuelStationManagement/EditFuelStation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/FuelStationManagement/EditFuelStation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/FuelStationManagement/FuelStation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/FuelStationManagement/FuelStation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/Notification/Notification.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/Notification/Notification.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/Notification/Notification.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/Notification/NotificationSettings.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/User/EditUser.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/User/User.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/User/User.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/VehicleManagement/EditVehicle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/VehicleManagement/EditVehicle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/VehicleManagement/VehiclePage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/VehicleManagement/VehiclePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/VehicleManagement/VehiclePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/reports/reports.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/reports/reports.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/Styles/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/Styles/Home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/Styles/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/Styles/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/Styles/QRCodeScanner.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/Styles/RegistrationSuccessfullPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/Styles/SignUpForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/Styles/SignUpForm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/Styles/VehicleRegistrationForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/Styles/VehicleRegistrationForm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/assets/components/FuelRegistration.jsx" beforeDir="false" />
+    <list default="true" id="e6b0ebf0-c3d1-4c68-b750-419a4dd4f563" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../front-end/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/PrivacyPolicy.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/PrivacyPolicy.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/QRdisplay.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/QRdisplay.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/RegistrationSuccessfull.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/RegistrationSuccessfull.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/SignUp.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/VehicleRegistrationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/VehicleRegistrationForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/user/common/Footer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/user/common/Footer.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/user/common/Privacy.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/user/common/Privacy.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/user/common/Terms.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/user/common/Terms.jsx" beforeDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/../log.log.2025-01-26.0.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../log.log" beforeDir="false" afterPath="$PROJECT_DIR$/../log.log" afterDir="false" />
->>>>>>> e25e509fab144624483c224cf55912dfe9db65a5
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,19 +16,20 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-<<<<<<< HEAD
-    "assignee": "thanoo120"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+    &quot;assignee&quot;: &quot;thanoo120&quot;
   }
-}]]></component>
+}</component>
   <component name="GitHubPullRequestState">{
   &quot;prStates&quot;: [
     {
@@ -84,99 +41,54 @@
     }
   ]
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/NadeeshaMedagama/fuel-quota-management-system.git&quot;,
-    &quot;accountId&quot;: &quot;0bc4c86c-913c-4e4b-bb12-37e24532c3a8&quot;
-  },
-  &quot;recentNewPullRequestHead&quot;: {
-    &quot;server&quot;: {
-      &quot;useHttp&quot;: false,
-      &quot;host&quot;: &quot;github.com&quot;,
-      &quot;port&quot;: null,
-      &quot;suffix&quot;: null
-    },
-    &quot;owner&quot;: &quot;NadeeshaMedagama&quot;,
-    &quot;repository&quot;: &quot;fuel-quota-management-system&quot;
-  },
-  &quot;editorReviewEnabled&quot;: false
-}</component>
-=======
-    "assignee": "NadeeshaMedagama"
-  }
-}]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/NadeeshaMedagama/fuel-quota-management-system.git",
-    "accountId": "4f111f4a-ac83-4650-b8c1-e8c477135e0e"
+    "accountId": "0bc4c86c-913c-4e4b-bb12-37e24532c3a8"
   }
 }]]></component>
->>>>>>> e25e509fab144624483c224cf55912dfe9db65a5
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2s44OAOkgi7p227Blwlo7zL3NI5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Unnamed.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-<<<<<<< HEAD
-    "git-widget-placeholder": "Thanoo",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/DELL/Downloads/zoology-be",
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+    &quot;git-widget-placeholder&quot;: &quot;Thanoo&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/Downloads/zoology-be&quot;,
 =======
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/MEDAGAMA/IdeaProjects/fuel-quota-management-system/Fuel Backend",
->>>>>>> e25e509fab144624483c224cf55912dfe9db65a5
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/MEDAGAMA/IdeaProjects/fuel-quota-management-system/Fuel Backend&quot;,
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; e25e509fab144624483c224cf55912dfe9db65a5
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.FuelBackend.FuelBackendApplication" />
-      <module name="FuelBackend" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
-<<<<<<< HEAD
-=======
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
-      </set>
-    </attachedChunks>
-  </component>
->>>>>>> e25e509fab144624483c224cf55912dfe9db65a5
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="44de4459-0bf0-490a-b045-8f8950ed641b" name="Changes" comment="" />
-      <created>1737701478206</created>
+      <changelist id="e6b0ebf0-c3d1-4c68-b750-419a4dd4f563" name="Changes" comment="" />
+      <created>1738344005853</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1737701478206</updated>
-      <workItem from="1737701479360" duration="1636000" />
-      <workItem from="1737968005663" duration="154000" />
+      <updated>1738344005853</updated>
     </task>
     <servers />
   </component>

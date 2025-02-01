@@ -1,5 +1,6 @@
 package com.FuelBackend.controller;
 
+import com.FuelBackend.dataTransferObject.request.vehicleRequestDTO.VehicleRequestDTO;
 import com.FuelBackend.dataTransferObject.response.vehicleResponseDTO.VehicleResponseDTO;
 import com.FuelBackend.entity.Vehicle;
 import com.FuelBackend.repositoryDAO.VehicleRepository;
@@ -64,9 +65,10 @@ public class VehicleController {
                 .body(vehicle.getQrCode());
     }
 
-
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/register")
-    public ResponseEntity<Map<String, String>> registerVehicle(@RequestBody VehicleResponseDTO vehicleRequestDTO) {
+    public ResponseEntity<Map<String, String>> registerVehicle(@RequestBody VehicleRequestDTO vehicleRequestDTO) {
+        System.out.println("Received vehicle registration data: " + vehicleRequestDTO);
         boolean isValid = vehicleServiceRepository.validateVehicleDetails(vehicleRequestDTO);
         System.out.println(isValid);
         if (!isValid) {
