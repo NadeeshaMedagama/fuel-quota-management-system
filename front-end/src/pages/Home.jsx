@@ -10,17 +10,18 @@ function Home() {
     <div className="home-container">
       <header className="home-header">
         <img src="/logo.png" alt="FuelPulse Logo" className="logo" />
-        <LoginButton />
+      {/* Add Fuel Station Button */}
+      <Link to="/FuelStationLogin" className="fuelstation-button">
+          <button className="fuelstation-btn">Fuel Station</button>
+        </Link>
       </header>
 
       <main className="home-main">
         <h1>What is FuelPulse?</h1>
         <p>Managing Fuel, Simplifying Lives: Your Digital Fuel Management Solution</p>
         <RegisterButton />
-        {/* Add Fuel Station Button */}
-        <Link to="/FuelStationLogin" className="fuelstation-button">
-          <button className="fuelstation-btn">Fuel Station</button>
-        </Link>
+        <LoginButton />
+       
       
      
 
