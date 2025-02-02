@@ -18,7 +18,7 @@ const LoginForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/v1/VehicleOwner/login",
+        "http://localhost:8080/api/v1/auth/userAuth",
         {
           vehicleRegistrationNumber,
           password,
@@ -49,6 +49,7 @@ const LoginForm = () => {
 
   const handleForgotPassword = () => {
     alert("Forgot Password feature will send a reset link to your registered email.");
+    
   };
 
   return (
