@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/fuelStation")
+@RequestMapping("/api/v1/fuelStation")
 public class FuelStationController {
 
     private final FuelStationServiceRepository fuelStationServiceRepository;

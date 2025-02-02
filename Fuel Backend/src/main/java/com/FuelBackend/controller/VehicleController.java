@@ -65,7 +65,7 @@ public class VehicleController {
                 .body(vehicle.getQrCode());
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> registerVehicle(@RequestBody VehicleRequestDTO vehicleRequestDTO) {
         System.out.println("Received vehicle registration data: " + vehicleRequestDTO);

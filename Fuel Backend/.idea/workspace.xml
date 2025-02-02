@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6b0ebf0-c3d1-4c68-b750-419a4dd4f563" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/Dashboard/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/Dashboard/Dashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/FuelStationManagement/EditFuelStation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/FuelStationManagement/EditFuelStation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/FuelStationManagement/FuelStation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/FuelStationManagement/FuelStation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/VehicleManagement/VehiclePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/VehicleManagement/VehiclePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/fuelstationpages/FuelStationLogin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/fuelstationpages/FuelStationRegistration.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/fuelstationpages/FuelStationSuccess.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../log.log" beforeDir="false" afterPath="$PROJECT_DIR$/../log.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mobile_app/lib/pages/qr_scanner/qr_scanner_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../mobile_app/lib/pages/qr_scanner/qr_scanner_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mobile_app/lib/repositories/user_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../mobile_app/lib/repositories/user_repository.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
