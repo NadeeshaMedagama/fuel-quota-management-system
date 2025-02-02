@@ -1,5 +1,4 @@
-
-  * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -29,6 +28,7 @@ color: white; /* Ensures content text contrasts with the background */
   align-items: center;
   padding: 10px 20px;
   border-bottom: 2px solid #ddd;
+  margin-right: 10px;
 }
 
 .logo {
@@ -37,6 +37,7 @@ color: white; /* Ensures content text contrasts with the background */
 
 .home-main {
   margin: 40px 0;
+
 }
 
 .home-main h1 {
@@ -75,14 +76,16 @@ button {
   background-color: #002855;
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 2em;
+  padding: 20px 10px;
+  font-size: 1.9em;
   border-radius: 15px;
   cursor: pointer;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
+   margin-left: 20px;
+
 }
 
 button:hover {

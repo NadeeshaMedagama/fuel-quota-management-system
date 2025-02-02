@@ -9,6 +9,7 @@ import VehicleRegistrationForm from "./pages/VehicleRegistrationForm";
 import RegistrationSuccessfull from "./pages/RegistrationSuccessfull";
 import QRDisplay from "./pages/QRdisplay"; // ✅ Ensure case sensitivity
 
+
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
         <Route path="/VehicleRegistrationForm" element={<VehicleRegistrationForm />} />
         <Route path="/RegistrationSuccessfull" element={<RegistrationSuccessfull />} />
         <Route path="/QRDisplay" element={<QRDisplay />} />  {/* ✅ Fixed Route Placement */}
+     
       </Routes>
     </Router>
   );
