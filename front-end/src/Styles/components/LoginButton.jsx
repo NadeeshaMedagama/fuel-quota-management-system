@@ -8,7 +8,7 @@ function LoginButton() {
     navigate("/login");
   };
 
-  return <button className="login-button" onClick={handleClick}>Log In</button>;
+  return <button className="login-button" onClick={handleClick}>Log In  Now</button>;
 }
 
 export default LoginButton;
