@@ -1,6 +1,8 @@
 package com.FuelBackend.controller;
 
+import com.FuelBackend.dataTransferObject.request.FuelTransactionRequestDTO.FuelTransactionDTO;
 import com.FuelBackend.entity.FuelTransactionDetails;
+import com.FuelBackend.repositoryDAO.FuelTransactionRepository;
 import com.FuelBackend.service.FuelTransactionService.FuelTransactionService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,29 +13,33 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000") // Adjust for frontend
 public class FuelTransactionDetailsController {
 
-    private final FuelTransactionService service;
+    private final FuelTransactionRepository transactionRepository;
+    private final FuelTransactionService transactionService;
 
-    public FuelTransactionDetailsController(FuelTransactionService service) {
-        this.service = service;
+
+    public FuelTransactionDetailsController(FuelTransactionRepository transactionRepository, FuelTransactionService transactionService) {
+        this.transactionRepository = transactionRepository;
+        this.transactionService = transactionService;
     }
 
     @GetMapping
-    public List<FuelTransactionDetails> getAllTransactions() {
-        return service.getAllTransactions();
+    public List<FuelTransactionDTO> getAllTransactions() {
+        List<FuelTransactionDetails> transactions = transactionRepository.findAll();
+        return transactionService.convertToDTOList(transactions);
     }
 
     @GetMapping("/vehicle/{registerNumber}")
     public List<FuelTransactionDetails> getTransactionsByVehicle(@PathVariable String registerNumber) {
-        return service.getTransactionsByVehicle(registerNumber);
+        return transactionService.getTransactionsByVehicle(registerNumber);
     }
 
     @GetMapping("/station/{stationName}")
     public List<FuelTransactionDetails> getTransactionsByStation(@PathVariable String stationName) {
-        return service.getTransactionsByStation(stationName);
+        return transactionService.getTransactionsByStation(stationName);
     }
 
     @PostMapping
     public FuelTransactionDetails addTransaction(@RequestBody FuelTransactionDetails transaction) {
-        return service.addTransaction(transaction);
+        return transactionService.addTransaction(transaction);
     }
 }
