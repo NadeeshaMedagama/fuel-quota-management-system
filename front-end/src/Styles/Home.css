@@ -55,7 +55,7 @@ color: white; /* Ensures content text contrasts with the background */
   background: #ffffff;
   padding: 20px;
   margin: 20px auto;
-  border: 1px solid #edeef1;
+  border: 1px solid #95abed;
   border-radius: 8px;
   max-width: 900px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -85,6 +85,7 @@ button {
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
    margin-left: 20px;
+   border-color: aliceblue;
 
 }
 
