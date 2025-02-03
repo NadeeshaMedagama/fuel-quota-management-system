@@ -24,12 +24,14 @@ public class NotificationController {
 
 
     @GetMapping("/send-notification")
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<Notification> getAllNotifications() {
         return notificationService.getAllNotifications();
     }
 
 
     @DeleteMapping("/notifications/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<String> deleteNotification(@PathVariable Long id) {
         boolean isDeleted = notificationService.deleteNotification(id);
         if (isDeleted) {

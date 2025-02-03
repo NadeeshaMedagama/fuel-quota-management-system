@@ -109,18 +109,40 @@ public class VehicleService implements VehicleServiceRepository {
 
     @Override
     public ResponseEntity<?> updateVehicle(VehicleRequestDTO vehicleRequestDTO) {
-        return null;
+        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleRequestDTO.getOwnerId());
+
+        if (optionalVehicle.isPresent()) {
+            Vehicle vehicle = optionalVehicle.get();
+            vehicle.setVehicleNumber(vehicleRequestDTO.getVehicleNumber());
+            vehicle.setVehicleType(vehicleRequestDTO.getVehicleType());
+            vehicle.setVehicleEngineNo(vehicleRequestDTO.getVehicleEngineNo());
+            vehicle.setPassword(vehicleRequestDTO.getPassword());
+
+            vehicleRepository.save(vehicle);
+            return ResponseEntity.ok("Vehicle updated successfully!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vehicle not found");
+        }
     }
 
     @Override
     public ResponseEntity<?> deleteVehicle(int vehicleId) {
-        return null;
+        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleId);
+
+        if (optionalVehicle.isPresent()) {
+            vehicleRepository.deleteById(vehicleId);
+            return ResponseEntity.ok("Vehicle deleted successfully!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vehicle not found");
+        }
     }
 
     @Override
     public ResponseEntity<?> getAllVehicle() {
-        return null;
+        List<Vehicle> vehicles = vehicleRepository.findAll();
+        return ResponseEntity.ok(vehicles);
     }
+
 
     @Override
     public String generateAndSaveQRCode(VehicleRequestDTO vehicleRequestDTO) {
