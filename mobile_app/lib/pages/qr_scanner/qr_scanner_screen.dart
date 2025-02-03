@@ -1,3 +1,4 @@
+import 'package:fuel_scanner/services/api_service.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
@@ -20,8 +21,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   @override
   void initState() {
     super.initState();
-    controller = MobileScannerController(
-    );
+    controller = MobileScannerController();
   }
 
   @override
@@ -68,24 +68,39 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
         children: [
           MobileScanner(
             controller: controller,
-            onDetect: (capture) {
+            onDetect: (capture) async {
               final List<Barcode> barcodes = capture.barcodes;
               for (final barcode in barcodes) {
-                if (barcode.rawValue != null) {
-                  debugPrint('Barcode found! ${barcode.rawValue}');
-                  // Mock customer data - replace with actual API call
-                  final customerData = CustomerFuelData(
-                    id: barcode.rawValue!,
-                    name: 'John Doe',
-                    vehicleNumber: 'ABC-1234',
-                    totalQuota: 100,
-                    usedQuota: 35,
-                    lastPurchase: DateTime.now().subtract(const Duration(days: 2)),
-                    fuelType: 'Diesel',
-                    vehicleType: 'Heavy Truck',
+                try {
+                  if (barcode.rawValue != null) {
+                    controller.stop();
+                    debugPrint('Barcode found! ${barcode.rawValue}');
+                    // Mock customer data - replace with actual API call
+                    // final customerData = CustomerFuelData(
+                    //   id: barcode.rawValue!,
+                    //   name: 'John Doe',
+                    //   vehicleNumber: 'ABC-1234',
+                    //   totalQuota: 100,
+                    //   usedQuota: 35,
+                    //   lastPurchase: DateTime.now().subtract(const Duration(days: 2)),
+                    //   fuelType: 'Diesel',
+                    //   vehicleType: 'Heavy Truck',
+                    // );
+                    final customerData = await ApiService()
+                        .getCustomerFuelData(barcode.rawValue.toString());
+                    Get.off(
+                        () => CustomerQuotaScreen(customerData: customerData));
+                    break;
+                  }
+                } on Exception catch (e) {
+                  Get.back();
+                  Get.snackbar(
+                    'Error',
+                    "QR Code is invalid",
+                    snackPosition: SnackPosition.BOTTOM,
+                    backgroundColor: Colors.red,
+                    colorText: Colors.white,
                   );
-                  Get.off(() => CustomerQuotaScreen(customerData: customerData));
-                  break;
                 }
               }
             },
@@ -185,16 +200,18 @@ class ScannerOverlayPainter extends CustomPainter {
     // Bottom right corner
     canvas.drawLine(
       Offset(scanAreaLeft + scanAreaSize, scanAreaTop + scanAreaSize),
-      Offset(scanAreaLeft + scanAreaSize - markerLength, scanAreaTop + scanAreaSize),
+      Offset(scanAreaLeft + scanAreaSize - markerLength,
+          scanAreaTop + scanAreaSize),
       markerPaint,
     );
     canvas.drawLine(
       Offset(scanAreaLeft + scanAreaSize, scanAreaTop + scanAreaSize),
-      Offset(scanAreaLeft + scanAreaSize, scanAreaTop + scanAreaSize - markerLength),
+      Offset(scanAreaLeft + scanAreaSize,
+          scanAreaTop + scanAreaSize - markerLength),
       markerPaint,
     );
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-} 
+}
