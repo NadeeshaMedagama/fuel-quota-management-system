@@ -23,6 +23,7 @@ public class FuelTransactionDetailsController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<FuelTransactionDTO> getAllTransactions() {
         List<FuelTransactionDetails> transactions = transactionRepository.findAll();
         return transactionService.convertToDTOList(transactions);

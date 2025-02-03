@@ -5,6 +5,7 @@ import com.FuelBackend.entity.FuelTransactionDetails;
 import com.FuelBackend.repositoryDAO.FuelTransactionRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,14 +34,20 @@ public class FuelTransactionService {
         return repository.save(transaction);
     }
     public List<FuelTransactionDTO> convertToDTOList(List<FuelTransactionDetails> transactions) {
-        return transactions.stream().map(transaction ->
-                new FuelTransactionDTO(
-                        transaction.getTransactionId(),
-                        transaction.getTransactionAmount(),
-                        transaction.getTransactionDate(),
-                        transaction.getFuelType(),
-                        transaction.getVehicle() != null ? transaction.getVehicle().getVehicleId() : null,
-                        transaction.getStation() != null ? transaction.getStation().getFuelStationId() : null
-                )).collect(Collectors.toList());
+        List<FuelTransactionDTO> dtos = new ArrayList<>();
+        for (FuelTransactionDetails transaction : transactions) {
+            FuelTransactionDTO dto = new FuelTransactionDTO(
+                    transaction.getTransactionId(),
+                    transaction.getTransactionAmount(),
+                    transaction.getTransactionDate(),
+                    transaction.getFuelType(),
+                    transaction.getVehicle() != null ? transaction.getVehicle().getVehicleId() : null,  // Ensure vehicleId mapping
+                    transaction.getStation() != null ? transaction.getStation().getFuelStationId() : null  // Ensure stationId mapping
+            );
+            dtos.add(dto);
+        }
+        System.out.println(dtos);
+        return dtos;
     }
+
 }

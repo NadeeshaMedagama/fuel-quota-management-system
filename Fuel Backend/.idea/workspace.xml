@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6b0ebf0-c3d1-4c68-b750-419a4dd4f563" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../admin-web/src/pages/DistributionTracking/DistributionTracking.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-web/src/pages/DistributionTracking/DistributionTracking.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="e6b0ebf0-c3d1-4c68-b750-419a4dd4f563" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
