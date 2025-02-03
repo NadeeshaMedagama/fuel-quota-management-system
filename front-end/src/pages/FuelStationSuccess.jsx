@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./FuelStationSuccess.css";
+import "../Styles/FuelStationSuccess.css";
 
 const FuelStationSuccess = () => {
   const navigate = useNavigate();
