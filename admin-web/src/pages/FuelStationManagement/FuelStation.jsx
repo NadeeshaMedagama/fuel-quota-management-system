@@ -14,7 +14,7 @@ const FuelStation = () => {
   useEffect(() => {
     const fetchFuelStations = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/fuelStation", {
+        const response = await axios.get("http://localhost:8080/api/v1/fuelStation", {
           headers: { "Accept": "application/json" }, // Expect JSON response
         });
 
@@ -42,7 +42,7 @@ const FuelStation = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/fuelStation/${id}`);
+      await axios.delete(`http://localhost:8080/api/v1/fuelStation/${id}`);
       setFuelStations(fuelStations.filter((station) => station.id !== id));
     } catch (error) {
       console.error("Error deleting fuel station:", error);
@@ -54,10 +54,10 @@ const FuelStation = () => {
   );
 
   const columns = [
-    { header: "ID", key: "id" },
-    { header: "Name", key: "name" },
+    { header: "ID", key: "fuelStationId" },
+    { header: "Name", key: "stationName" },
     { header: "Location", key: "location" },
-    { header: "Fuel Type", key: "fuelType" },
+    { header: "Email", key: "email" },
   ];
 
   return (
