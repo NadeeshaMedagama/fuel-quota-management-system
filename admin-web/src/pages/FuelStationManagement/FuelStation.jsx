@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Table from "../../components/Table/Table";
@@ -11,25 +11,38 @@ const FuelStation = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchFuelStations = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/api/fuelStation", {
-          headers: { "Accept": "application/json" }, // Expect JSON response
-        });
+  const fetchFuelStations = useCallback(async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/api/v1/fuelStation", {
+        headers: { Accept: "application/json" },
+      });
 
+      console.log("API Response:", response.data);
 
-        setFuelStations(response.data);
-      } catch (error) {
-        console.error("Error fetching fuel stations:", error);
+      if (Array.isArray(response.data)) {
+        setFuelStations(
+          response.data.map((station) => ({
+            fuelStationId: station.fuelStationId || "N/A",
+            stationName: station.stationName || "N/A",
+            location: station.location || "N/A",
+            email: station.email || "N/A",
+          }))
+        );
+      } else {
+        console.error("Unexpected API response format:", response.data);
+        setFuelStations([]);
       }
-    };
-
-    fetchFuelStations();
+    } catch (error) {
+      console.error("Error fetching fuel stations:", error);
+    }
   }, []);
 
+  useEffect(() => {
+    fetchFuelStations();
+  }, [fetchFuelStations]);
+
   const handleSearch = (term) => {
-    setSearchTerm(term.toLowerCase());
+    setSearchTerm(term.trim().toLowerCase());
   };
 
   const handleAdd = () => {
@@ -42,22 +55,24 @@ const FuelStation = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/fuelStation/${id}`);
-      setFuelStations(fuelStations.filter((station) => station.id !== id));
+      await axios.delete(`http://localhost:8080/api/v1/fuelStation/${id}`);
+      setFuelStations((prevStations) =>
+        prevStations.filter((station) => station.fuelStationId !== id)
+      );
     } catch (error) {
       console.error("Error deleting fuel station:", error);
     }
   };
 
   const filteredStations = fuelStations.filter((station) =>
-    station.name.toLowerCase().includes(searchTerm)
+    station.stationName.toLowerCase().includes(searchTerm)
   );
 
   const columns = [
-    { header: "ID", key: "id" },
-    { header: "Name", key: "name" },
+    { header: "ID", key: "fuelStationId" },
+    { header: "Name", key: "stationName" },
     { header: "Location", key: "location" },
-    { header: "Fuel Type", key: "fuelType" },
+    { header: "Email", key: "email" },
   ];
 
   return (
@@ -65,12 +80,7 @@ const FuelStation = () => {
       <Header title="Fuel Station Management" total={fuelStations.length} />
       <SearchBar placeholder="Search fuel stations..." onSearch={handleSearch} />
       <AddButton onClick={handleAdd} />
-      <Table
-        data={filteredStations}
-        columns={columns}
-        onEdit={handleEdit}
-        onDelete={handleDelete}
-      />
+      <Table data={filteredStations} columns={columns} onEdit={handleEdit} onDelete={handleDelete} />
     </div>
   );
 };

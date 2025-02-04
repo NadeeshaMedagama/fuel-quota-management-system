@@ -18,8 +18,8 @@ public class CorsConfig implements WebMvcConfigurer {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
 
-        // Use allowedOriginPatterns instead of allowedOrigins
-        corsConfiguration.setAllowedOriginPatterns(List.of("*"));
+        // Allow only your frontend URL (e.g., http://localhost:3000 or a specific domain)
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000", "http://your-frontend-domain.com"));
 
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH"));
         corsConfiguration.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept"));

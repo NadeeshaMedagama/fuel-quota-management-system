@@ -16,7 +16,6 @@ public class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Nullable
     private int vehicleId;
 
     @Column(updatable = false, unique = true, nullable = false)

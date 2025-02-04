@@ -15,11 +15,13 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/fuel")
 public class FuelController {
+    private final FuelReportService fuelReportService;
 
     private final FuelServiceRepository fuelServiceRepository;
 
     @Autowired
-    public FuelController(FuelServiceRepository fuelServiceRepository) {
+    public FuelController(FuelReportService fuelReportService, FuelServiceRepository fuelServiceRepository) {
+        this.fuelReportService = fuelReportService;
         this.fuelServiceRepository = fuelServiceRepository;
     }
 
@@ -49,11 +51,13 @@ public class FuelController {
         return fuelServiceRepository.DeleteFuelById(fuelId);
     }
 
-private FuelReportService fuelReportService;
+
+
     @GetMapping("/fuel-report")
     public ResponseEntity<?> getFuelReport(
             @RequestParam String fuelType,
             @RequestParam String period) {
+
 
         List<FuelTransactionDetails> reportData = fuelReportService.getFuelReport(fuelType, period);
 
@@ -61,6 +65,7 @@ private FuelReportService fuelReportService;
         response.put("fuelType", fuelType);
         response.put("period", period);
         response.put("data", reportData);
+
 
         return ResponseEntity.ok(response);
     }
