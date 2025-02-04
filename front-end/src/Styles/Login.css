@@ -4,9 +4,8 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
- margin-top: 210px;
-  margin-left: 440px;
-  margin-right: 440PX;
+ margin-top: 110px;
+  margin-left: 100px;
  
 }
 
@@ -17,8 +16,7 @@
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 1000px;
-  
+  max-width: 2000px;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -101,7 +99,7 @@
 
 .forgot-password-link-text:hover {
   text-decoration: underline;
-  color: red;
+  color: green;
 }
 
 /* Mobile responsiveness */
@@ -139,3 +137,5 @@
   text-align: center; /* Center the error message */
   padding: 5px; /* Add some padding for a better look */
 }
+
+

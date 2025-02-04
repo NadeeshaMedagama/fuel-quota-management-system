@@ -49,6 +49,7 @@ const LoginForm = () => {
 
   const handleForgotPassword = () => {
     alert("Forgot Password feature will send a reset link to your registered email.");
+    
   };
 
   return (
