@@ -15,5 +15,5 @@ public interface AuthenticationServiceRepository {
 //
 //    public ResponseEntity<?> fuelStationLogin(FuelStationLoginRequestDTO fuelStationLoginRequestDTO);
     public boolean resetPasswordWithToken(String token, String newPassword);
-//    public ResponseEntity<?> administratorLogin(AdministratorLoginRequestDTO administratorLoginRequestDTO);
+    public ResponseEntity<?> administratorLogin(AdministratorLoginRequestDTO administratorLoginRequestDTO);
 }

@@ -19,12 +19,12 @@ public class AuthenticationController {
         this.authenticationServiceRepository = authenticationServiceRepository;
     }
 //
-//    @PostMapping("/administratorAuth")
-//    public ResponseEntity<?> AdministratorLogin(
-//            @RequestBody AdministratorLoginRequestDTO administratorLoginRequestDTO
-//    ){
-//        return authenticationServiceRepository.administratorLogin(administratorLoginRequestDTO);
-//    }
+    @PostMapping("/administratorAuth")
+    public ResponseEntity<?> AdministratorLogin(
+            @RequestBody AdministratorLoginRequestDTO administratorLoginRequestDTO
+    ){
+        return authenticationServiceRepository.administratorLogin(administratorLoginRequestDTO);
+    }
 
     @PostMapping("/userAuth")
     public String userLogin(@RequestBody UserLoginRequestDTO userLoginRequestDTO){
