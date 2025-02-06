@@ -173,6 +173,7 @@ public class AuthenticationService implements AuthenticationServiceRepository{
 //
     @Override
     public ResponseEntity<?> administratorLogin(AdministratorLoginRequestDTO administratorLoginRequestDTO) {
+        System.out.println("hi"+administratorLoginRequestDTO.getEmail()+administratorLoginRequestDTO.getPassword());
         Administrator administrator = administratorRepository.findByAdministratorEmail(
                 administratorLoginRequestDTO.getEmail()
         ).orElseThrow(

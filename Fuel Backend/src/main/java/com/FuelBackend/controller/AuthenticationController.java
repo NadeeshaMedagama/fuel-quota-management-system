@@ -2,11 +2,9 @@ package com.FuelBackend.controller;
 
 import com.FuelBackend.dataTransferObject.request.loginRequestDTO.*;
 import com.FuelBackend.service.authenticationService.AuthenticationServiceRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -20,8 +18,8 @@ public class AuthenticationController {
     }
 //
     @PostMapping("/administratorAuth")
-    public ResponseEntity<?> AdministratorLogin(
-            @RequestBody AdministratorLoginRequestDTO administratorLoginRequestDTO
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<?> AdministratorLogin( @RequestBody AdministratorLoginRequestDTO administratorLoginRequestDTO
     ){
         return authenticationServiceRepository.administratorLogin(administratorLoginRequestDTO);
     }

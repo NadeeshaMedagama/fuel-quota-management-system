@@ -21,7 +21,7 @@ const LoginPage = () => {
 
     try {
 
-      const response = await axios.post('http://localhost:8080/api/login', loginData);
+      const response = await axios.post('http://localhost:8080/api/v1/auth/administratorAuth', loginData);
 
       if (response.data.success) {
         console.log('Login successful');
