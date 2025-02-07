@@ -180,10 +180,9 @@ public class AuthenticationService implements AuthenticationServiceRepository{
                 () -> new UnauthorizedAccessException("username or password incorrect")
         );
         String token;
-        if (
-                administrator != null &&
-                        administrator.getPassword().equals(administratorLoginRequestDTO.getPassword())
-        ){
+        if (administrator != null &&
+                passwordEncoder.matches(administratorLoginRequestDTO.getPassword(), administrator.getPassword()))
+            {
 
             token = jwtUtility.generateToken(administrator.getAdministratorUsername(),administrator.getAdministratorEmail(),administrator.getPassword());
         }else{

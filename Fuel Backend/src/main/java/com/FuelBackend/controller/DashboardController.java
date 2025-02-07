@@ -18,9 +18,10 @@ public class DashboardController {
     public Map<String, Long> getDashboardData() {
         return Map.of(
                 "totalVehicles", dashboardService.getTotalVehicles(),
-                "totalDistributors", dashboardService.getTotalEmployees(),
+                "totalEmployees", dashboardService.getTotalEmployees(), // Fix: Corrected key
                 "totalFuelStations", dashboardService.getTotalFuelStations(),
                 "totalUsers", dashboardService.getTotalUsers()
         );
     }
+
 }
