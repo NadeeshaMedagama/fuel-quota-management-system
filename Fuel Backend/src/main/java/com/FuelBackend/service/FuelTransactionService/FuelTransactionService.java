@@ -19,6 +19,7 @@ public class FuelTransactionService {
     }
 
     public List<FuelTransactionDetails> getAllTransactions() {
+
         return repository.findAll();
     }
 

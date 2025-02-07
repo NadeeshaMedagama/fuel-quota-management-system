@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public class AdministratorRequestDTO {
 
-    @NotBlank(message = "administrator username is required")
+    @NotBlank(message = "administrator Email is required")
     private String administratorUsername;
 
     @NotBlank(message = "password is required")

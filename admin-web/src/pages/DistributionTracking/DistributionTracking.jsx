@@ -37,7 +37,7 @@ const DistributionTracking = () => {
     { header: "TransactionId", key: "transactionId" },
     { header: "Amount Pumped (L)", key: "transactionAmount" },
     { header: "Time", key: "transactionDate" },
-    { header: "Fuel Station", key: "fuelStation" },
+   
   ];
 
   return (

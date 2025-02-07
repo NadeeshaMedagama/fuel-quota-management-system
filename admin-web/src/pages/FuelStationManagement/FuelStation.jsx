@@ -13,9 +13,12 @@ const FuelStation = () => {
 
   const fetchFuelStations = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/v1/fuelStation", {
-        headers: { Accept: "application/json" },
-      });
+      const response = await axios.get(
+        "http://localhost:8080/api/v1/fuelStation",
+        {
+          headers: { Accept: "application/json" },
+        }
+      );
 
       console.log("API Response:", response.data);
 
@@ -23,9 +26,9 @@ const FuelStation = () => {
         setFuelStations(
           response.data.map((station) => ({
             fuelStationId: station.fuelStationId || "N/A",
-            stationName: station.stationName || "N/A",
-            location: station.location || "N/A",
-            email: station.email || "N/A",
+            stationName: station.fuelStationName || "N/A",
+            licenseNumber: station.fuelStationRegisterId || "N/A",
+            email: station.fuelStationEmail || "N/A",
           }))
         );
       } else {
@@ -71,16 +74,24 @@ const FuelStation = () => {
   const columns = [
     { header: "ID", key: "fuelStationId" },
     { header: "Name", key: "stationName" },
-    { header: "Location", key: "location" },
+    { header: "licenseNumber", key: "licenseNumber" },
     { header: "Email", key: "email" },
   ];
 
   return (
     <div>
       <Header title="Fuel Station Management" total={fuelStations.length} />
-      <SearchBar placeholder="Search fuel stations..." onSearch={handleSearch} />
+      <SearchBar
+        placeholder="Search fuel stations..."
+        onSearch={handleSearch}
+      />
       <AddButton onClick={handleAdd} />
-      <Table data={filteredStations} columns={columns} onEdit={handleEdit} onDelete={handleDelete} />
+      <Table
+        data={filteredStations}
+        columns={columns}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
     </div>
   );
 };

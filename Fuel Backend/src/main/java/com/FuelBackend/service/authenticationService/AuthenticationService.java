@@ -171,37 +171,38 @@ public class AuthenticationService implements AuthenticationServiceRepository{
 //        );
 //    }
 //
-//    @Override
-//    public ResponseEntity<?> administratorLogin(AdministratorLoginRequestDTO administratorLoginRequestDTO) {
-//        Administrator administrator = administratorRepository.findByAdministratorUsername(
-//                administratorLoginRequestDTO.getAdministratorUsername()
-//        ).orElseThrow(
-//                () -> new UnauthorizedAccessException("username or password incorrect")
-//        );
-//        String token;
-//        if (
-//                administrator != null &&
-//                        administrator.getPassword().equals(administratorLoginRequestDTO.getPassword())
-//        ){
-//
-//            token = jwtUtility.generateToken(administrator.getAdministratorUsername(),administrator.getPassword());
-//        }else{
-//            throw new UnauthorizedAccessException("username or password incorrect");
-//        }
-//        return new ResponseEntity<>(
-//                new LoginResponseDTO(
-//                        HttpStatus.OK.value(),
-//                        "administrator login successfully",
-//                        token,
-//                        new AdministratorResponseDTO(
-//                                administrator.getAdministratorId(),
-//                                administrator.getAdministratorUsername(),
-//                                administrator.getAdministratorEmail()
-//                        )
-//                ),
-//                HttpStatus.OK
-//        );
-//    }
+    @Override
+    public ResponseEntity<?> administratorLogin(AdministratorLoginRequestDTO administratorLoginRequestDTO) {
+        System.out.println("hi"+administratorLoginRequestDTO.getEmail()+administratorLoginRequestDTO.getPassword());
+        Administrator administrator = administratorRepository.findByAdministratorEmail(
+                administratorLoginRequestDTO.getEmail()
+        ).orElseThrow(
+                () -> new UnauthorizedAccessException("username or password incorrect")
+        );
+        String token;
+        if (administrator != null &&
+                passwordEncoder.matches(administratorLoginRequestDTO.getPassword(), administrator.getPassword()))
+            {
+
+            token = jwtUtility.generateToken(administrator.getAdministratorUsername(),administrator.getAdministratorEmail(),administrator.getPassword());
+        }else{
+            System.out.println();
+            throw new UnauthorizedAccessException("username or password incorrect");
+        }
+        return new ResponseEntity<>(
+                new LoginResponseDTO(
+                        HttpStatus.OK.value(),
+                        "administrator login successfully",
+                        token,
+                        new AdministratorResponseDTO(
+                                administrator.getAdministratorId(),
+                                administrator.getAdministratorUsername(),
+                                administrator.getAdministratorEmail()
+                        )
+                ),
+                HttpStatus.OK
+        );
+    }
     private Map<String, String> userDatabase = new HashMap<>(); // Simulating a database with user emails
     private Map<String, String> resetTokens = new HashMap<>(); // Store tokens temporarily
     public void saveResetToken(String email, String token) {

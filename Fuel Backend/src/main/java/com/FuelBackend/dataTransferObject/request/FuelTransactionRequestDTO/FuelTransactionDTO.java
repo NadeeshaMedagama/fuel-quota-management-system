@@ -19,5 +19,7 @@ public class FuelTransactionDTO {
         this.stationId = stationId;
     }
 
-    // Getters and Setters
+    public FuelTransactionDTO() {
+    }
+// Getters and Setters
 }

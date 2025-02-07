@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-<<<<<<<< HEAD:front-end/src/fuelstationpages/FuelStationRegistration.jsx
-import "./FuelStationRegistration.css";
-========
 import "../Styles/FuelStationRegistration.css";
->>>>>>>> 11663692f417b3b2341f00bbe64b91caad07ba2c:front-end/src/pages/FuelStationRegistration.jsx
 
 const FuelStationRegistration = () => {
   const [stationName, setStationName] = useState("");
@@ -17,10 +13,7 @@ const FuelStationRegistration = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-<<<<<<<< HEAD:front-end/src/fuelstationpages/FuelStationRegistration.jsx
 
-========
->>>>>>>> 11663692f417b3b2341f00bbe64b91caad07ba2c:front-end/src/pages/FuelStationRegistration.jsx
   const registerFuelStation = async (event) => {
     event.preventDefault();
     setError("");

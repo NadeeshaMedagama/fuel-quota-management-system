@@ -5,14 +5,15 @@ import "./ReportList.css";
 const ReportList = ({ fuelType, period }) => {
   const [reports, setReports] = useState([]); 
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-
     if (fuelType && period) {
       const fetchReports = async () => {
+        setLoading(true);
+        setError(null); // Reset error on each new request
         try {
-          const response = await axios.get(`http://localhost:8080/api/reports?fuelType=${fuelType}&period=${period}`);
-          
+          const response = await axios.get(`http://localhost:8080/api/v1/fuel/fuel-report?fuelType=${encodeURIComponent(fuelType)}&period=${encodeURIComponent(period)}`);
           console.log("Response Data:", response.data);
 
           if (Array.isArray(response.data)) {
@@ -25,12 +26,14 @@ const ReportList = ({ fuelType, period }) => {
           console.error("Error fetching reports:", err);
           setError("Failed to fetch reports.");
           setReports([]);
+        } finally {
+          setLoading(false);
         }
       };
 
       fetchReports();
     }
-  }, [fuelType, period]); 
+  }, [fuelType, period]);
 
   const handleDownload = (reportId) => {
     axios({
@@ -51,6 +54,7 @@ const ReportList = ({ fuelType, period }) => {
 
   return (
     <div className="report-list-container">
+      {loading && <div>Loading reports...</div>}
       {error && <div className="error-message">{error}</div>}
       <ul className="report-list">
         {reports.map((report, index) => (
