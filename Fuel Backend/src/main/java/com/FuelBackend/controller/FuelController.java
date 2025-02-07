@@ -54,6 +54,7 @@ public class FuelController {
 
 
     @GetMapping("/fuel-report")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> getFuelReport(
             @RequestParam String fuelType,
             @RequestParam String period) {
