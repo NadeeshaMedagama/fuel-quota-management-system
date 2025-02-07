@@ -69,6 +69,7 @@ const SignUpForm = () => {
     setErrors({});
     try {
       const response = await axios.post("http://localhost:8080/api/v1/users/register", formData);
+      
       console.log(response.data);
 
       if (response.status === 200) {

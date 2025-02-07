@@ -20,7 +20,7 @@ const LoginForm = () => {
       const response = await axios.post(
         "http://localhost:8080/api/v1/auth/userAuth",
         {
-          vehicleRegistrationNumber,
+          contactNumber,
           password,
         }
       );

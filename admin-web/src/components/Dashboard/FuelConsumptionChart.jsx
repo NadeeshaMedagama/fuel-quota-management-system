@@ -15,7 +15,7 @@ const FuelConsumptionChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/chart-data");
+        const response = await fetch("http://localhost:8080/api/v1/fuel/chart-data");
         if (!response.ok) {
           throw new Error("Failed to fetch chart data");
         }
