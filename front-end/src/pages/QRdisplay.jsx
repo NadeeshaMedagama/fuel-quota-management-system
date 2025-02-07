@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useLocation } from "react-router-dom";
-//import { QRCodeCanvas } from "qrcode.react";
+import { QRCodeCanvas } from "qrcode.react";
 
 const QRDisplay = () => {
   const location = useLocation();
