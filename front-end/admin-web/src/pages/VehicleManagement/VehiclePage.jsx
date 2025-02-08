@@ -4,7 +4,8 @@ import Table from "../../components/Table/Table";
 import Header from "../../components/Header/Header"; 
 import SearchBar from "../../components/SearchBar/SearchBar"; 
 import { useNavigate } from "react-router-dom"; 
-
+import EditButton from "../../components/Buttons/EditButton";
+import DeleteButton from "../../components/Buttons/DeleteButton";
 const VehiclePage = () => {
   const [vehicles, setVehicles] = useState([]);
   const [filteredVehicles, setFilteredVehicles] = useState([]); // State for filtered vehicles
@@ -61,9 +62,8 @@ const VehiclePage = () => {
       key: "actions",
       render: (row) => (
         <>
-          <button onClick={() => handleEdit(row.id)}>Edit</button>
-          <button onClick={() => handleDelete(row.id)}>Delete</button>
-        </>
+          <EditButton onClick={() => handleEdit(row.id)} />
+          <DeleteButton onClick={() => handleDelete(row.id)} /> </>
       ),
     },
   ];
