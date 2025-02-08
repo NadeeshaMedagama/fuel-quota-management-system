@@ -58,12 +58,13 @@ public class VehicleController {
 
     @DeleteMapping("/{vehicleId}")
     @CrossOrigin(origins = "http://localhost:3000")
+
     public ResponseEntity<?> deleteVehicle(int vehicleId) {
         return vehicleServiceRepository.deleteVehicle(vehicleId);
     }
 
     @GetMapping("/qr/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:5173")
     public ResponseEntity<byte[]> getQRCode(@PathVariable int vehicleId) {
         Vehicle vehicle = vehicleRepository.findById(vehicleId)   .orElseThrow(() -> new RuntimeException("Vehicle not found."));
         return ResponseEntity.ok()
@@ -73,11 +74,11 @@ public class VehicleController {
 
 
     @PostMapping("/register")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:5173")
     public ResponseEntity<Map<String, String>> registerVehicle(@RequestBody VehicleRequestDTO vehicleRequestDTO) {
         System.out.println("Received vehicle registration data: " + vehicleRequestDTO);
         boolean isValid = vehicleServiceRepository.validateVehicleDetails(vehicleRequestDTO);
-        System.out.println(isValid);
+
         if (!isValid) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(Map.of("error", "Invalid vehicle details."));
@@ -89,5 +90,6 @@ public class VehicleController {
                 "qrCodeUrl", qrCodeUrl
         ));
     }
+
 
 }

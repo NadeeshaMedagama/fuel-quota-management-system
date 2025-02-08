@@ -4,7 +4,7 @@ import axios from "axios";
 import '../Styles/Login.css'; // Adjust if it's a CSS file
 
 const LoginForm = () => {
-  const [vehicleRegistrationNumber, setVehicleRegistrationNumber] = useState("");
+  const [contactNumber, setContactNumber] = useState(""); // Change to contactNumber
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,15 +18,17 @@ const LoginForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/v1/auth/userAuth",
+        "http://localhost:8080/api/v1/auth/userAuth", // Backend endpoint
         {
-          contactNumber,
+          contactNumber,  // Sending contactNumber and password as per backend
           password,
         }
       );
-
-      if (response.data.message === "Login Success") {
-        // Redirect to the Vehicle Registration Form upon successful login
+      console.log("Contact Number:", contactNumber);
+      console.log("Password:", password);
+      
+      if (response.status === 200) {
+          setError("login successfully");
         navigate("/VehicleRegistrationForm");
       } else {
         setError(response.data.message || "An error occurred.");
@@ -49,7 +51,6 @@ const LoginForm = () => {
 
   const handleForgotPassword = () => {
     alert("Forgot Password feature will send a reset link to your registered email.");
-    
   };
 
   return (
@@ -58,16 +59,16 @@ const LoginForm = () => {
         <h2 className="form-title">Welcome Back</h2>
         <form onSubmit={login} className="login-form">
           <div className="input-group">
-            <label htmlFor="vehicleRegistrationNumber" className="input-label">
-              Vehicle Registration Number
+            <label htmlFor="contactNumber" className="input-label">
+              Contact Number
             </label>
             <input
               type="text"
-              id="vehicleRegistrationNumber"
-              placeholder="Enter your vehicle registration number"
+              id="contactNumber"
+              placeholder="Enter your contact number"
               className="input-field"
-              value={vehicleRegistrationNumber}
-              onChange={(e) => setVehicleRegistrationNumber(e.target.value)}
+              value={contactNumber}
+              onChange={(e) => setContactNumber(e.target.value)}  // Bind contactNumber
               required
             />
           </div>
@@ -81,7 +82,7 @@ const LoginForm = () => {
               placeholder="Enter your password"
               className="input-field"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)} // Bind password
               required
             />
           </div>

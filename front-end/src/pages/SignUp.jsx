@@ -1,3 +1,4 @@
+// src/components/SignUpForm.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -31,15 +32,15 @@ const SignUpForm = () => {
 
     if (!formData.fullName) newErrors.fullName = "Full Name is required.";
 
+    if (!formData.address) newErrors.address = "Address is required.";
+
     if (!formData.contactNumber) {
       newErrors.contactNumber = "Contact Number is required.";
     } else if (!/^\d{10}$/.test(formData.contactNumber)) {
       newErrors.contactNumber = "Contact Number must be 10 digits.";
     }
 
-    if (!formData.username) {
-      newErrors.username = "Username is required.";
-    }
+    if (!formData.username) newErrors.username = "Username is required.";
 
     if (!formData.password) {
       newErrors.password = "Password is required.";
@@ -49,9 +50,7 @@ const SignUpForm = () => {
       newErrors.password = "Password must contain at least one uppercase letter and one number.";
     }
 
-    if (!formData.userType) {
-      newErrors.userType = "User Type is required.";
-    }
+    if (!formData.userType) newErrors.userType = "User Type is required.";
 
     return newErrors;
   };
@@ -62,25 +61,37 @@ const SignUpForm = () => {
 
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
+        setErrors(validationErrors);
+        return;
     }
 
     setErrors({});
     try {
-      const response = await axios.post("http://localhost:8080/api/v1/users/register", formData);
-      
-      console.log(response.data);
+        const response = await axios.post("http://localhost:8080/api/v1/users/register", {
+            fullName: formData.fullName,
+            address: formData.address,
+            contactNumber: formData.contactNumber,
+            username: formData.username,
+            password: formData.password,
+            userType: formData.userType
+        }, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
 
-      if (response.status === 200) {
-        alert("Registration successful!");
-        navigate("/login");
-      }
+        console.log(response.data);
+
+        if (response.status === 200) {
+            alert("Registration successful!");
+            navigate("/login");
+        }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      setSubmissionError(error.response?.data?.message || "Registration failed. Please try again.");
+        console.error("Error submitting form:", error);
+        setSubmissionError(error.response?.data?.message || "Registration failed. Please try again.");
     }
-  };
+};
+
 
   return (
     <div className="container">
@@ -108,7 +119,9 @@ const SignUpForm = () => {
               value={formData.address}
               onChange={handleChange}
               placeholder="Enter your address"
+              className={errors.address ? "error-input" : ""}
             />
+            {errors.address && <span className="error">{errors.address}</span>}
           </label>
 
           <label>
@@ -150,6 +163,16 @@ const SignUpForm = () => {
             {errors.password && <span className="error">{errors.password}</span>}
           </label>
 
+          <label>
+            User Type
+            <select name="userType" value={formData.userType} onChange={handleChange} className={errors.userType ? "error-input" : ""}>
+              <option value="">Select User Type</option>
+              <option value="admin">Admin</option>
+              <option value="fuel_station_owner">Fuel Station Owner</option>
+              <option value="vehicle_owner">Vehicle Owner</option>
+            </select>
+            {errors.userType && <span className="error">{errors.userType}</span>}
+          </label>
 
           <button type="submit">Register</button>
           {submissionError && <p className="error">{submissionError}</p>}
