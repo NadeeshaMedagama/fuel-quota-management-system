@@ -4,8 +4,9 @@ import Table from "../../components/Table/Table";
 import Header from "../../components/Header/Header"; 
 import SearchBar from "../../components/SearchBar/SearchBar"; 
 import { useNavigate } from "react-router-dom"; 
-import EditButton from "../../components/Buttons/EditButton";
-import DeleteButton from "../../components/Buttons/DeleteButton";
+import EditButton from "../../components/Button/EditButton";
+import DeleteButton from "../../components/Button/DeleteButton";
+
 const VehiclePage = () => {
   const [vehicles, setVehicles] = useState([]);
   const [filteredVehicles, setFilteredVehicles] = useState([]); // State for filtered vehicles
