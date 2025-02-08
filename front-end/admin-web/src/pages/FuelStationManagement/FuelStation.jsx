@@ -5,6 +5,8 @@ import Table from "../../components/Table/Table";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Header from "../../components/Header/Header";
 import AddButton from "../../components/Button/AddButton";
+import EditButton from "../../components/Button/EditButton";
+import DeleteButton from "../../components/Button/DeleteButton";
 
 const FuelStation = () => {
   const [fuelStations, setFuelStations] = useState([]);
@@ -74,24 +76,26 @@ const FuelStation = () => {
   const columns = [
     { header: "ID", key: "fuelStationId" },
     { header: "Name", key: "stationName" },
-    { header: "licenseNumber", key: "licenseNumber" },
+    { header: "License Number", key: "licenseNumber" },
     { header: "Email", key: "email" },
+    {
+      header: "Actions",
+      key: "actions",
+      render: (row) => (
+        <>
+          <EditButton onClick={() => handleEdit(row.fuelStationId)} />
+          <DeleteButton onClick={() => handleDelete(row.fuelStationId)} />
+        </>
+      ),
+    },
   ];
 
   return (
     <div>
       <Header title="Fuel Station Management" total={fuelStations.length} />
-      <SearchBar
-        placeholder="Search fuel stations..."
-        onSearch={handleSearch}
-      />
-      <AddButton onClick={handleAdd} />
-      <Table
-        data={filteredStations}
-        columns={columns}
-        onEdit={handleEdit}
-        onDelete={handleDelete}
-      />
+      <SearchBar placeholder="Search fuel stations..." onSearch={handleSearch} />
+      <AddButton onClick={handleAdd} /> {/* Add button above the table */}
+      <Table data={filteredStations} columns={columns} />
     </div>
   );
 };

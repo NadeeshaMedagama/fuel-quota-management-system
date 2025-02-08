@@ -6,25 +6,26 @@ const EditFuelStation = () => {
   const { id } = useParams(); 
   const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
-    name: "",
-    location: "",
-    fuelType: "",
+    stationName: "",
+    licenseNumber: "",
+    email: "",
   });
 
   useEffect(() => {
-   
     const fetchFuelStation = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/fuelStations/${id}`, {
+        const response = await axios.get(`http://localhost:8080/api/v1/fuelStation/${id}`, {
           headers: { "Content-Type": "application/json" },
         });
-
-        setFormData(response.data); 
+        setFormData({
+          stationName: response.data.fuelStationName || "",
+          licenseNumber: response.data.fuelStationRegisterId || "",
+          email: response.data.fuelStationEmail || "",
+        });
       } catch (error) {
         console.error("Error fetching fuel station data:", error);
       }
     };
-
     fetchFuelStation();
   }, [id]);
 
@@ -38,55 +39,51 @@ const EditFuelStation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-
     try {
-      
-      await axios.put(`http://localhost:8080/fuelStations/${id}`, formData, {
+      await axios.put(`http://localhost:8080/api/v1/fuelStation/${id}`, formData, {
         headers: { "Content-Type": "application/json" },
       });
-      navigate("/fuel-stations"); 
+      navigate("/fuel-stations");
     } catch (error) {
       console.error("Error updating fuel station:", error);
     }
   };
 
-  
   return (
     <div className="form-container">
       <h2>Edit Fuel Station</h2>
       <form className="form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="stationName">Name:</label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
+            id="stationName"
+            name="stationName"
+            value={formData.stationName}
             onChange={handleInputChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="location">Location:</label>
+          <label htmlFor="licenseNumber">License Number:</label>
           <input
             type="text"
-            id="location"
-            name="location"
-            value={formData.location}
+            id="licenseNumber"
+            name="licenseNumber"
+            value={formData.licenseNumber}
             onChange={handleInputChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="fuelType">Fuel Type:</label>
+          <label htmlFor="email">Email:</label>
           <input
-            type="text"
-            id="fuelType"
-            name="fuelType"
-            value={formData.fuelType}
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
             onChange={handleInputChange}
             required
           />
