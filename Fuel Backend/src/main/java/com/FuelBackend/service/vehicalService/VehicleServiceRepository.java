@@ -8,9 +8,9 @@ import org.springframework.http.ResponseEntity;
 
 public interface VehicleServiceRepository {
 
-    ResponseEntity<?> createVehicle(VehicleResponseDTO vehicleRequestDTO);
+    ResponseEntity<VehicleResponseDTO> createVehicle(VehicleRequestDTO request);
 
-    ResponseEntity<?> createBusinessGovVehicle(VehicleResponseDTO vehicleRequestDTO);
+    ResponseEntity<?> createBusinessGovVehicle(VehicleRequestDTO vehicleRequestDTO);
 
     ResponseEntity<?> findVehicleById(int vehicleId);
 

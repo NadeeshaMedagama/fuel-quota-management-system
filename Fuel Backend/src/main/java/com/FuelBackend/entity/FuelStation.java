@@ -1,6 +1,7 @@
 package com.FuelBackend.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -21,6 +22,7 @@ public class FuelStation {
     private String stationName;
 
     @NotNull(message = "license number is required")
+    @Valid
     private String licenseNumber;
 
     @NotNull(message = "Email is required")
