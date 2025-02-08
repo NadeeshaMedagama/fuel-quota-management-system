@@ -7,14 +7,14 @@ public class FuelStationResponseDTO {
 
     private String fuelStationRegisterId;
 
-    private String fuelStationOwnerName;
+    private String fuelStationName;
 
     private String fuelStationEmail;
 
-    public FuelStationResponseDTO(Long fuelStationId, String fuelStationRegisterId, String fuelStationOwnerName, String fuelStationEmail) {
+    public FuelStationResponseDTO(Long fuelStationId, String fuelStationRegisterId, String fuelStationName, String fuelStationEmail) {
         this.fuelStationId = fuelStationId;
         this.fuelStationRegisterId = fuelStationRegisterId;
-        this.fuelStationOwnerName = fuelStationOwnerName;
+        this.fuelStationName = fuelStationName;
         this.fuelStationEmail = fuelStationEmail;
     }
 
@@ -34,12 +34,12 @@ public class FuelStationResponseDTO {
         this.fuelStationRegisterId = fuelStationRegisterId;
     }
 
-    public String getFuelStationOwnerName() {
-        return fuelStationOwnerName;
+    public String getFuelStationName() {
+        return fuelStationName;
     }
 
-    public void setFuelStationOwnerName(String fuelStationOwnerName) {
-        this.fuelStationOwnerName = fuelStationOwnerName;
+    public void setFuelStationName(String fuelStationName) {
+        this.fuelStationName = fuelStationName;
     }
 
     public String getFuelStationEmail() {

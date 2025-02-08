@@ -3,23 +3,23 @@ package com.FuelBackend.dataTransferObject.request.loginRequestDTO;
 import jakarta.validation.constraints.NotBlank;
 
 public class AdministratorLoginRequestDTO {
-    @NotBlank(message = "administrator username is required")
-    private String administratorUsername;
+    @NotBlank(message = "administrator Email is required")
+    private String email;
 
     @NotBlank(message = "password is required")
     private String password;
 
-    public AdministratorLoginRequestDTO(String administratorUsername, String password) {
-        this.administratorUsername = administratorUsername;
+    public AdministratorLoginRequestDTO(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
-    public String getAdministratorUsername() {
-        return administratorUsername;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAdministratorUsername(String administratorUsername) {
-        this.administratorUsername = administratorUsername;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

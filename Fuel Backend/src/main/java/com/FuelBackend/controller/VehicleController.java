@@ -1,5 +1,6 @@
 package com.FuelBackend.controller;
 
+import com.FuelBackend.dataTransferObject.request.vehicleRequestDTO.VehicleRequestDTO;
 import com.FuelBackend.dataTransferObject.response.vehicleResponseDTO.VehicleResponseDTO;
 import com.FuelBackend.entity.Vehicle;
 import com.FuelBackend.repositoryDAO.VehicleRepository;
@@ -28,21 +29,25 @@ public class VehicleController {
     }
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> createVehicle(@RequestBody VehicleResponseDTO vehicleRequestDTO) {
         return vehicleServiceRepository.createVehicle(vehicleRequestDTO);
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> getAllVehicle() {
         return vehicleServiceRepository.getAllVehicle();
     }
 
     @GetMapping("/{vehicleId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> findVehicleById(@PathVariable int vehicleId) {
         return vehicleServiceRepository.findVehicleById(vehicleId);
     }
 
     @PutMapping("/{vehicleId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> updateVehicleCurrentFuelCapacity(
             @PathVariable int vehicleId,
             @RequestBody Map<String, Double> requestBody
@@ -52,11 +57,13 @@ public class VehicleController {
     }
 
     @DeleteMapping("/{vehicleId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> deleteVehicle(int vehicleId) {
         return vehicleServiceRepository.deleteVehicle(vehicleId);
     }
 
     @GetMapping("/qr/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<byte[]> getQRCode(@PathVariable int vehicleId) {
         Vehicle vehicle = vehicleRepository.findById(vehicleId)   .orElseThrow(() -> new RuntimeException("Vehicle not found."));
         return ResponseEntity.ok()
@@ -66,7 +73,9 @@ public class VehicleController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<Map<String, String>> registerVehicle(@RequestBody VehicleResponseDTO vehicleRequestDTO) {
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<Map<String, String>> registerVehicle(@RequestBody VehicleRequestDTO vehicleRequestDTO) {
+        System.out.println("Received vehicle registration data: " + vehicleRequestDTO);
         boolean isValid = vehicleServiceRepository.validateVehicleDetails(vehicleRequestDTO);
         System.out.println(isValid);
         if (!isValid) {

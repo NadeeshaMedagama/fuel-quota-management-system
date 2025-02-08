@@ -16,15 +16,15 @@ public interface VehicleServiceRepository {
 
     ResponseEntity<?> updateVehicleCurrentFuelCapacity(int vehicleId, Double fuelCapacity);
 
-    ResponseEntity<?> updateVehicle(VehicleResponseDTO vehicleRequestDTO);
+    ResponseEntity<?> updateVehicle(VehicleRequestDTO vehicleRequestDTO);
 
     ResponseEntity<?> deleteVehicle(int vehicleId);
 
     ResponseEntity<?> getAllVehicle();
 
-    public String generateAndSaveQRCode(VehicleResponseDTO vehicleRequestDTO);
+    public String generateAndSaveQRCode(VehicleRequestDTO vehicleRequestDTO);
 
-    public  boolean validateVehicleDetails(VehicleResponseDTO vehicleRequestDTO);
+    public  boolean validateVehicleDetails(VehicleRequestDTO vehicleRequestDTO);
 
     Vehicle registerVehicle(VehicleRequestDTO vehicleDTO);
 }

@@ -9,7 +9,7 @@ import axios from "axios";
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState({
     totalVehicles: 0,
-    totalDistributors: 0,
+    totalEmployees: 0,
     totalFuelStations: 0,
     totalUsers: 0,
   });
@@ -18,8 +18,7 @@ const Dashboard = () => {
     axios
       .get("http://localhost:8080/api/v1/dashboard-data")
       .then((response) => {
-        // Assume the JSON response is in the format:
-        // { totalVehicles: 10, totalDistributors: 5, totalFuelStations: 3, totalUsers: 20 }
+
         setDashboardData(response.data);
       })
       .catch((error) => console.error("Error fetching dashboard data:", error));
@@ -32,7 +31,7 @@ const Dashboard = () => {
         <h1 className="dashboard-title">Admin Dashboard</h1>
         <div className="info-cards-container">
           <InfoCard title="Total Vehicles" count={dashboardData.totalVehicles} />
-          <InfoCard title="Total Distributors" count={dashboardData.totalDistributors} />
+          <InfoCard title="Total Employees" count={dashboardData.totalEmployees} />
           <InfoCard title="Total Fuel Stations" count={dashboardData.totalFuelStations} />
           <InfoCard title="Total Users" count={dashboardData.totalUsers} />
         </div>

@@ -1,9 +1,9 @@
 package com.FuelBackend.controller;
 
 import com.FuelBackend.dataTransferObject.request.userRequestDTO.UserRequestDTO;
+import com.FuelBackend.entity.User;
 import com.FuelBackend.service.userService.UserServiceRepository;
 import jakarta.validation.Valid;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +42,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserRequestDTO userDTO) {
         try {
-            User newUser = (User) userServiceRepository.registerUser(userDTO);
+            User newUser = userServiceRepository.registerUser(userDTO);
             return ResponseEntity.ok("User registered successfully!");
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

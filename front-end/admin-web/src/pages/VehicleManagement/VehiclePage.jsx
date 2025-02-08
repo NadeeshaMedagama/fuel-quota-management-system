@@ -49,13 +49,13 @@ const VehiclePage = () => {
 
 
   // Navigate to edit page
-  const handleEdit = (id) => navigate(`/edit-vehicle/${id}`);
+  const handleEdit = (id) => navigate(`/vehicle/${id}`);
 
   const columns = [
-    { header: "ID", key: "id" },
-    { header: "Registration Number", key: "registrationNumber" },
+    { header: "ID", key: "vehicleId" },
+    { header: "Registration Number", key: "vehicleNumber" },
     { header: "QR Code", key: "qrCode" },
-    { header: "Fuel Type", key: "fuelType" },
+    { header: "VehicleType", key: "vehicleType" },
     {
       header: "Actions",
       key: "actions",
@@ -74,12 +74,13 @@ const VehiclePage = () => {
     const lowercasedTerm = searchTerm.toLowerCase();
     const filtered = vehicles.filter(
       (vehicle) =>
-        vehicle.registrationNumber.toLowerCase().includes(lowercasedTerm) ||
-        vehicle.fuelType.toLowerCase().includes(lowercasedTerm) ||
-        vehicle.qrCode.toLowerCase().includes(lowercasedTerm)
+        (vehicle.vehicleNumber?.toLowerCase().includes(lowercasedTerm) || "") ||
+        (vehicle.vehicleType?.toLowerCase().includes(lowercasedTerm) || "") ||
+        (vehicle.qrCode?.toLowerCase().includes(lowercasedTerm) || "")
     );
     setFilteredVehicles(filtered);
   };
+  
 
 
 

@@ -21,9 +21,10 @@ const LoginPage = () => {
 
     try {
 
-      const response = await axios.post('http://localhost:8080/api/login', loginData);
+      const response = await axios.post('http://localhost:8080/api/v1/auth/administratorAuth', loginData);
 
-      if (response.data.success) {
+      if (response.status === 200) 
+        {
         console.log('Login successful');
         navigate('/Dashboard'); // Navigate to the dashboard 
       } else {

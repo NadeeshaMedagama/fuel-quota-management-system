@@ -13,6 +13,7 @@ import com.FuelBackend.utility.JwtUtility;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -34,9 +35,9 @@ public class AuthenticationService implements AuthenticationServiceRepository{
     private final AuthenticationManager authenticationManager;
 
     private final AdministratorRepository administratorRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-
-    public AuthenticationService(UserRepository userRepository, EmployeeRepository employeeRepository, BusinessGovernmentRepository businessGovernmentRepository, FuelStationRepository fuelStationRepository, JwtUtility jwtUtility, AuthenticationManager authenticationManager, AdministratorRepository administratorRepository) {
+    public AuthenticationService(UserRepository userRepository, EmployeeRepository employeeRepository, BusinessGovernmentRepository businessGovernmentRepository, FuelStationRepository fuelStationRepository, JwtUtility jwtUtility, AuthenticationManager authenticationManager, AdministratorRepository administratorRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.employeeRepository = employeeRepository;
         this.businessGovernmentRepository = businessGovernmentRepository;
@@ -44,6 +45,7 @@ public class AuthenticationService implements AuthenticationServiceRepository{
         this.jwtUtility = jwtUtility;
         this.authenticationManager = authenticationManager;
         this.administratorRepository = administratorRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
     @Override
@@ -52,8 +54,8 @@ public class AuthenticationService implements AuthenticationServiceRepository{
         User user = userRepository.findByContactNumber(userLoginRequestDTO.getContactNumber())
                 .orElseThrow(() -> new UnauthorizedAccessException("Username or password incorrect"));
 
-        System.out.println(user.getAddress());
-        if (user.getContactNumber().equals(userLoginRequestDTO.getContactNumber()) && user.getPassword().equals(userLoginRequestDTO.getPassword())) {
+        if (user.getContactNumber().equals(userLoginRequestDTO.getContactNumber()) && passwordEncoder.matches(userLoginRequestDTO.getPassword(), user.getPassword()))
+         {
             System.out.println("hi");
             String token = jwtUtility.generateToken(user.getContactNumber(),user.getPassword(),user.getUserType());
             System.out.println("User logged in with token: " + token);
@@ -169,37 +171,38 @@ public class AuthenticationService implements AuthenticationServiceRepository{
 //        );
 //    }
 //
-//    @Override
-//    public ResponseEntity<?> administratorLogin(AdministratorLoginRequestDTO administratorLoginRequestDTO) {
-//        Administrator administrator = administratorRepository.findByAdministratorUsername(
-//                administratorLoginRequestDTO.getAdministratorUsername()
-//        ).orElseThrow(
-//                () -> new UnauthorizedAccessException("username or password incorrect")
-//        );
-//        String token;
-//        if (
-//                administrator != null &&
-//                        administrator.getPassword().equals(administratorLoginRequestDTO.getPassword())
-//        ){
-//
-//            token = jwtUtility.generateToken(administrator.getAdministratorUsername(),administrator.getPassword());
-//        }else{
-//            throw new UnauthorizedAccessException("username or password incorrect");
-//        }
-//        return new ResponseEntity<>(
-//                new LoginResponseDTO(
-//                        HttpStatus.OK.value(),
-//                        "administrator login successfully",
-//                        token,
-//                        new AdministratorResponseDTO(
-//                                administrator.getAdministratorId(),
-//                                administrator.getAdministratorUsername(),
-//                                administrator.getAdministratorEmail()
-//                        )
-//                ),
-//                HttpStatus.OK
-//        );
-//    }
+    @Override
+    public ResponseEntity<?> administratorLogin(AdministratorLoginRequestDTO administratorLoginRequestDTO) {
+        System.out.println("hi"+administratorLoginRequestDTO.getEmail()+administratorLoginRequestDTO.getPassword());
+        Administrator administrator = administratorRepository.findByAdministratorEmail(
+                administratorLoginRequestDTO.getEmail()
+        ).orElseThrow(
+                () -> new UnauthorizedAccessException("username or password incorrect")
+        );
+        String token;
+        if (administrator != null &&
+                passwordEncoder.matches(administratorLoginRequestDTO.getPassword(), administrator.getPassword()))
+            {
+
+            token = jwtUtility.generateToken(administrator.getAdministratorUsername(),administrator.getAdministratorEmail(),administrator.getPassword());
+        }else{
+            System.out.println();
+            throw new UnauthorizedAccessException("username or password incorrect");
+        }
+        return new ResponseEntity<>(
+                new LoginResponseDTO(
+                        HttpStatus.OK.value(),
+                        "administrator login successfully",
+                        token,
+                        new AdministratorResponseDTO(
+                                administrator.getAdministratorId(),
+                                administrator.getAdministratorUsername(),
+                                administrator.getAdministratorEmail()
+                        )
+                ),
+                HttpStatus.OK
+        );
+    }
     private Map<String, String> userDatabase = new HashMap<>(); // Simulating a database with user emails
     private Map<String, String> resetTokens = new HashMap<>(); // Store tokens temporarily
     public void saveResetToken(String email, String token) {

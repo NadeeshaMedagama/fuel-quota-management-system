@@ -8,7 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/fuelStation")
+@RequestMapping("/api/v1/fuelStation")
+@CrossOrigin(origins = "http://localhost:3000")
 public class FuelStationController {
 
     private final FuelStationServiceRepository fuelStationServiceRepository;
@@ -22,26 +23,31 @@ public class FuelStationController {
     }
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> createFuelStation(@RequestBody FuelStationRequestDTO fuelStationRequestDTO){
         return fuelStationServiceRepository.createFuelStation(fuelStationRequestDTO);
     }
 
     @GetMapping("/{fuelStationId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> getFuelStationById(@PathVariable int fuelStationId){
         return fuelStationServiceRepository.getFuelStationById(fuelStationId);
     }
 
     @PutMapping("/{fuelStationId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> updateFuelStation(@PathVariable int fuelStationId,@RequestBody FuelStationRequestDTO fuelStationRequestDTO){
         return fuelStationServiceRepository.updateFuelStation(fuelStationId,fuelStationRequestDTO);
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> getAllFuelStation(){
         return fuelStationServiceRepository.getAllFuelStation();
     }
 
     @DeleteMapping("/{fuelStationId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> deleteFuelStation(@PathVariable int fuelStationId){
         return fuelStationServiceRepository.deleteFuelStation(fuelStationId);
     }

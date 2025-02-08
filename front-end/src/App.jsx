@@ -8,6 +8,9 @@ import TermsAndConditions from "./pages/TermsAndConditions";
 import VehicleRegistrationForm from "./pages/VehicleRegistrationForm";
 import RegistrationSuccessfull from "./pages/RegistrationSuccessfull";
 import QRDisplay from "./pages/QRdisplay"; // ✅ Ensure case sensitivity
+import FuelStationLogin from "./pages/FuelStationLogin";
+import FuelStationRegistration from "./pages/FuelStationRegistration";
+import FuelStationSuccess from "./pages/FuelStationRegistration";
 
 function App() {
   return (
@@ -21,6 +24,10 @@ function App() {
         <Route path="/VehicleRegistrationForm" element={<VehicleRegistrationForm />} />
         <Route path="/RegistrationSuccessfull" element={<RegistrationSuccessfull />} />
         <Route path="/QRDisplay" element={<QRDisplay />} />  {/* ✅ Fixed Route Placement */}
+        <Route path="/FuelStationLogin" element={<FuelStationLogin/>} />
+        <Route path="/FuelStationRegistration" element={<FuelStationRegistration />} />
+        <Route path="/FuelStationSuccess" element={<FuelStationSuccess />} />
+     
       </Routes>
     </Router>
   );

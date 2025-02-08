@@ -106,7 +106,7 @@ public class FuelStationService implements FuelStationServiceRepository{
                     new FuelStationResponseDTO(
                             fuelStation.getFuelStationId(),
                             fuelStation.getLicenseNumber(),
-                            fuelStation.getOwnerName(),
+                            fuelStation.getStationName(),
                             fuelStation.getEmail()
                     )
             );

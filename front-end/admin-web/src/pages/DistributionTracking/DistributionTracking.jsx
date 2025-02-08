@@ -12,7 +12,7 @@ const DistributionTracking = () => {
   useEffect(() => {
     const fetchDistributionData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/distributions");
+        const response = await axios.get("http://localhost:8080/api/v1/transactions");
         setRecords(response.data);
         setFilteredRecords(response.data); // Initialize filtered records
       } catch (error) {
@@ -34,10 +34,10 @@ const DistributionTracking = () => {
 
   // Columns for the table
   const columns = [
-    { header: "Vehicle Register Number", key: "vehicleRegisterNumber" },
-    { header: "Amount Pumped (L)", key: "amountPumped" },
-    { header: "Time", key: "time" },
-    { header: "Fuel Station", key: "fuelStation" },
+    { header: "TransactionId", key: "transactionId" },
+    { header: "Amount Pumped (L)", key: "transactionAmount" },
+    { header: "Time", key: "transactionDate" },
+   
   ];
 
   return (
