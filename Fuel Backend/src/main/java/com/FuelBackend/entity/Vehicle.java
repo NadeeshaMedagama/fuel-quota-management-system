@@ -24,7 +24,7 @@ public class Vehicle {
     @Column(updatable = false, unique = true, nullable = false)
     private String vehicleEngineNo;
 
-    @Column(nullable = false)
+    @Column()
     private Integer ownerId;
 
     @Column

@@ -1,25 +1,25 @@
 package com.FuelBackend.service.vehicalService;
 
 import com.FuelBackend.dataTransferObject.request.vehicleRequestDTO.VehicleRequestDTO;
-import com.FuelBackend.dataTransferObject.response.CustomApiResponse;
-import com.FuelBackend.dataTransferObject.response.vehicleResponseDTO.*;
-import com.FuelBackend.entity.*;
+import com.FuelBackend.dataTransferObject.response.vehicleResponseDTO.VehicleResponseDTO;
+import com.FuelBackend.entity.User;
+import com.FuelBackend.entity.Vehicle;
+import com.FuelBackend.entity.VehicleClasses;
 import com.FuelBackend.exception.NotFoundException;
 import com.FuelBackend.repositoryDAO.*;
+import com.FuelBackend.service.vehicalService.VehicleServiceRepository;
 import com.FuelBackend.utility.QRCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class VehicleService implements VehicleServiceRepository {
-    private DmtOfficeRepository dmtOfficeRepository;
+    private final DmtOfficeRepository dmtOfficeRepository;
     private final VehicleRepository vehicleRepository;
     private final VehicleClassesRepository vehicleClassesRepository;
     private final UserRepository userRepository;
@@ -27,13 +27,8 @@ public class VehicleService implements VehicleServiceRepository {
     private final BusinessGovernmentRepository businessGovernmentRepository;
 
     @Autowired
-    public VehicleService(
-            VehicleRepository vehicleRepository,
-            VehicleClassesRepository vehicleClassesRepository,
-            UserRepository userRepository,
-            FuelRepository fuelRepository,
-            BusinessGovernmentRepository businessGovernmentRepository
-    ) {
+    public VehicleService(DmtOfficeRepository dmtOfficeRepository, VehicleRepository vehicleRepository, VehicleClassesRepository vehicleClassesRepository, UserRepository userRepository, FuelRepository fuelRepository, BusinessGovernmentRepository businessGovernmentRepository) {
+        this.dmtOfficeRepository = dmtOfficeRepository;
         this.vehicleRepository = vehicleRepository;
         this.vehicleClassesRepository = vehicleClassesRepository;
         this.userRepository = userRepository;
@@ -42,17 +37,17 @@ public class VehicleService implements VehicleServiceRepository {
     }
 
     @Override
-    public ResponseEntity<?> createVehicle(VehicleResponseDTO vehicleRequestDTO) {
-        User user = userRepository.findById(vehicleRequestDTO.getOwnerId()).orElseThrow(
+    public ResponseEntity<VehicleResponseDTO> createVehicle(VehicleRequestDTO request) {
+        User user = userRepository.findById(request.getOwnerId()).orElseThrow(
                 () -> new NotFoundException("User ID not found")
         );
 
         Vehicle vehicle = new Vehicle(
-                vehicleRequestDTO.getVehicleNumber(),
-                vehicleRequestDTO.getVehicleEngineNo(),
-                vehicleRequestDTO.getOwnerId(),
-                vehicleRequestDTO.getVehicleType(),
-                vehicleRequestDTO.getPassword()
+                request.getVehicleNumber(),
+                request.getVehicleEngineNo(),
+                request.getOwnerId(),
+                request.getVehicleType(),
+                request.getPassword()
         );
 
         Vehicle savedVehicle = vehicleRepository.save(vehicle);
@@ -63,14 +58,13 @@ public class VehicleService implements VehicleServiceRepository {
                 savedVehicle.getOwnerId(),
                 savedVehicle.getVehicleType(),
                 savedVehicle.getPassword()
-
         );
 
-        return new ResponseEntity<>(new CustomApiResponse(HttpStatus.CREATED.value(), "Vehicle created successfully"), HttpStatus.CREATED);
+        return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
     @Override
-    public ResponseEntity<?> createBusinessGovVehicle(VehicleResponseDTO vehicleRequestDTO) {
+    public ResponseEntity<?> createBusinessGovVehicle(VehicleRequestDTO vehicleRequestDTO) {
         return null;
     }
 
@@ -109,7 +103,7 @@ public class VehicleService implements VehicleServiceRepository {
 
     @Override
     public ResponseEntity<?> updateVehicle(VehicleRequestDTO vehicleRequestDTO) {
-        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleRequestDTO.getOwnerId());
+        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleRequestDTO.getOwnerId()); // Fix this to vehicleId
 
         if (optionalVehicle.isPresent()) {
             Vehicle vehicle = optionalVehicle.get();
@@ -143,17 +137,20 @@ public class VehicleService implements VehicleServiceRepository {
         return ResponseEntity.ok(vehicles);
     }
 
-
     @Override
     public String generateAndSaveQRCode(VehicleRequestDTO vehicleRequestDTO) {
+        System.out.println(vehicleRequestDTO.getVehicleNumber()+vehicleRequestDTO.getVehicleEngineNo()+vehicleRequestDTO.getOwnerId());
+        System.out.println("hi  ");
         try {
+            System.out.println(vehicleRequestDTO);
             if (vehicleRequestDTO.getVehicleNumber() == null || vehicleRequestDTO.getVehicleNumber().isEmpty()) {
                 throw new IllegalArgumentException("Vehicle Register ID cannot be null or empty.");
             }
-
+            System.out.println("thanoo");
             String data = "Vehicle: " + vehicleRequestDTO.getVehicleNumber();
+            System.out.println("Diwa");
             byte[] qrCode = QRCodeGenerator.generateQRCode(data, 200, 200);
-
+            System.out.println("iiilik");
             Vehicle vehicle = new Vehicle(
                     vehicleRequestDTO.getVehicleNumber(),
                     vehicleRequestDTO.getVehicleEngineNo(),
@@ -161,10 +158,14 @@ public class VehicleService implements VehicleServiceRepository {
                     vehicleRequestDTO.getVehicleType(),
                     vehicleRequestDTO.getPassword()
             );
-
+           vehicle.setVehicleNumber(vehicleRequestDTO.getVehicleNumber());
+           vehicle.setVehicleEngineNo(vehicleRequestDTO.getVehicleEngineNo());
+           vehicle.setOwnerId(vehicleRequestDTO.getOwnerId());
+           vehicle.setVehicleType(vehicleRequestDTO.getVehicleType());
+           vehicle.setPassword(vehicleRequestDTO.getPassword());
             vehicle.setQrCode(qrCode);
             vehicleRepository.save(vehicle);
-
+            System.out.println("jlj");
             return "/api/vehicle/qr/" + vehicle.getVehicleId();
         } catch (Exception e) {
             e.printStackTrace();
@@ -174,32 +175,28 @@ public class VehicleService implements VehicleServiceRepository {
 
     @Override
     public boolean validateVehicleDetails(VehicleRequestDTO vehicleRequestDTO) {
-
         List<String> validVehicleNumbers = dmtOfficeRepository.findAllVehicleNumbers();
 
         if(validVehicleNumbers.contains(vehicleRequestDTO.getVehicleNumber())) {
-            System.out.println("hi hello");
             return true;
-
         }
-         return false;
-        }
+        return false;
+    }
 
-
-@Override
+    @Override
     public Vehicle registerVehicle(VehicleRequestDTO vehicleDTO) {
         Optional<VehicleClasses> vehicleClassOpt = vehicleClassesRepository.findByVehicleClassName(vehicleDTO.getVehicleType());
 
-    System.out.println(vehicleDTO);
         Vehicle vehicle = new Vehicle();
         vehicle.setVehicleNumber(vehicleDTO.getVehicleNumber());
         vehicle.setVehicleEngineNo(vehicleDTO.getVehicleEngineNo());
         vehicle.setOwnerId(vehicleDTO.getOwnerId());
         vehicle.setPassword(vehicleDTO.getPassword());
         vehicle.setVehicleType(vehicleDTO.getVehicleType());
-    System.out.println(vehicle);
         vehicle.setFuelQuota(vehicleClassOpt.map(VehicleClasses::getMaxFuelCapacityPerWeek).orElse(0.0));
 
+        // Generate and save QR code after the vehicle is registered
+        String qrCodeUrl = generateAndSaveQRCode(vehicleDTO);
         return vehicleRepository.save(vehicle);
     }
 }

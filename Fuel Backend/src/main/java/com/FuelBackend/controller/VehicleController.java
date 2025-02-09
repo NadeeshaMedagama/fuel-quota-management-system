@@ -5,6 +5,7 @@ import com.FuelBackend.dataTransferObject.response.vehicleResponseDTO.VehicleRes
 import com.FuelBackend.entity.Vehicle;
 import com.FuelBackend.repositoryDAO.VehicleRepository;
 import com.FuelBackend.service.vehicalService.VehicleServiceRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,8 +31,9 @@ public class VehicleController {
 
     @PostMapping
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<?> createVehicle(@RequestBody VehicleResponseDTO vehicleRequestDTO) {
-        return vehicleServiceRepository.createVehicle(vehicleRequestDTO);
+    public ResponseEntity<ResponseEntity<VehicleResponseDTO>> createVehicle(@RequestBody VehicleRequestDTO request) {
+        ResponseEntity<VehicleResponseDTO> response = vehicleServiceRepository.createVehicle(request);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -58,12 +60,13 @@ public class VehicleController {
 
     @DeleteMapping("/{vehicleId}")
     @CrossOrigin(origins = "http://localhost:3000")
+
     public ResponseEntity<?> deleteVehicle(int vehicleId) {
         return vehicleServiceRepository.deleteVehicle(vehicleId);
     }
 
     @GetMapping("/qr/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:5173")
     public ResponseEntity<byte[]> getQRCode(@PathVariable int vehicleId) {
         Vehicle vehicle = vehicleRepository.findById(vehicleId)   .orElseThrow(() -> new RuntimeException("Vehicle not found."));
         return ResponseEntity.ok()
@@ -73,11 +76,11 @@ public class VehicleController {
 
 
     @PostMapping("/register")
-    @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<Map<String, String>> registerVehicle(@RequestBody VehicleRequestDTO vehicleRequestDTO) {
+    @CrossOrigin(origins = "http://localhost:5173")
+    public ResponseEntity<Map<String, String>> registerVehicle(@RequestBody @Valid VehicleRequestDTO vehicleRequestDTO) {
         System.out.println("Received vehicle registration data: " + vehicleRequestDTO);
         boolean isValid = vehicleServiceRepository.validateVehicleDetails(vehicleRequestDTO);
-        System.out.println(isValid);
+
         if (!isValid) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(Map.of("error", "Invalid vehicle details."));
@@ -89,5 +92,6 @@ public class VehicleController {
                 "qrCodeUrl", qrCodeUrl
         ));
     }
+
 
 }

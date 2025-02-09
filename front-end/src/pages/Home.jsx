@@ -3,7 +3,6 @@ import "../Styles/home.css";
 import LoginButton from "../Styles/components/LoginButton";
 import RegisterButton from "../Styles/components/RegisterButton";
 import Footer from "../Styles/components/Footer";
-
 import FuelStationButton from "../Styles/components/FuelStationButton";
 
 function Home() {
@@ -11,24 +10,20 @@ function Home() {
     <div className="home-container">
       <header className="home-header">
         <img src="/logo.png" alt="FuelPulse Logo" className="logo" />
-       <FuelStationButton />
-
+        <FuelStationButton />
       </header>
 
       <main className="home-main">
         <h1>What is FuelPulse?</h1>
         <p>Managing Fuel, Simplifying Lives: Your Digital Fuel Management Solution</p>
-        <RegisterButton />
-        <LoginButton />
-       
-      
-     
-
+        <div className="button-container">
+          <RegisterButton />
+          <LoginButton />
+        </div>
       </main>
 
       <section className="home-description">
         <div className="info-card">
-     
           <p>FuelPulse is an innovative platform designed to streamline fuel management processes.</p>
         </div>
       </section>
@@ -39,6 +34,3 @@ function Home() {
 }
 
 export default Home;
-
-
-

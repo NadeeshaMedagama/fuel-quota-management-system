@@ -25,7 +25,6 @@ const VehicleRegistrationForm = () => {
       [name]: value,
     });
 
-    // Clear individual field error on change
     setErrors((prevErrors) => ({
       ...prevErrors,
       [name]: "",
@@ -75,7 +74,6 @@ const VehicleRegistrationForm = () => {
           setErrors({ form: "Registration failed. Please try again." });
         }
       } catch (error) {
-        console.error("There was an error during registration", error);
         setErrors({
           form: "Unable to register. Please check your inputs and try again.",
         });

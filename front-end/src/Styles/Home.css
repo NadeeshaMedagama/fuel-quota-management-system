@@ -1,7 +1,7 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 
@@ -17,141 +17,142 @@ min-height: 100vh; /* Makes the container take up the full viewport height */
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-
+margin-left: -760px;
+margin-right: -760px;
 margin-top: -5px;
 color: white; /* Ensures content text contrasts with the background */
 }
 
 .home-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  border-bottom: 2px solid #ddd;
-  margin-right: 10px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 20px;
+border-bottom: 2px solid #ddd;
+margin-right: 10px;
 }
 
 .logo {
-  max-height: 60px;
+max-height: 60px;
 }
 
 .home-main {
-  margin: 40px 0;
+margin: 40px 0;
 
 }
 
 .home-main h1 {
-  font-size: 3.8em;
-  color: #002855;
+font-size: 3.8em;
+color: #002855;
 }
 
 .home-main p {
-  font-size: 2.2em;
-  margin: 20px 0;
-  font-weight: bold;
+font-size: 2.2em;
+margin: 20px 0;
+font-weight: bold;
 }
 
 .info-card {
-  background: #ffffff;
-  padding: 20px;
-  margin: 20px auto;
-  border: 1px solid #95abed;
-  border-radius: 8px;
-  max-width: 900px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+background: #ffffff;
+padding: 20px;
+margin: 20px auto;
+border: 1px solid #95abed;
+border-radius: 8px;
+max-width: 900px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .info-card h2 {
-  font-size: 2.9em;
-  color: #002855;
+font-size: 2.9em;
+color: #002855;
 }
 
 .info-card p {
-  font-size: 1.8em;
-  color: #555;
-  font-weight:bold;
+font-size: 1.8em;
+color: #555;
+font-weight:bold;
 }
 
 button {
-  background-color: #002855;
-  color: white;
-  border: none;
-  padding: 20px 10px;
-  font-size: 1.9em;
-  border-radius: 15px;
-  cursor: pointer;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
-   margin-left: 20px;
-   border-color: aliceblue;
+background-color: #002855;
+color: white;
+border: none;
+padding: 20px 10px;
+font-size: 1.9em;
+border-radius: 15px;
+cursor: pointer;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+-ms-border-radius: 15px;
+-o-border-radius: 15px;
+ margin-left: 20px;
+ border-color: aliceblue;
 
 }
 
 button:hover {
-  background-color: #004080;
+background-color: #004080;
 }
 
 .home-description{
 
-  margin-bottom: 300px;
+margin-bottom: 300px;
 }
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .home-main h1 {
-      font-size: 3em;
-  }
-  .home-main p {
-      font-size: 1.8em;
-  }
-  .info-card {
-      max-width: 80%;
-  }
+.home-main h1 {
+    font-size: 3em;
+}
+.home-main p {
+    font-size: 1.8em;
+}
+.info-card {
+    max-width: 80%;
+}
 }
 
 
 @media (max-width: 768px) {
-  .home-header {
-      flex-direction: column;
-      text-align: center;
-  }
-  .home-main h1 {
-      font-size: 2.5em;
-  }
-  .home-main p {
-      font-size: 1.5em;
-  }
-  .info-card h2 {
-      font-size: 2em;
-  }
-  .info-card p {
-      font-size: 1.3em;
-  }
-  button {
-      font-size: 1.5em;
-      padding: 8px 15px;
-  }
+.home-header {
+    flex-direction: column;
+    text-align: center;
+}
+.home-main h1 {
+    font-size: 2.5em;
+}
+.home-main p {
+    font-size: 1.5em;
+}
+.info-card h2 {
+    font-size: 2em;
+}
+.info-card p {
+    font-size: 1.3em;
+}
+button {
+    font-size: 1.5em;
+    padding: 8px 15px;
+}
 }
 
 @media (max-width: 480px) {
-  .home-main h1 {
-      font-size: 2em;
-  }
-  .home-main p {
-      font-size: 1.2em;
-  }
-  .info-card {
-      padding: 15px;
-  }
-  .info-card h2 {
-      font-size: 1.8em;
-  }
-  .info-card p {
-      font-size: 1.1em;
-  }
-  button {
-      font-size: 1.2em;
-      padding: 6px 12px;
-  }
+.home-main h1 {
+    font-size: 2em;
+}
+.home-main p {
+    font-size: 1.2em;
+}
+.info-card {
+    padding: 15px;
+}
+.info-card h2 {
+    font-size: 1.8em;
+}
+.info-card p {
+    font-size: 1.1em;
+}
+button {
+    font-size: 1.2em;
+    padding: 6px 12px;
+}
 }
