@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:fuel_scanner/models/customer_fuel_data.dart';
 import 'package:fuel_scanner/pages/customer_quota/customer_quota_screen.dart';
 
 class QRScannerScreen extends StatefulWidget {
@@ -75,21 +74,11 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
                   if (barcode.rawValue != null) {
                     controller.stop();
                     debugPrint('Barcode found! ${barcode.rawValue}');
-                    // Mock customer data - replace with actual API call
-                    // final customerData = CustomerFuelData(
-                    //   id: barcode.rawValue!,
-                    //   name: 'John Doe',
-                    //   vehicleNumber: 'ABC-1234',
-                    //   totalQuota: 100,
-                    //   usedQuota: 35,
-                    //   lastPurchase: DateTime.now().subtract(const Duration(days: 2)),
-                    //   fuelType: 'Diesel',
-                    //   vehicleType: 'Heavy Truck',
-                    // );
                     final customerData = await ApiService()
                         .getCustomerFuelData(barcode.rawValue.toString());
-                    Get.off(
-                        () => CustomerQuotaScreen(customerData: customerData));
+                    Get.off(() => CustomerQuotaScreen(
+                        customerData: customerData,
+                        qrId: barcode.rawValue.toString()));
                     break;
                   }
                 } on Exception catch (e) {
