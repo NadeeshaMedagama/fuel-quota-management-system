@@ -1,13 +1,18 @@
+import 'package:fuel_scanner/pages/customer_quota/fuel_contoller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:fuel_scanner/models/customer_fuel_data.dart';
 
 class CustomerQuotaScreen extends StatelessWidget {
   final CustomerFuelData customerData;
+  final String qrId;
 
-  const CustomerQuotaScreen({
+  final FuelController fuelController = FuelController();
+
+  CustomerQuotaScreen({
     super.key,
     required this.customerData,
+    required this.qrId,
   });
 
   @override
@@ -207,6 +212,7 @@ class CustomerQuotaScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             TextField(
+              controller: fuelController.fuelQuotaController,
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 labelText: 'Enter Fuel Amount (L)',
@@ -217,8 +223,7 @@ class CustomerQuotaScreen extends StatelessWidget {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Add fuel entry logic here
-                Get.back(result: true);
+                fuelController.updateFuelQuota(qrId);
               },
               child: const Text('Confirm Fuel Entry'),
             ),
